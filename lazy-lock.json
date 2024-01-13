@@ -3,5 +3,6 @@
   "neoconf.nvim": { "branch": "main", "commit": "64437787dba70fce50dad7bfbb97d184c5bc340f" },
   "neodev.nvim": { "branch": "main", "commit": "dde00106b9094f101980b364fae02fd85d357306" },
   "nvim-autopairs": { "branch": "master", "commit": "9fd41181693dd4106b3e414a822bb6569924de81" },
-  "rose-pine": { "branch": "main", "commit": "c01a4a61020ddcfd3448fbb9cf11309f336bfb7b" }
+  "rose-pine": { "branch": "main", "commit": "c01a4a61020ddcfd3448fbb9cf11309f336bfb7b" },
+  "telescope.nvim": { "branch": "0.1.x", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" }
 }
