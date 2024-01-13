@@ -1,0 +1,30 @@
+require "core.user-commands.legendary"
+local command = vim.api.nvim_create_user_command
+
+local harpoon = require "harpoon"
+
+command("HarpoonAdd", function()
+  harpoon:list():append()
+end, { bang = false })
+
+command("HarpoonMenu", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { bang = false })
+
+command("HarpoonNext", function()
+  harpoon:list():next()
+end, { bang = false })
+
+command("HarpoonPrev", function()
+  harpoon:list():prev()
+end, { bang = false })
+
+command("HarpoonSelect", function(cmd)
+  index = cmd.args and type(cmd.args) == "string" and tonumber(cmd.args) or ""
+  harpoon:list():select(index)
+end, { bang = false, nargs = "?" })
+
+command("EdgyTerm", function()
+  local term = require "core.utils.terminal"
+  term.edgyterm_toggle()
+end, { bang = false })
