@@ -1,4 +1,4 @@
-require 'core.keymaps'.Default_Keymaps()
+require 'core.keymaps'.Default()
 require 'core.colorscheme'
 require 'core.autocmds'
 
@@ -12,5 +12,5 @@ end
 -- Anything else to setup in here? Look for more `user.*` files? Like plugins, colorschemes, keymaps?
 -- Keymaps would override if it finds conflicting keymap?
 -- colorscheme would override if found key `set`
--- plugins 
+-- plugins
 -- Able to disable preinstalled as well as install new plugins

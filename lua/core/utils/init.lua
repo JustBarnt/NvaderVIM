@@ -22,4 +22,13 @@ M.enabled = function(group, opt)
   return group == nil or group[opt] == nil or group[opt] == true
 end
 
+M.installed = function(module)
+    local exist, _ = pcall(require, module)
+
+    if not exist then
+        return false
+    end
+
+    return exist
+end
 return M

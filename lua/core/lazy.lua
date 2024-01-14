@@ -15,11 +15,50 @@ end
 -- Appending lazy to our runtime, for lazy magic
 vim.opt.rtp:prepend(lazypath)
 
---local plugins = 'plugins'
-local plugins = require 'core.plugins'
-local lazyspec = {}
 -- Setting up lazy specs
-require("lazy").setup(plugins, lazyspec)
+require("lazy").setup('plugins', {
+  --[[dev = {
+    path = "~/projects/nvim",
+    patterns = { "nvim" },
+    fallback = true,
+  },]]
+  ui = {
+    icons = {
+      cmd = " ",
+      config = "",
+      event = "",
+      ft = " ",
+      init = " ",
+      import = " ",
+      keys = " ",
+      lazy = "󰒲 ",
+      loaded = "●",
+      not_loaded = "○",
+      plugin = " ",
+      runtime = " ",
+      require = "󰢱 ",
+      source = " ",
+      start = "",
+      task = "✔ ",
+      list = {
+        "●",
+        "➜",
+        "★",
+        "‒",
+      },
+    }
+  },
+  performance = {
+    rtp = {
+      disable_plugins = {
+        "matchit",
+        "matchparan",
+        "netrwPlugin",
+        "zipPlugin",
+      },
+    },
+  },
+})
 
 require 'core.options'
 require 'profile'

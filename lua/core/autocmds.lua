@@ -49,12 +49,29 @@ if enabled(cmds, "trailing_whitespace") then
     command = [[%s/\s\+$//e]],
   })
 end
+--[[
+if enabled(cmds, "format_on_save") then
+    cmd({ "BufWritePre" }, {
+        desc = "Formats buffer on save",
+        group = augroup("format_on_save", clear),
+        pattern = "*",
+        callback = function(args)
+            local conform = require 'conform'
+            local filetype = vim.api.nvim_buf_get_options(args.buf, 'filetype')
+            if filetype ~= "php"  or filetype ~= "xml"
+               or filetype ~= "html" or filetype ~= "svelte" then
+               conform.format({ bufnr = args.buf, lsp_fallback = false })
+            end
 
-if enabled(cmds, 'cmp') then
+        end,
+    })
+end]]
+
+--[[if enabled(cmds, 'cmp') then
   cmd({ 'FileType' }, {
     desc = "Disables autocompletion in certain filetypes",
     group = augroup('cmp', clear),
-    pattern = "gitcommit,gitrebase,text,markdown",
+    pattern = "gitcommit,gitrebase,text,markdown,log",
     command = "lua require('cmp').setup.buffer { enabled = false }"
   })
-end
+end]]

@@ -20,7 +20,7 @@ return {
     splitbelow = true, -- Vertical Splitting defaults to the bottom unless told otherwise
     updatetime = 1000, -- Update time for writing swapfile to disc (if enabled) as well as CursorHold
     hlsearch = true, -- Highlights what you search for
-    scrolloff = 5, -- Amount of lines below curor
+    scrolloff = 10, -- Amount of lines below curor
     cursorline = true, -- Highlights current line
     wrap = false, -- Line wrapping when lines longer than the width of the window
     clipboard = "unnamedplus", -- Yanked items are copied to system clipboard, also allows pasting from clipboard
@@ -36,9 +36,9 @@ return {
     -- Tab options
     autoindent = true, -- Copies indent level from current line when starting a new line
     cindent = true, -- Enables automatic C program indenting,
-    tabstop = 2, -- Spaces a <Tab> in the file counts for
-    shiftwidth = 2, -- Number of spaces to use for each step of (auto)indent
-    softtabstop = 2, -- Number of spaces a <Tab> counts for when performing editing operations
+    tabstop = 4, -- Spaces a <Tab> in the file counts for
+    shiftwidth = 4, -- Number of spaces to use for each step of (auto)indent
+    softtabstop = 4, -- Number of spaces a <Tab> counts for when performing editing operations
     expandtab = true, -- In Insert mode: Use the appropriate number of spaces to insert a <Tab>
   },
 }
