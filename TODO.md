@@ -7,12 +7,11 @@
     - Mappings
 - [ ] Treesitter
     - Extensions
-        - TextObjects
-        - Context
+        - [ ] TextObjects
     - Mappings
 - [ ] Setup LSP
-    - Going to use `lsp-zero` for this
-
+    - [X] Going to use `lsp-zero` for this
+    - Setup formatter settings
 ---
 Use `enabled(xx,'')` to disable certain things on large file loads
 ---

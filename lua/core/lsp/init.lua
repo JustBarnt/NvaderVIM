@@ -50,29 +50,25 @@ lsp.on_attach(function(client, bufnr)
     settings.on_attach(client, bufnr)
 end)
 
---lsp.preset("minimal")
-
 mason.setup({})
 mason_lspconfig.setup({
     ensure_installed = lsps,
 })
 
-local setup_servers = function(server, config)
-    if not config then
-        print("[ERROR]: Config missing for: " ..server)
+local setup_servers = function(server, server_config)
+    if not server_config then
+        print("[ERROR]: Config missing for: " .. server)
         return
     end
 
-    if type(config) ~= "table" then
-        config = {}
+    if type(server_config) ~= "table" then
+        server_config = {}
     end
 
-    lspconfig[server].setup(config)
+    lspconfig[server].setup(server_config)
 end
 
-for server, config in pairs(servers) do
-    setup_servers(server, config)
+for server, server_config in pairs(servers) do
+    setup_servers(server, server_config)
 end
 
---local capabilities = vim.lsp.protocol.make_client_capabilities()
---lsp.setup()

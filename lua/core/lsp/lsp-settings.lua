@@ -1,8 +1,8 @@
 local M = {}
 
 M.on_attach = function(client, bufnr)
+    require 'core.keymaps'.Lsp()
     local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
     if client.server_capabilities.documentHighlightProvider then
@@ -28,3 +28,4 @@ M.on_attach = function(client, bufnr)
 end
 
 return M
+

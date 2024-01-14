@@ -4,6 +4,16 @@ local M = {}
 -- TODO: Create object for colorscheme override
 -- TODO: Add options override here as well.
 -- Delete all options that are currently default as well, it tech debt and uneccessary
+M.user_options = {
+    opt = {
+        -- Editor / Command options
+        number = true,
+        relativenumber = true,
+        scrolloff = 10, -- Amount of lines below curor
+        pumblend = 17,
+    },
+}
+
 M.ensure_installed = {
     conform = {
         "stylua",
