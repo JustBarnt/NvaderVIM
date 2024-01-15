@@ -73,18 +73,21 @@ M.Telescope = function()
 end
 
 M.Lsp = function()
-    map("n", "<leader>ca", "<CMD>lua vim.lsp.buf.code_action<CR>", { desc = "Code Actions" })
-    map("n", "<leader>cr", "<CMD>lua vim.lsp.buf.rename<CR>", { desc = "Rename Symbol" })
+    map( "i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" } )
+    map( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
+    map( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" } )
+    map( "n", "gd", vim.lsp.buf.definition, { desc = "Go-To Definition" } )
+    map( "n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
+    map( "n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" } )
+    map( "n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" } )
+    map( "n", "<leader>gI", vim.lsp.buf.implementation )
+    map( "n", "<leader>rr", "LspRestart" )
+
     map("n", "<leader>lf", "<CMD>LspFormat<CR>", { desc = "LSP Format" })
     map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
     map("n", "<leader>li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
     map("n", "<leader>ls", "<CMD>LspStart<CR>", { desc = "LSP Start" })
     map("n", "<leader>lk", "<CMD>LspStop<CR>", { desc = "LSP Stop" })
-    map("n", "gd", "<CMD>lua vim.lsp.buf.definition<CR>", { desc = "Go-To Definition" })
-    map("n", "gD", "<CMD>lua vim.lsp.buf.declaration<CR>", { desc = "Go-To Declaration" })
-    map("n", "gI", "<CMD>lua vim.lsp.buf.implementation<CR>", { desc = "Go-To Implementation" })
-    map("n", "gT", "<CMD>lua vim.lsp.buf.type_definition<CR>", { desc = "Go-To Type Definition" })
-    map("n", "K", "<CMD>lua vim.lsp.buf.hover<CR>", { desc = "Peek Definition" })
 end
 
 return M

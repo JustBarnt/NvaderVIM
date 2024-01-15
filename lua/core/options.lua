@@ -5,7 +5,6 @@ local home_path = os.getenv("HOMEPATH")
 vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
 
 vim.opt.shortmess:append("sIW")
-vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
 vim_opts({
 	opt = {

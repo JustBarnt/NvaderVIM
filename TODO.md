@@ -1,3 +1,6 @@
+## Tonight
+Write Pretty print function, tired of writing `print(vim.inspect(....))`
+
 - [X] Default options
     - Which is overwritten if `options/user_options` is found inside of the user folder
 - [X] Setup basic keymaps
