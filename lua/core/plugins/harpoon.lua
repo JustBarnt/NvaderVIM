@@ -28,7 +28,7 @@ local M = {}
 
 M.keys = function()
     map('n', "<leader>ha", function() harpoon:list():append() end, { desc = "Harpoon Add" })
-    map('n', "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = "Harpoon List" })
+    map('n', "<leader>hl", function() toggle_telescope(harpoon:list()) end, { desc = "Harpoon List" })
 end
 
 return M
