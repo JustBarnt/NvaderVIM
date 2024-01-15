@@ -14,7 +14,9 @@
     - Setup formatter settings
 ---
 Use `enabled(xx,'')` to disable certain things on large file loads
+Test `tbl_deep_extend` to see if it will merge tables or if I should use `tbl_extend`
 ---
+
 ## Further Config Setup
 - Look for additional `user.*` files
  - `user.plugins`
