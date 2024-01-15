@@ -2,6 +2,7 @@
     - Which is overwritten if `options/user_options` is found inside of the user folder
 - [X] Setup basic keymaps
     - Grab from current config
+    - [ ] Setup plugin keymaps via `core.plugins` but return a keys module from the config that's called on the keys property for LazyVim
 - [ ] Setup Telescope
     - Extensions
     - Mappings

@@ -74,7 +74,13 @@ M.servers = {
 M.formatters = {
     lua = { "stylua" },
     javascript = { "prettierd", "prettier" },
-    typescript = { "prettierd", "prettier"}
+    typescript = { "prettierd", "prettier" }
 }
 
+M.harpoon = {
+    settings = {
+        save_on_toggle = true,
+        sync_on_ui_close = true,
+    }
+}
 return M
