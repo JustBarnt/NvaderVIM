@@ -46,6 +46,7 @@ M.ensure_installed = {
         "lua",
         "markdown",
         "markdown_inline",
+        "regex",
         "svelte",
         "toml",
         "tsx",
