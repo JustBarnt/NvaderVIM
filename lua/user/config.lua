@@ -63,6 +63,7 @@ M.servers = {
     cmake = true,
     svelte = true,
     cssls = true,
+    omnisharp = true,
     lua_ls = require("core.lsp.servers.lua_ls"),
     intelephense = require("core.lsp.servers.intelephense"),
     jsonls = require("core.lsp.servers.jsonls"),
