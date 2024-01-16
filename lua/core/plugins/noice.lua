@@ -7,18 +7,13 @@ noice.setup({
     popupmenu = {
         enabled = true,
     },
-    messages = {
-        view = "mini",
-    },
     routes = {
-        {
-            view = "notify",
+        { -- Disables showing confirm messages aka things like "saving" a buffer
             filter = {
-                event = { "msg_show", "msg_showmode" },
-                ["not"] = {
-                    kind = { "confirm", "confirm_sub" },
-                },
+                event = "msg_show",
+                kind = ""
             },
+            opts = { skip = true}
         },
         --[[ {
             view = 'cmdline',
