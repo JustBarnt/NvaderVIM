@@ -4,9 +4,19 @@ end
 
 local map = require 'core.utils'.map
 local telescope = require 'telescope'
+local actions = require 'telescope.actions'
 
-
-telescope.setup({})
+telescope.setup({
+    pickers = {
+        buffers ={
+            mappings = {
+                i = {
+                    ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+                }
+            }
+        }
+    }
+})
 
 local M = {}
 
