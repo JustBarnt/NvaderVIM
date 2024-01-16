@@ -56,6 +56,7 @@ vim_opts({
         listchars = { eol = "󰌑" },
         fillchars = { eob = "~" },
         diffopt = { 'internal', 'filler', 'closeoff', 'hiddenoff', 'algorithm:minimal' },
+        undodir = vim.fn.stdpath('state') .. '\\undotree\\',
         undofile = true,
         signcolumn = "yes",
         colorcolumn = "120"
