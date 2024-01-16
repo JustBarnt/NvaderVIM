@@ -5,8 +5,18 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim"
     },
-    init = function()
-      require 'core.keymaps'.Telescope()
+    keys = function()
+        require 'core.plugins.telescope'.keymaps()
     end,
+    config = function()
+        require 'core.plugins.telescope'
+    end,
+  },
+  {
+      "nvim-telescope/telescope-file-browser.nvim",
+      dependencies = {
+          "nvim-telescope/telescope.nvim",
+          "nvim-lua/plenary.nvim"
+      }
   }
 }

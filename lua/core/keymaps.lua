@@ -65,14 +65,6 @@ M.Default = function()
     map("n", "<leader>qa", ":qall<CR>", { desc = "Quit All"})
 end
 
-M.Telescope = function()
-    local builtin = require 'telescope.builtin'
-
-    map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
-    map("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
-    map("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
-end
-
 M.Lsp = function()
     map( "i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" } )
     map( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
