@@ -9,4 +9,5 @@ gitsigns.setup({
         changedelete = { text = "~" },
         untracked = { text = "┆" },
     },
+    current_line_blame = true,
 })

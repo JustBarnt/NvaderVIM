@@ -52,8 +52,9 @@ vim_opts({
         shada = { "!", "'1000", "<50", "s10", "h", "rA", "rB" },
         mouse = "a",
         joinspaces = false,
-        list = true, 
-        fillchars = { eob = "nf-md-keyboard_return" },
+        list = false,
+        listchars = { eol = "󰌑" },
+        fillchars = { eob = "~" },
         diffopt = { 'internal', 'filler', 'closeoff', 'hiddenoff', 'algorithm:minimal' },
         undofile = true,
         signcolumn = "yes",
@@ -64,4 +65,3 @@ vim_opts({
 local exist, config = pcall(require, 'user.config')
 local opts = exist and type(config) == 'table' and config.user_options or {}
 vim_opts(opts)
-
