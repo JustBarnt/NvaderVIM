@@ -14,6 +14,22 @@ M.Default = function()
     map("n", "q", "<NOP>")
     map("n", "Q", "<NOP>")
 
+    -- Disable use of Arrow Keys: use (HJKL)
+    map("n", "<Left>", ":echo 'Use h instead'<CR>")
+    map("n", "<Down>", ":echo 'Use j instead'<CR>")
+    map("n", "<Up>", ":echo 'Use k instead'<CR>")
+    map("n", "<Right>", ":echo 'Use l instead'<CR>")
+
+    map("i", "<Left>", "<NOP>")
+    map("i", "<Down>", "<NOP>")
+    map("i", "<Up>", "<NOP>")
+    map("i", "<Right>", "<NOP>")
+
+    map("i", "<S-Left>", "<NOP>")
+    map("i", "<S-Down>", "<NOP>")
+    map("i", "<S-Up>", "<NOP>")
+    map("i", "<S-Right>", "<NOP>")
+
     -- Fix descrepancy between nvim builtin matching (%) and nvim-comment plugin
     map("n", "<leader>_gc", "<CMD>call CommentOperator(visualmode())<CR>")
 
@@ -66,18 +82,18 @@ M.Default = function()
 end
 
 M.Lsp = function()
+    local handlers = require 'core.lsp.handlers'
     map( "i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" } )
     map( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
     map( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" } )
-    map( "n", "gd", function()
-        require 'detour'.Detour()
-        vim.lsp.buf.definition({reuse_win = false})
-    end, { desc = "Go-To Definition" } )
+    map( "n", "gd", vim.lsp.buf.definition, { desc = "Go-To Definition" } )
     map( "n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
     map( "n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" } )
     map( "n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" } )
-    map( "n", "<leader>gI", vim.lsp.buf.implementation )
+    map( "n", "<leader>gI",  handlers.implementation)
     map( "n", "<leader>rr", "LspRestart" )
+
+    map("n", "<leader>clr", "<CMD>lua require('core.lsp.codelens').run()<CR>", { desc = "Start Codelens" })
 
     map("n", "<leader>lf", "<CMD>LspFormat<CR>", { desc = "LSP Format" })
     map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })

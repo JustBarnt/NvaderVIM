@@ -26,6 +26,7 @@ M.Refactor = {
   highlight_current_scope = { enable = false },
 
   smart_rename = {
+    enable = true,
     keymaps = {
       smart_rename = "<leader>cR",
     },

@@ -49,6 +49,24 @@ if enabled(cmds, "trailing_whitespace") then
     command = [[%s/\s\+$//e]],
   })
 end
+
+if enabled(cmds, "cursor_line_control") then
+    vim.opt.cursorline = true
+    local set_cursorline = function(event, value, pattern)
+        cmd(event, {
+            group = augroup("cursor_line_control", clear),
+            pattern = pattern,
+            callback = function()
+                vim.opt_local.cursorline = value
+            end,
+        })
+    end
+
+    set_cursorline("WinLeave", false)
+    set_cursorline("WinEnter", true)
+    set_cursorline("FileType", false, "TelescopePrompt")
+end
+
 --[[
 if enabled(cmds, "format_on_save") then
     cmd({ "BufWritePre" }, {
@@ -65,13 +83,4 @@ if enabled(cmds, "format_on_save") then
 
         end,
     })
-end]]
-
---[[if enabled(cmds, 'cmp') then
-  cmd({ 'FileType' }, {
-    desc = "Disables autocompletion in certain filetypes",
-    group = augroup('cmp', clear),
-    pattern = "gitcommit,gitrebase,text,markdown,log",
-    command = "lua require('cmp').setup.buffer { enabled = false }"
-  })
 end]]

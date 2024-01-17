@@ -22,14 +22,19 @@ M.enabled = function(group, opt)
   return group == nil or group[opt] == nil or group[opt] == true
 end
 
-M.installed = function(module)
-    local exist, _ = pcall(require, module)
+M.autocmd = function(args)
+    local event = args[1]
+    local group = args[2]
+    local callback = args[3]
 
-    if not exist then
-        return false
-    end
-
-    return exist
+    vim.api.nvim_create_autocmd(event, {
+        group = group,
+        buffer = args[4],
+        callback = function()
+            callback()
+        end,
+        once = args.once
+    })
 end
 
 return M

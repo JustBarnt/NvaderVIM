@@ -1,26 +1,12 @@
 return {
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
-        dependencies = {
-            -- LSP Support
-            "neovim/nvim-lspconfig",
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
-
-            -- Autocompletion
-            "hrsh7th/nvim-cmp",
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-cmdline",
-
-            -- Snippets
-            "L3MON4D3/LuaSnip",
-        },
+        "neovim/nvim-lspconfig",
         config = function()
             require 'core.lsp'
         end,
     },
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
     {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         config = function()
@@ -34,10 +20,9 @@ return {
             })
         end,
     },
+    "folke/neodev.nvim",
+    "folke/neoconf.nvim",
     "simrat39/inlay-hints.nvim",
     "b0o/schemastore.nvim",
-    {
-        "stevearc/conform.nvim",
-    }
+    "stevearc/conform.nvim",
 }
-

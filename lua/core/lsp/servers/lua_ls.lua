@@ -1,5 +1,6 @@
+local inlays = require 'core.lsp.inlay'
 return {
-    single_file_support = true,
+    root_dir = require('lspconfig.util').root_pattern("lua", ".stylua.toml", "lazy-lock.json", ".neoconf.json", "neoconf.json"),
     settings = {
         Lua = {
             workspace = {
@@ -10,7 +11,7 @@ return {
                 workspaceWord = true,
                 callSnippet = "Both",
             },
-            hint = {
+            hint = inlays and {
                 enable = true,
                 setType = false,
                 paramType = true,
@@ -30,14 +31,6 @@ return {
                     "vim",
                 },
                 unusedLocalExclude = { "_*" },
-            },
-            format = {
-                enable = true,
-                defaultConfig = {
-                    indent_style = "space",
-                    indent_size = "2",
-                    continuation_indent_size = "2"
-                }
             },
         },
     }
