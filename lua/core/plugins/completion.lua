@@ -10,15 +10,6 @@ local cmp_opts = exist and type(user_config) == "table" and user_config.cmp_setu
 
 ---@class cmp.ConfigSchema
 local defaults = {
-    enabled = function ()
-        local context = require 'cmp.config.context'
-        if vim.api.nvim_get_mode().mode == 'c' then
-            return true
-        else
-            return not context.in_treesitter_capture("comment")
-                and not context.in_syntax_group("Comment")
-        end
-    end,
 	experimental = {
 		ghost_text = false,
 	},
@@ -37,7 +28,7 @@ local defaults = {
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping(
 			cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }),
-			{ "i", "c" }
+			{ "i" }
 		),
 		["<Tab>"] = cmp.config.disable,
 	},
