@@ -8,22 +8,20 @@ noice.setup({
 		enabled = false,
 	},
 	routes = {
-		{
-			view = "mini",
+		{ -- Disables showing confirm messages aka things like "saving" a buffer
 			filter = {
-				event = { "msg_show", "msg_showmode" },
-				["not"] = {
-					kind = { "confirm", "confirm_sub" },
-				},
+				event = "msg_show",
+				kind = { "confirm", "confirm_sub", "wmsg", "search_count", "quickfix", "echo" },
 			},
+			opts = { skip = true },
 		},
 		{
-			filter = {
-				event = "cmdline",
-				find = "^%s*[/?]",
-			},
-			view = "cmdline",
-		},
+            view = 'cmdline',
+            filter = {
+                event = "cmdline",
+                find = "^%s*[/?]",
+            }
+        }
 	},
 	lsp = {
 		-- Note: Disabled because I overwrite [window/showMessage] to display my own LSP errors
@@ -45,23 +43,32 @@ noice.setup({
 	},
 	views = {
 		cmdline_popup = {
-			position = "50%",
+			position = {
+				row = 5,
+				col = "50%",
+			},
 			size = {
 				width = 60,
 				height = "auto",
 			},
-			border = {
-				style = "none",
-				padding = { 1, 1 },
-			},
-			filter_options = {},
-			win_options = {
-				winblend = 0,
-				winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
-			},
 		},
-		notify = {
-			replace = true,
+		popupmenu = {
+			relative = "editor",
+			position = {
+				row = 8,
+				col = "50%",
+			},
+			size = {
+				width = 60,
+				height = 10,
+			},
+			border = {
+				style = "rounded",
+				padding = { 0, 1 },
+			},
+			win_options = {
+				winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+			},
 		},
 	},
 })

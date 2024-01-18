@@ -10,16 +10,13 @@ local cmp_opts = exist and type(user_config) == "table" and user_config.cmp_setu
 
 ---@class cmp.ConfigSchema
 local defaults = {
-	experimental = {
-		ghost_text = false,
-	},
-    completion = {
+    --[[ completion = {
         autocomplete = {
             cmp.TriggerEvent.TextChanged,
             cmp.TriggerEvent.InsertEnter,
         },
         completeopt = "menu,menuone,noselect",
-    },
+    }, ]]
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
