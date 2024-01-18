@@ -1,3 +1,5 @@
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
 local ok, _ = pcall(require, "lspkind")
 if not ok then
 	return
@@ -10,23 +12,13 @@ local cmp_opts = exist and type(user_config) == "table" and user_config.cmp_setu
 
 ---@class cmp.ConfigSchema
 local defaults = {
-    --[[ completion = {
-        autocomplete = {
-            cmp.TriggerEvent.TextChanged,
-            cmp.TriggerEvent.InsertEnter,
-        },
-        completeopt = "menu,menuone,noselect",
-    }, ]]
 	mapping = {
 		["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping(
-			cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }),
-			{ "i" }
-		),
+		["<CR>"] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }), { "i" }),
 		["<Tab>"] = cmp.config.disable,
 	},
 	-- Order sources are defined are the order they appear on the completion menu
@@ -62,27 +54,26 @@ local defaults = {
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	views = {
+	--[[ 	views = {
 		entries = {
 			name = "wildmenu",
 			selection_order = "near_cursor",
 		},
-	},
-	window = {
-		completion = {
-			col_offset = -3,
-			side_padding = 0,
-		},
-	},
+	}, ]]
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. (strings[1] or "") .. " "
-			kind.menu = "    (" .. (strings[2] or "") .. ")"
-			return kind
-		end,
+		format = require("lspkind").cmp_format({
+			mode = "text",
+			maxwidth = function()
+				return math.floor(vim.o.columns * 0.45)
+			end,
+			menu = {
+				nvim_lua = "[Lua]",
+				nvim_lsp = "[LSP]",
+				buffer = "[Buf]",
+				cmdline = "[Cmd]",
+				luasnip = "[Snip]",
+			},
+		}),
 	},
 }
 local cmp_options = {}
@@ -95,10 +86,11 @@ cmdline_options = vim.tbl_deep_extend("force", cmdline_options, cmp_opts.cmp_cmd
 -- Setup CMP instances
 cmp.setup(cmp_options)
 cmp.setup.cmdline(":", {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-        { name = "cmdline" }
-    }, {
-        { name = "path" }
-    }),
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "cmdline" },
+	}),
+	formatting = {
+		fields = { "abbr", "kind" },
+	},
 })

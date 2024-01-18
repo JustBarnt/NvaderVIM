@@ -4,9 +4,6 @@ local pkg = exist and type(user_config) == "table" and user_config.noice or {}
 -- TODO: Use vim.tbl_deep_extend to merge configs together
 
 noice.setup({
-	popupmenu = {
-		enabled = false,
-	},
 	routes = {
 		{ -- Disables showing confirm messages aka things like "saving" a buffer
 			filter = {
@@ -15,13 +12,13 @@ noice.setup({
 			},
 			opts = { skip = true },
 		},
-		{
+		--[[ 		{
             view = 'cmdline',
             filter = {
                 event = "cmdline",
                 find = "^%s*[/?]",
             }
-        }
+        } ]]
 	},
 	lsp = {
 		-- Note: Disabled because I overwrite [window/showMessage] to display my own LSP errors
@@ -36,7 +33,7 @@ noice.setup({
 	},
 	presets = {
 		bottom_search = true,
-		command_palette = true,
+		command_palette = false,
 		lsp_doc_border = true,
 		inc_rename = false, -- Install inc_rename.nvim to use
 		long_message_to_split = true,

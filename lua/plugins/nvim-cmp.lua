@@ -14,13 +14,12 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 		},
 	},
-    {
+    --[[ {
       "hrsh7th/cmp-cmdline",
       event = { "InsertEnter", "CmdlineEnter" },
       dependencies = {
           "hrsh7th/nvim-cmp",
-          "hrsh7th/cmp-path"
       }
-    },
+    }, ]]
 	{ "saadparwaiz1/cmp_luasnip", dependencies = { "L3MON4D3/LuaSnip" } },
 }

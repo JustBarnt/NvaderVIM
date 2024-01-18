@@ -33,11 +33,9 @@ M.cmp_setup = {
     cmp_cmdline = {
         type = ":",
         opts = {
-            mapping = require 'cmp'.mapping.preset.cmdline(),
+            mapping = require('cmp').mapping.preset.cmdline(),
             sources = require('cmp').config.sources({
                 { name = "cmdline" }
-            }, {
-                { name = "path" }
             }),
         }
     }
