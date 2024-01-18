@@ -17,7 +17,7 @@ M.Default = function()
         local ft = vim.bo.ft
 
         if #num_of_wins > 1 and ft ~= 'TelescopePrompt' then
-            vim.api.nvim_win_close(0,false)
+            vim.api.nvim_win_close(0, true)
         elseif ft == 'TelescopePrompt' then
             require('telescope.actions').close(vim.api.nvim_get_current_buf())
         end
@@ -92,7 +92,6 @@ M.Default = function()
 end
 
 M.Lsp = function()
-    local handlers = require 'core.lsp.handlers'
     map( "i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" } )
     map( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
     map( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" } )
@@ -100,7 +99,7 @@ M.Lsp = function()
     map( "n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
     map( "n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" } )
     map( "n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" } )
-    map( "n", "<leader>gI",  handlers.implementation)
+    map( "n", "<leader>gI",  vim.lsp.buf.implementation)
     map( "n", "<leader>rr", "LspRestart" )
 
     map("n", "<leader>clr", "<CMD>lua require('core.lsp.codelens').run()<CR>", { desc = "Start Codelens" })

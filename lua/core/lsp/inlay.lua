@@ -34,7 +34,7 @@ require('inlay-hints').setup{
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("my-inlay-hints", {}),
+    group = vim.api.nvim_create_augroup("my-inlay-hints", { clear = true }),
     callback = function(args)
         local client = vim.lsp.get_client_by_id(args.data.client_id)
         require('inlay-hints').on_attach(client, args.buf)

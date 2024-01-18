@@ -1,4 +1,3 @@
-local inlays = require 'core.lsp.inlay'
 return {
     root_dir = require('lspconfig.util').root_pattern("lua", ".stylua.toml", "lazy-lock.json", ".neoconf.json", "neoconf.json"),
     settings = {
@@ -11,13 +10,8 @@ return {
                 workspaceWord = true,
                 callSnippet = "Both",
             },
-            hint = inlays and {
+            hint = {
                 enable = true,
-                setType = false,
-                paramType = true,
-                paramName = "Disable",
-                semicolon = "Disable",
-                arrayIndex = "Disable",
             },
             hover = {
                 expandAlias = false,
