@@ -11,16 +11,18 @@ M.Default = function()
     map("i", "<C-a>", "<C-o>A", { desc = "Jump to end of line" })
 
     -- Prevent macro keybinds
-    map("n", "q", "<NOP>")
     map("n", "Q", "<NOP>")
     map("n", "q", function()
         local num_of_wins = vim.api.nvim_list_wins()
+        local ft = vim.bo.ft
 
-        if #num_of_wins > 1 then
+        if #num_of_wins > 1 and ft ~= 'TelescopePrompt' then
             vim.api.nvim_win_close(0,false)
+        elseif ft == 'TelescopePrompt' then
+            require('telescope.actions').close(vim.api.nvim_get_current_buf())
         end
 
-    end, { desc = "Close Float/Window"})
+    end, { desc = "Close Float/Window", noremap = false })
 
     -- Disable use of Arrow Keys: use (HJKL)
     map("n", "<Left>", ":echo 'Use h instead'<CR>")
