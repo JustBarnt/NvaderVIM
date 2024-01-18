@@ -75,6 +75,7 @@ M.ensure_installed = {
         "lua",
         "markdown",
         "markdown_inline",
+        "php",
         "regex",
         "svelte",
         "toml",

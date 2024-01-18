@@ -24,7 +24,7 @@ vim_opts({
         showmatch = true,
         ignorecase = true,
         smartcase = true,
-        hidden = true,
+        hidden = false,
         equalalways = false,
         splitright = true,
         splitbelow = true,

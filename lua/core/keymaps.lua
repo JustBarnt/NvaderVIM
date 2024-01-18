@@ -13,6 +13,14 @@ M.Default = function()
     -- Prevent macro keybinds
     map("n", "q", "<NOP>")
     map("n", "Q", "<NOP>")
+    map("n", "q", function()
+        local num_of_wins = vim.api.nvim_list_wins()
+
+        if #num_of_wins > 1 then
+            vim.api.nvim_win_close(0,false)
+        end
+
+    end, { desc = "Close Float/Window"})
 
     -- Disable use of Arrow Keys: use (HJKL)
     map("n", "<Left>", ":echo 'Use h instead'<CR>")
