@@ -90,26 +90,5 @@ M.Default = function()
     map("n", "<leader>Q", ":q!<CR>", { desc = "Quit without saving" })
     map("n", "<leader>qa", ":qall<CR>", { desc = "Quit All"})
 end
-
-M.Lsp = function()
-    map( "i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" } )
-    map( "n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
-    map( "n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" } )
-    map( "n", "gd", vim.lsp.buf.definition, { desc = "Go-To Definition" } )
-    map( "n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
-    map( "n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" } )
-    map( "n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" } )
-    map( "n", "<leader>gI",  vim.lsp.buf.implementation)
-    map( "n", "<leader>rr", "LspRestart" )
-
-    map("n", "<leader>clr", "<CMD>lua require('core.lsp.codelens').run()<CR>", { desc = "Start Codelens" })
-
-    map("n", "<leader>lf", "<CMD>LspFormat<CR>", { desc = "LSP Format" })
-    map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
-    map("n", "<leader>li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
-    map("n", "<leader>ls", "<CMD>LspStart<CR>", { desc = "LSP Start" })
-    map("n", "<leader>lk", "<CMD>LspStop<CR>", { desc = "LSP Stop" })
-end
-
 return M
 

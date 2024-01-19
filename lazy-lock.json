@@ -30,6 +30,7 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "19a91a38b02c1c28c14e0ba468d20ae1423c39b2" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "1277b4a1f451b0f18c0790e1a7f12e1e5fdebfee" },
   "nvim-web-devicons": { "branch": "master", "commit": "140edfcf25093e8b321d13e154cbce89ee868ca0" },
+  "omnisharp-extended-lsp.nvim": { "branch": "main", "commit": "4be2e8689067494ed7e5a4f1221adc31d1a07783" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
   "rose-pine": { "branch": "main", "commit": "c01a4a61020ddcfd3448fbb9cf11309f336bfb7b" },
   "schemastore.nvim": { "branch": "main", "commit": "3872be10ce1db13d87b4dee1e260ac4936a38d8e" },
