@@ -16,6 +16,9 @@ Write Pretty print function, tired of writing `print(vim.inspect(....))`
 - [ ] Setup LSP
     - Setup formatter settings
     - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
+- [ ] DAP setup
+    - [ ] C/C#
+    - [ ] JS/TS
 ---
 Use `enabled(xx,'')` to disable certain things on large file loads
 Test `tbl_deep_extend` to see if it will merge tables or if I should use `tbl_extend`
