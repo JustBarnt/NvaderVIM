@@ -12,16 +12,12 @@ noice.setup({
 			},
 			opts = { skip = true },
 		},
-		--[[ 		{
-            view = 'cmdline',
-            filter = {
-                event = "cmdline",
-                find = "^%s*[/?]",
-            }
-        } ]]
 	},
 	lsp = {
 		-- Note: Disabled because I overwrite [window/showMessage] to display my own LSP errors
+		hover = {
+			silent = true,
+		},
 		message = {
 			enabled = false,
 		},

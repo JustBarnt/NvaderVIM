@@ -7,7 +7,7 @@ end
 
 local cmp = require("cmp")
 local exist, _ = pcall(require, "user.config")
-local user_config = require("user.config")
+local user_config = require 'user.config'
 local cmp_opts = exist and type(user_config) == "table" and user_config.cmp_setup or {}
 
 ---@class cmp.ConfigSchema

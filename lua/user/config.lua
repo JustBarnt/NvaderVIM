@@ -92,7 +92,7 @@ M.servers = {
     bashls = true,
     html = true,
     cmake = true,
-    svelte = true,
+    svelte = require 'core.lsp.servers.svelte',
     cssls = true,
     omnisharp = require('core.lsp.servers.omnisharp'),
     lua_ls = require("core.lsp.servers.lua_ls"),
@@ -100,7 +100,8 @@ M.servers = {
     jsonls = require("core.lsp.servers.jsonls"),
     clangd = require("core.lsp.servers.clangd"),
     powershell_es = require('core.lsp.servers.powershell_es'),
-    emmet_language_server = require('core.lsp.servers.emmet'),
+    emmet_language_server = require('core.lsp.servers.emmet_language_server'),
+    tailwindcss = require 'core.lsp.servers.tailwindcss',
     tsserver = require("core.lsp.servers.tsserver"),
 }
 
