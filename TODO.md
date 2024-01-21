@@ -16,7 +16,8 @@ Write Pretty print function, tired of writing `print(vim.inspect(....))`
 - [X] Setup LSP
     - Setup formatter settings
     - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
-- [ ] Nougat
+- [ ] Whichkey
+- [X] Nougat
 - [ ] Neoscroll
 - [ ] B-Messages
 
