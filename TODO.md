@@ -9,16 +9,26 @@ Write Pretty print function, tired of writing `print(vim.inspect(....))`
 - [X] Setup Telescope
     - Extensions
     - Mappings
-- [ ] Treesitter
+- [X] Treesitter
     - Extensions
-        - [ ] TextObjects
+        - [X] TextObjects
     - Mappings
 - [X] Setup LSP
     - Setup formatter settings
     - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
+- [ ] Nougat
+- [ ] Neoscroll
+- [ ] B-Messages
+
+### Possibly
+- [ ] Reactive?
+- [ ] Muren?
+---
+## After Release
 - [ ] DAP setup
     - [ ] C/C#
     - [ ] JS/TS
+
 ---
 Use `enabled(xx,'')` to disable certain things on large file loads
 Test `tbl_deep_extend` to see if it will merge tables or if I should use `tbl_extend`
