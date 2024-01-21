@@ -13,7 +13,7 @@ Write Pretty print function, tired of writing `print(vim.inspect(....))`
     - Extensions
         - [ ] TextObjects
     - Mappings
-- [ ] Setup LSP
+- [X] Setup LSP
     - Setup formatter settings
     - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
 - [ ] DAP setup
