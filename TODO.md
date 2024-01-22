@@ -16,10 +16,10 @@ Write Pretty print function, tired of writing `print(vim.inspect(....))`
 - [X] Setup LSP
     - Setup formatter settings
     - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
-- [ ] Whichkey
+- [X] Whichkey
 - [X] Nougat
-- [ ] Neoscroll
-- [ ] B-Messages
+- [X] Neoscroll
+- [X] B-Messages
 
 ### Possibly
 - [ ] Reactive?

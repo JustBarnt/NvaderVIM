@@ -117,4 +117,25 @@ M.harpoon = {
         sync_on_ui_close = true,
     }
 }
+
+M.which_key = {
+    plugins = {
+        marks = false,
+        registers = false,
+    },
+    presets = {
+        operators = false,
+        motions = false,
+        z = false,
+        g = false,
+    },
+    motions = {
+        counts = true
+    }
+}
+
+M.neoscroll = {
+    respect_scrolloff = true,
+}
+
 return M
