@@ -1,9 +1,11 @@
 # List
+- [ ] nvim-surround
+- [ ] Telescope Filebrowser
 - [ ] Migrate all existing configs to a plugins folder inside the `user` folder
     - so the `user` folder will have
         - `user/init` - The main config that applies everything,
         - `user/plugins` - Will house all plugin settings as modules that `user/init` will import
-- [ ] Telescope Filebrowser
+
 ### Possibly
 - [ ] Reactive?
 - [ ] Muren?

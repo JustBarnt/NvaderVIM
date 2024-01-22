@@ -20,11 +20,9 @@ return {
           "nvim-telescope/telescope.nvim",
           "nvim-lua/plenary.nvim"
       },
-      keys = function()
-          require 'core.plugins.telescope'.file_browser.keys()
-      end,
       config = function()
           require 'core.plugins.telescope'.file_browser.setup()
+          require 'core.plugins.telescope'.file_browser.keys()
       end,
   }
 }
