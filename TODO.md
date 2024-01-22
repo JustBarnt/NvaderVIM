@@ -1,26 +1,9 @@
-## Tonight
-Write Pretty print function, tired of writing `print(vim.inspect(....))`
-
-- [X] Default options
-    - Which is overwritten if `options/user_options` is found inside of the user folder
-- [X] Setup basic keymaps
-    - Grab from current config
-    - [X] Setup plugin keymaps via `core.plugins` but return a keys module from the config that's called on the keys property for LazyVim
-- [X] Setup Telescope
-    - Extensions
-    - Mappings
-- [X] Treesitter
-    - Extensions
-        - [X] TextObjects
-    - Mappings
-- [X] Setup LSP
-    - Setup formatter settings
-    - Need to finish setup for TSServer, Tailwindcss, HTML, Svelte
-- [X] Whichkey
-- [X] Nougat
-- [X] Neoscroll
-- [X] B-Messages
-
+# List
+- [ ] Migrate all existing configs to a plugins folder inside the `user` folder
+    - so the `user` folder will have
+        - `user/init` - The main config that applies everything,
+        - `user/plugins` - Will house all plugin settings as modules that `user/init` will import
+- [ ] Telescope Filebrowser
 ### Possibly
 - [ ] Reactive?
 - [ ] Muren?
