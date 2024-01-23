@@ -41,7 +41,9 @@ M.telescope = {
 M.file_browser = {
     keys = function()
         local fb = require("telescope").extensions.file_browser
-        map("n", "<leader>fb", fb.file_browser, { desc = "File Browser" })
+        map("n", "<leader>fb", function()
+            fb.file_browser({ path = "%:p:h", select_buffer = true })
+        end, { desc = "File Browser" })
     end,
     setup = function()
         telescope.setup({
@@ -83,6 +85,7 @@ M.file_browser = {
                             ["f"] = fb_actions.toggle_browser,
                             ["h"] = fb_actions.toggle_hidden,
                             ["s"] = fb_actions.toggle_all,
+                            ["<bs>"] = fb_actions.backspace,
                         },
                     },
                 },

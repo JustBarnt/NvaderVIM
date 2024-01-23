@@ -1,4 +1,4 @@
-local omnisharp_bin = vim.fn.stdpath("data") .. "\\mason\\packages\\omnisharp\\libexec\\Omnisharp.exe"
+local omnisharp_bin = vim.fn.stdpath("data") .. "\\mason\\packages\\omnisharp\\libexec\\Omnisharp.dll"
 local pid = vim.fn.getpid()
 
 --[[
@@ -14,5 +14,5 @@ return {
 	handlers = {
 		["textDocument/definition"] = require("omnisharp_extended").handler,
 	},
-	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid), 'RoslynExtensionsOptions:EnableDecompilationSupport=true' },
+	cmd = { 'dotnet', omnisharp_bin, "--languageserver", "--hostPID", tostring(pid), 'RoslynExtensionsOptions:EnableDecompilationSupport=true' },
 }
