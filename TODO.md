@@ -1,7 +1,11 @@
 # List
+- [ ] TodoComments
 - [ ] nvim-surround
 - [ ] Telescope Filebrowser
-- [ ] Migrate all existing configs to a plugins folder inside the `user` folder
+
+- [ ] Strucural Improvements
+    - Split LSP files so on_attach, capabilities, and handlers are in their own file
+    - Migrate all existing configs to a plugins folder inside the `user` folder
     - so the `user` folder will have
         - `user/init` - The main config that applies everything,
         - `user/plugins` - Will house all plugin settings as modules that `user/init` will import

@@ -1,3 +1,4 @@
+local borders = require 'core.lsp.utils'.rounded_border_handlers
 local omnisharp_bin = vim.fn.stdpath("data") .. "\\mason\\packages\\omnisharp\\libexec\\Omnisharp.dll"
 local pid = vim.fn.getpid()
 
@@ -11,8 +12,7 @@ local pid = vim.fn.getpid()
 ]]
 
 return {
-	handlers = {
-		["textDocument/definition"] = require("omnisharp_extended").handler,
-	},
-	cmd = { 'dotnet', omnisharp_bin, "--languageserver", "--hostPID", tostring(pid), 'RoslynExtensionsOptions:EnableDecompilationSupport=true' },
+	handlers = vim.tbl_extend("force", borders, {
+        ["textDocument/definition"] = require("omnisharp_extended").handler
+    }),
 }
