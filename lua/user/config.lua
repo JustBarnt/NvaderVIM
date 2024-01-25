@@ -51,7 +51,6 @@ M.ensure_installed = {
     mason_lspconfig = {
         "bashls",
         "clangd",
-        "cmake",
         "html",
         "intelephense",
         "jsonls",
@@ -91,7 +90,6 @@ M.ensure_installed = {
 M.servers = {
     bashls = true,
     html = true,
-    cmake = true,
     svelte = require 'core.lsp.servers.svelte',
     cssls = true,
     omnisharp = require('core.lsp.servers.omnisharp'),
