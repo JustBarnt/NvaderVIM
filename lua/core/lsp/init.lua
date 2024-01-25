@@ -44,7 +44,7 @@ end
 local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-reference", { clear = true })
 
 local lsp_attach = function(client, bufnr)
-	local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+	local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
 	map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 	map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })

@@ -75,7 +75,7 @@ if enabled(cmds, "format_on_save") then
         pattern = "*",
         callback = function(args)
             local conform = require 'conform'
-            local filetype = vim.api.nvim_buf_get_options(args.buf, 'filetype')
+            local filetype = vim.api.nvim_get_option_value('filetype', { buf = args.buf })
             if filetype ~= "php"  or filetype ~= "xml"
                or filetype ~= "html" or filetype ~= "svelte" then
                conform.format({ bufnr = args.buf, lsp_fallback = false })

@@ -9,7 +9,7 @@
     - so the `user` folder will have
         - `user/init` - The main config that applies everything,
         - `user/plugins` - Will house all plugin settings as modules that `user/init` will import
-
+        - Move user plugin specs out of `user/config.lua`
 ### Possibly
 - [ ] Reactive?
 - [ ] Muren?
