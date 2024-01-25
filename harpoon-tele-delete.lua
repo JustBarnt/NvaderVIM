@@ -1,4 +1,4 @@
---[[ local function toggle_telescope(harpoon_files)
+local function toggle_telescope(harpoon_files)
   local conf = require("telescope.config").values
   local file_paths = {}
   for i, item in ipairs(harpoon_files.items) do
@@ -33,4 +33,4 @@
       return true
     end,
   }):find()
-end ]]
+end
