@@ -1,4 +1,5 @@
 # List
+- [ ] Need to Fix LSP first, I think I have some cyclinic loop of dependency grabbing
 - [ ] TodoComments
 - [ ] nvim-surround
 - [ ] Telescope Filebrowser
