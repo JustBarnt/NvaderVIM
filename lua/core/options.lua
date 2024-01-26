@@ -1,8 +1,8 @@
 local vim_opts = require 'core.utils'.vim_options
 
 -- Assumes you are on windows with python installed in you appdata folder (default) install path
-local home_path = os.getenv("HOMEPATH")
-vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
+-- local home_path = os.getenv("HOMEPATH")
+-- vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
 
 vim.opt.shortmess:append("sWAIcCqF")
 

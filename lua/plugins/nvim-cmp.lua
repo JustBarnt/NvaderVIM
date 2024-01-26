@@ -3,7 +3,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
-			require("core.plugins.completion")
+			require("user.plugins.completion")
 		end,
 		dependencies = {
 			"onsails/lspkind-nvim",

@@ -1,6 +1,6 @@
 return {
     "karb94/neoscroll.nvim",
     config = function()
-        require 'core.plugins.neoscroll'
+        require 'user.plugins.neoscroll'
     end,
 }

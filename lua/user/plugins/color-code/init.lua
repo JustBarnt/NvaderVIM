@@ -1,3 +1,4 @@
+local M = {}
 local ccc = require 'ccc'
 local mapping = ccc.mapping
 vim.opt.termguicolors = true
@@ -13,8 +14,8 @@ local opts = {
     }
 }
 
-local setup = function()
-   ccc.setup(opts)
+M.setup = function()
+    ccc.setup(opts)
 end
 
-return setup
+return M

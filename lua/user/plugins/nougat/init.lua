@@ -1,3 +1,4 @@
+local M = {}
 local Nougat = require "nougat"
 --Core.code is a 1 char code found using :h statusline
 local Core = require "nougat.core"
@@ -203,6 +204,10 @@ stl_inactive:add_item(filename)
 stl_inactive:add_item(filestatus)
 stl_inactive:add_item(nut.spacer())
 
-Nougat.set_statusline(function(ctx)
-    return ctx.is_focused and stl or stl_inactive
-end)
+M.set_statusline = function()
+    Nougat.set_statusline(function(ctx)
+        return ctx.is_focused and stl or stl_inactive
+    end)
+end
+
+return M

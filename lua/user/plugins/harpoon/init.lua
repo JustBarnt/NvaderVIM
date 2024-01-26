@@ -1,3 +1,4 @@
+local M = {}
 local map = require("core.utils").map
 local harpoon = require("harpoon")
 local conf = require("telescope.config").values
@@ -6,9 +7,11 @@ local conf = require("telescope.config").values
 local exist, user_config = pcall(require, "user.config")
 local harpoon_config = exist and type(user_config) == "table" and user_config.harpoon or {}
 
-harpoon:setup({ harpoon_config })
+M.setup = function()
+    harpoon:setup({ harpoon_config })
+end
 
-local keys = function()
+M.keys = function()
 	-- Append current open file to our harpon list
 	map("n", "<leader>ha", function()
 		harpoon:list():append()
@@ -28,6 +31,4 @@ local keys = function()
 	end
 end
 
-local M = {}
-M.keys = keys
 return M

@@ -6,11 +6,11 @@ return {
 		{
 			"rcarriga/nvim-notify",
 			config = function()
-				require("core.plugins.notify")
+				require("user.plugins.notify").setup()
 			end,
 		},
 	},
 	config = function()
-		require("core.plugins.noice")
+		require("user.plugins.noice").setup()
 	end,
 }

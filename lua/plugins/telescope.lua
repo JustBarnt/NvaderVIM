@@ -7,10 +7,10 @@ return {
       "nvim-lua/plenary.nvim"
     },
     keys = function()
-        require 'core.plugins.telescope'.telescope.keys()
+        require 'user.plugins.telescope'.setup.telescope.keys()
     end,
     config = function()
-        require 'core.plugins.telescope'.telescope.setup()
+        require 'user.plugins.telescope'.setup.telescope.setup()
     end,
   },
   {
@@ -21,8 +21,8 @@ return {
           "nvim-lua/plenary.nvim"
       },
       config = function()
-          require 'core.plugins.telescope'.file_browser.setup()
-          require 'core.plugins.telescope'.file_browser.keys()
+          require 'user.plugins.telescope'.setup.file_browser.setup()
+          require 'user.plugins.telescope'.setup.file_browser.keys()
       end,
   }
 }

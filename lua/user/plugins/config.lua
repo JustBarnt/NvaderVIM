@@ -1,3 +1,16 @@
 return {
-    color_code = require 'user.plugins.color-code'
+    color_code = require 'user.plugins.color-code',
+    completion = require 'user.plugins.completion',
+    corn = require 'user.plugins.corn',
+    gitsigns = require 'user.plugins.gitsigns',
+    harpoon = require 'user.plugins.harpoon',
+    muren = require 'user.plugins.muren',
+    neoscroll = require 'user.plugins.neoscroll',
+    noice = require 'user.plugins.noice',
+    notify = require 'user.plugins.notify',
+    nougat = require 'user.plugins.nougat',
+    telescope = require 'user.plugins.telescope',
+    todo_comments = require 'user.plugins.todo-comments',
+    vim_apm = require 'user.plugins.vim-apm',
+    which_key = require 'user.plugins.which-key',
 }

@@ -1,9 +1,9 @@
 return {
     "theprimeagen/vim-apm",
     config = function()
-        require 'core.plugins.vim-apm'
+        require 'user.plugins.vim-apm'.setup()
     end,
     keys = function()
-        require 'core.plugins.vim-apm'.keys()
+        require 'user.plugins.vim-apm'.keys()
     end,
 }

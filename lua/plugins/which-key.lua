@@ -7,6 +7,6 @@ return {
         vim.o.timeoutlen = 300
     end,
     config = function()
-        require 'core.plugins.which-key'
+        require 'user.plugins.which-key'.which_key.setup()
     end,
 }

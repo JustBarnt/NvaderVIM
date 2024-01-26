@@ -5,9 +5,9 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = function()
-        require("core.plugins.todo-comments").keys()
+        require("user.plugins.todo-comments").keys()
     end,
     config = function()
-        require("core.plugins.todo-comments").setup()
+        require("user.plugins.todo-comments").setup()
     end,
 }

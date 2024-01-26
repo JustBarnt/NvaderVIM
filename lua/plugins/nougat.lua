@@ -1,6 +1,6 @@
 return {
     "MunifTanjim/nougat.nvim",
     config = function()
-        require 'core.plugins.nougat'
+        require 'user.plugins.nougat'
     end,
 }

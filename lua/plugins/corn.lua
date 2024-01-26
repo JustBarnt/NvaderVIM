@@ -2,10 +2,10 @@ return {
     {
         "RaafatTurki/corn.nvim",
         keys = function()
-            require("core.plugins.corn").keys()
+            require("user.plugins.corn").keys()
         end,
         config = function()
-            require("core.plugins.corn").setup()
+            require("user.plugins.corn").setup()
         end,
     },
 }

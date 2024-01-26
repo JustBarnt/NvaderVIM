@@ -2,10 +2,10 @@ return {
     {
         'AckslD/muren.nvim',
         keys = function()
-            require 'core.plugins.muren'.keys()
+            require 'user.plugins.muren'.keys()
         end,
         config = function()
-            require 'core.plugins.muren'
+            require 'user.plugins.muren'.setup()
         end,
     }
 }

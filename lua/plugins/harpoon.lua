@@ -5,10 +5,10 @@ return {
         "nvim-lua/plenary.nvim"
     },
     keys = function()
-        require 'core.plugins.harpoon'.keys()
+        require 'user.plugins.harpoon'.keys()
     end,
     config = function()
-        require 'core.plugins.harpoon'
+        require 'user.plugins.harpoon'.setup()
     end,
 }
 
