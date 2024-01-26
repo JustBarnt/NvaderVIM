@@ -52,7 +52,6 @@ M.setup = {
                         grouped = true,
                         hide_parent_dir = true,
                         hijack_netrw = true,
-                        initial_mode = "normal",
                         mappings = {
                             ["i"] = {
                                 ["<C-c>"] = fb_actions.create,
