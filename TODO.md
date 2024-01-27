@@ -11,6 +11,8 @@
         - `user/init` - The main config that applies everything,
         - `user/plugins` - Will house all plugin settings as modules that `user/init` will import
         - Move user plugin specs out of `user/config.lua`
+- [ ] use cond enabled and is !vim.g.vscode for plugins
+
 ### Possibly
 - [ ] Reactive?
 - [ ] Muren?
