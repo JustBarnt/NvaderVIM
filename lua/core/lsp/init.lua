@@ -1,138 +1,188 @@
 local exist, config = pcall(require, "user.config")
 local lsps = exist and type(config) == "table" and config.ensure_installed.mason_lspconfig or {}
-local servers = exist and type(config) == "table" and config.servers or {}
-local neodev = vim.F.npcall(require, "neodev")
-local neoconf = vim.F.npcall(require, "neoconf")
+local lspconfig = require "lspconfig"
+local on_attach = require("core.lsp.lsp_attach").on_attach
+local capabilities = require("core.lsp.lsp_attach").capabilities
+local border_handlers = require("core.lsp.lsp_attach").rounded_border_handlers
+local neo = require "core.lsp.neo"
 
-if neodev then
-	neodev.setup({
-		library = {
-			enabled = true,
-			runtime = vim.env.VIMRUNTIME,
-			plugins = vim.fn.stdpath("data") .. "\\lazy\\",
-		},
-		lspconfig = true,
-		pathStrict = true,
-	})
-end
-
-if neoconf then
-	neoconf.setup({
-		import = {
-			vscode = false,
-			coc = false,
-			nlsp = false,
-		},
-	})
-end
-
-local lspconfig = vim.F.npcall(require, "lspconfig")
-
-if not lspconfig then
-	return
-end
-
-local autocmd = require("core.utils").autocmd
-local map = require("core.utils").map
-local autocmd_clear = vim.api.nvim_clear_autocmds
-
-local lsp_init = function(client)
-	client.config.flags = client.config.flags or {}
-	client.config.flags.allow_incremental_sync = true
-end
-
-local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-reference", { clear = true })
-
-local lsp_attach = function(client, bufnr)
-	local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-
-	map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-	map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
-	map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
-	map("n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
-	map("n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" })
-    map("n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" })
-	-- map("n", "K", require 'core.lsp.handlers'.peek_definition, { desc = "Peek Definition" })
-	map("n", "<leader>gI", vim.lsp.buf.implementation)
-	map("n", "<leader>rr", "LspRestart")
-	map("n", "<leader>lf", "<CMD>LspFormat<CR>", { desc = "LSP Format" })
-	map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
-	map("n", "<leader>li", "<CMD>LspInfo<CR>", { desc = "LSP Info" })
-	map("n", "<leader>ls", "<CMD>LspStart<CR>", { desc = "LSP Start" })
-	map("n", "<leader>lk", "<CMD>LspStop<CR>", { desc = "LSP Stop" })
-
-	vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-	if client.server_capabilities.documentHighlightProvider then
-		autocmd_clear({ group = augroup_highlight, buffer = bufnr })
-		autocmd({ "CursorHold", augroup_highlight, vim.lsp.buf.document_highlight, bufnr })
-		autocmd({ "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr })
-	end
-
-    if filetype == "cs" then
-        map("n", "gd",function()
-            require('omnisharp_extended').lsp_definitions()
-            require('detour').Detour()
-        end, { desc = "Go-To Definiton"})
-    else
-        map("n", "gd", function()
-            vim.lsp.buf.definition({ reuse_win = true, on_list = require 'core.lsp.handlers'.on_list })
-            require('detour').Detour()
-        end, { desc = "Go-To Definition"})
-    end
-
-	if filetype == "typescript" or filetype == "lua" then
-		client.server_capabilities.semanticTokensProvider = nil
-        require("inlay-hints").on_attach(client, bufnr)
-	end
-
-end
-
-local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
-updated_capabilities.workspace.didChangeWatchedFiles.dynamicRegistration = false
-
--- Completion configuration
-vim.tbl_deep_extend("force", updated_capabilities, require("cmp_nvim_lsp").default_capabilities())
-updated_capabilities.textDocument.completion.completionItem.insertReplaceSupport = false
-updated_capabilities.textDocument.codeLens = { dynamicRegistration = false }
-require("mason").setup({})
-require("mason-lspconfig").setup({
-	ensure_installed = lsps,
-})
-
-local setup_server = function(server, server_config)
-	if not server_config then
-		return
-	end
-
-	if type(server_config) ~= "table" then
-		server_config = {}
-	end
-
-	server_config = vim.tbl_deep_extend("force", {
-		on_init = lsp_init,
-		on_attach = lsp_attach,
-		capabilities = updated_capabilities,
-	}, server_config)
-
-	lspconfig[server].setup(server_config)
-end
-
-for server, server_config in pairs(servers) do
-	setup_server(server, server_config)
-end
+neo.instantiate()
 
 require("conform").setup({
-	formatters_by_ft = {
-		lua = { "stylua" },
-		typescript = { "prettierd", "prettier" },
-		javascript = { "prettierd", "prettier" },
-	},
+    formatters_by_ft = {
+        lua = { "stylua" },
+        typescript = { "prettierd", "prettier" },
+        javascript = { "prettierd", "prettier" },
+    },
 })
 
-return {
-	on_init = lsp_init,
-	on_attach = lsp_attach,
-	capabilities = updated_capabilities,
-}
+require("mason").setup({})
+require("mason-lspconfig").setup({
+    ensure_installed = lsps,
+})
+
+require("mason-lspconfig").setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            handlers = border_handlers,
+        })
+    end,
+    ["clangd"] = function()
+        lspconfig["clangd"].setup({
+            on_attach = on_attach,
+            capabilities = vim.tbl_extend("force", capabilities, { offsetEncoding = "utf-16" }),
+            keys = {
+                { "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header" },
+            },
+            root_dir = function(fname)
+                local primary = {
+                    "Makefile",
+                    "configure.ac",
+                    "configure.in",
+                    "configure.h.in",
+                    "meson.build",
+                    "meson_options.txt",
+                    "build.ninja",
+                }
+                local fallback = { "compile_commands.json", "compile_flags.json" }
+                return lspconfig.util.root_pattern(primary)(fname)
+                    or lspconfig.util.root_pattern(fallback)(fname)
+                    or lspconfig.util.find_git_ancestor(fname)
+            end,
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--header-insertion=iwyu",
+                "--completion-style=detailed",
+                "--function-arg-placeholders",
+                "--fallback-style=llvm",
+            },
+            init_options = {
+                usePlaceholders = true,
+                completeUnimported = true,
+                clangdFileStatus = true,
+            },
+        })
+    end,
+    ["intelephense"] = function()
+        lspconfig["intelephenese"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = { "php", "ctp" },
+            --[[ settings = {
+                environment = {
+                    includePaths
+                }
+            } ]]
+        })
+    end,
+    ["jsonls"] = function()
+        lspconfig["jsonls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                    validate = { enable = true },
+                },
+            },
+        })
+    end,
+    ["lua_ls"] = function()
+        lspconfig["lua_ls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    workspace = {
+                        checkThirdParty = false,
+                    },
+                    telemetry = { enabled = false },
+                    diagnostics = {
+                        disable = {
+                            "incomplete-signature-doc",
+                            "missing-fields",
+                        },
+                        global = {
+                            "vim",
+                        },
+                        unusedLocalExclude = { "_*" },
+                    },
+                },
+            },
+        })
+    end,
+    ["omnisharp"] = function()
+        lspconfig["omnisharp"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            root_dir = function(fname)
+                local primary = lspconfig.util.root_pattern "*.sln"(fname)
+                local fallback = lspconfig.util.root_pattern "*.csproj"(fname)
+                return primary or fallback
+            end,
+            analyze_open_documents_only = true,
+            organize_imports_on_format = true,
+            handlers = {
+                ["textDocument/definiton"] = require("omnisharp_extended").handler,
+            }
+        })
+    end,
+    ["tsserver"] = function()
+        lspconfig["tsserver"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            filetypes = {
+                "javascript",
+                "typescript",
+                "typescriptreact",
+                "javascriptreact",
+                "javascript.jsx",
+                "typescript.tsx",
+            },
+            settings = {
+                javascript = {
+                    inlayHints = {
+                        includeInlayEnumMemberValueHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                    },
+                },
+                typescript = {
+                    inlayHints = {
+                        includeInlayEnumMemberValueHints = true,
+                        includeInlayFunctionLikeReturnTypeHints = true,
+                        includeInlayFunctionParameterTypeHints = true,
+                        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                        includeInlayPropertyDeclarationTypeHints = true,
+                        includeInlayVariableTypeHints = true,
+                    },
+                },
+            },
+        })
+    end,
+    ["yamlls"] = function()
+        lspconfig["yamlls"].setup({
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                yaml = {
+                    schemaStore = {
+                        -- Disabled to use b0o schemaStore
+                        enable = false,
+                        url = "",
+                    },
+                    schemas = require("schemastore").yaml.schemas(),
+                },
+            },
+        })
+    end,
+})

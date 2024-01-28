@@ -1,5 +1,5 @@
 local rose_pine = require 'rose-pine'
-
+local pallets = require 'rose-pine.palette'
 
 rose_pine.setup({
   variant = "main",
