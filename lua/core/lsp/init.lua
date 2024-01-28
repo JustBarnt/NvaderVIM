@@ -68,7 +68,7 @@ require("mason-lspconfig").setup_handlers({
         })
     end,
     ["intelephense"] = function()
-        lspconfig["intelephenese"].setup({
+        lspconfig["intelephense"].setup({
             on_attach = on_attach,
             capabilities = capabilities,
             filetypes = { "php", "ctp" },
