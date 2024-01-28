@@ -4,6 +4,7 @@
 - [X] nvim-surround
 - [X] Telescope Filebrowser
 - [ ] use cond enabled and is !vim.g.vscode for plugins
+    - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent
 
 - [ ] Strucural Improvements
     - [X] Split LSP files so on_attach, capabilities, and handlers are in their own file
