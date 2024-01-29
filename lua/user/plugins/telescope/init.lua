@@ -7,8 +7,8 @@ local telescope = require "telescope"
 local actions = require "telescope.actions"
 local builtin = require "telescope.builtin"
 local theme = require "telescope.themes"
-local fb_actions = require "telescope._extensions.file_browser.actions"
-local fb = require("telescope").extensions.file_browser
+-- local fb_actions = require "telescope._extensions.file_browser.actions"
+-- local fb = require("telescope").extensions.file_browser
 
 local M = {}
 
@@ -39,7 +39,7 @@ M.setup = {
             })
         end,
     },
-    file_browser = {
+    --[[ file_browser = {
         keys = function()
             map("n", "<leader>fb", function()
                 fb.file_browser({ path = "%:p:h", select_buffer = true })
@@ -51,7 +51,7 @@ M.setup = {
                     file_browser = {
                         grouped = true,
                         hide_parent_dir = true,
-                        hijack_netrw = true,
+                        hijack_netrw = false,
                         mappings = {
                             ["i"] = {
                                 ["<C-c>"] = fb_actions.create,
@@ -92,7 +92,7 @@ M.setup = {
             })
             telescope.load_extension "file_browser"
         end,
-    }
+    } ]]
 }
 
 return M
