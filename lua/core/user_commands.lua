@@ -4,6 +4,6 @@ local enabled = require 'core.utils'.enabled
 
 if enabled(commands, 'format') then
     vim.api.nvim_create_user_command("LspFormat", function()
-        require('conform').format({ async = true, lsp_fallback = true })
+        require('conform').format({ async = true, lsp_fallback = false })
     end, { bang = true })
 end
