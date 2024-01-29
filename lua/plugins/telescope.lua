@@ -13,7 +13,7 @@ return {
         require 'user.plugins.telescope'.setup.telescope.setup()
     end,
   },
-  {
+  --[[ {
       "nvim-telescope/telescope-file-browser.nvim",
       lazy = false,
       dependencies = {
@@ -24,5 +24,5 @@ return {
           require 'user.plugins.telescope'.setup.file_browser.setup()
           require 'user.plugins.telescope'.setup.file_browser.keys()
       end,
-  }
+  } ]]
 }
