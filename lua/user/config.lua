@@ -93,13 +93,6 @@ M.formatters = {
     typescript = { "prettierd", "prettier" },
 }
 
-M.harpoon = {
-    settings = {
-        save_on_toggle = true,
-        sync_on_ui_close = true,
-    },
-}
-
 M.which_key = {
     plugins = {
         marks = false,

@@ -18,16 +18,12 @@ return {
             local treesitter = require "nvim-treesitter.configs"
             local exist, config = pcall(require, "user.config")
             local parsers = exist and type(config) == "table" and config.ensure_installed.parsers or {}
-            local list = require("nvim-treesitter.parsers").get_parser_configs()
-
-            list.php = {
-                install_info = {
-                    revision = "0a99deca13c4af1fb9adcb03c958bfc9f4c740a9",
-                },
-            }
 
             treesitter.setup({
                 ensure_installed = parsers,
+                indent = {
+                    enable = true,
+                },
                 highlight = opts.Highlight,
                 refactor = opts.Refactor,
                 context_commentstring = require("ts_context_commentstring").setup({
