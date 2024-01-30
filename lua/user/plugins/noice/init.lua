@@ -1,7 +1,5 @@
 local M = {}
 local noice = require("noice")
-local exist, user_config = pcall(require, "user.config")
-local pkg = exist and type(user_config) == "table" and user_config.noice or {}
 
 M.setup = function()
     noice.setup({
@@ -20,7 +18,7 @@ M.setup = function()
             silent = true,
         },
         message = {
-            enabled = false,
+            enabled = true,
         },
         override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
