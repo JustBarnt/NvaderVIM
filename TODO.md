@@ -3,6 +3,7 @@
 - [X] TodoComments
 - [X] nvim-surround
 - [X] Telescope Filebrowser
+- [ ] Trouble: Finish setup (create key maps)
 - [ ] use cond enabled and is !vim.g.vscode for plugins
     - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent
 
