@@ -16,6 +16,7 @@
             - Move colorscheme setup to `user/` instead of `core/`
             - Move user plugin specs out of `user/config.lua`
 
+- [ ] Write Svelte Treesitter queries to improve special block highlighting and indenting
 ### Nice to have
 - [ ] Allow users to override keymaps - But if its a keymap I have already set, warn the user
 
