@@ -5,14 +5,9 @@ local M = {}
 M.Highlight = {
 	enable = true,
 
-	disable = function(lang, buf)
-		local max_filesize = 1024 * 1024
-		local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-		local line_count = vim.api.nvim_buf_line_count(buf)
-		if ok and stats and stats.size > max_filesize or ok and stats and line_count > 3000 then
-			return true
-		end
-	end,
+    -- TODO: Create Queries for Svelte the highlight/indent queries for special blocks don't seem to match
+    -- NOTE: May need to enable for Svelte to get it to respect Svelte Special blocks
+    -- NOTE: https://github.com/Himujjal/tree-sitter-svelte?tab=readme-ov-file#for-neovim-peeps
 	additional_vim_regex_highlighting = false,
 }
 
