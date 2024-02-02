@@ -30,16 +30,6 @@ M.Default = function()
     map("n", "<Up>", ":echo 'Use k instead'<CR>")
     map("n", "<Right>", ":echo 'Use l instead'<CR>")
 
-    map("i", "<Left>", "<NOP>")
-    map("i", "<Down>", "<NOP>")
-    map("i", "<Up>", "<NOP>")
-    map("i", "<Right>", "<NOP>")
-
-    map("i", "<S-Left>", "<NOP>")
-    map("i", "<S-Down>", "<NOP>")
-    map("i", "<S-Up>", "<NOP>")
-    map("i", "<S-Right>", "<NOP>")
-
     -- Fix descrepancy between nvim builtin matching (%) and nvim-comment plugin
     map("n", "<leader>_gc", "<CMD>call CommentOperator(visualmode())<CR>")
 
