@@ -22,7 +22,7 @@ M.setup = function()
                 silent = true,
             },
             message = {
-                enabled = true,
+                enabled = false,
             },
             override = {
                 ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
