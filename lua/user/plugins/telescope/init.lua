@@ -7,8 +7,8 @@ local telescope = require "telescope"
 local actions = require "telescope.actions"
 local builtin = require "telescope.builtin"
 local theme = require "telescope.themes"
-local trouble = require "trouble.providers.telescope"
-local fused_layout = require('core.telescope.fused_layout').fused_layout
+local fb_actions = require "telescope._extensions.file_browser.actions"
+local fb = require("telescope").extensions.file_browser
 
 local M = {}
 
@@ -22,22 +22,13 @@ M.setup = {
         end,
         setup = function()
             telescope.setup({
-                defaults = {
-                    -- pickers = fused_layout,
-                    mappings = {
-                        i = { ["<c-t>"] = trouble.open_with_trouble },
-                        n = { ["<c-t>"] = trouble.open_with_trouble },
-                    },
-                },
+                defaults = require("core.telescope.fused_layout").fused_layout,
                 pickers = {
-                    --[[ layout_strategy = fused_layout.layout_strategy,
-                    layout_config = fused_layout.layout_config,
-                    create_layout = fused_layout.create_layout, ]]
                     buffers = {
                         mappings = {
                             i = {
-                                ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
-                                ["<c-q>"] = actions.close,
+                                ["<C-d>"] = actions.delete_buffer + actions.move_to_top,
+                                ["<C-q>"] = actions.close,
                             },
                         },
                     },
@@ -48,6 +39,60 @@ M.setup = {
             })
         end,
     },
+    file_browser = {
+        keys = function()
+            map("n", "<leader>fb", function()
+                fb.file_browser({ path = "%:p:h", select_buffer = true })
+            end, { desc = "File Browser" })
+        end,
+        setup = function()
+            telescope.setup({
+                extensions = {
+                    file_browser = {
+                        grouped = true,
+                        hide_parent_dir = true,
+                        hijack_netrw = true,
+                        mappings = {
+                            ["i"] = {
+                                ["<C-c>"] = fb_actions.create,
+                                ["<S-CR>"] = fb_actions.create_from_prompt,
+                                ["<C-r>"] = fb_actions.rename,
+                                ["<C-m>"] = fb_actions.move,
+                                ["<C-y>"] = fb_actions.copy,
+                                ["<C-d>"] = fb_actions.remove,
+                                ["<CR>"] = actions.select_default,
+                                ["<C-g>"] = fb_actions.goto_parent_dir,
+                                ["<C-e>"] = fb_actions.goto_home_dir,
+                                ["<C-w>"] = fb_actions.goto_cwd,
+                                ["<C-t>"] = fb_actions.change_cwd,
+                                ["<C-f>"] = fb_actions.toggle_browser,
+                                ["<C-h>"] = fb_actions.toggle_hidden,
+                                ["<C-s>"] = fb_actions.toggle_all,
+                                ["<bs>"] = fb_actions.backspace,
+                            },
+                            ["n"] = {
+                                ["c"] = fb_actions.create,
+                                ["r"] = fb_actions.rename,
+                                ["m"] = fb_actions.move,
+                                ["y"] = fb_actions.copy,
+                                ["d"] = fb_actions.remove,
+                                ["o"] = actions.select_default,
+                                ["g"] = fb_actions.goto_parent_dir,
+                                ["e"] = fb_actions.goto_home_dir,
+                                ["w"] = fb_actions.goto_cwd,
+                                ["t"] = fb_actions.change_cwd,
+                                ["f"] = fb_actions.toggle_browser,
+                                ["h"] = fb_actions.toggle_hidden,
+                                ["s"] = fb_actions.toggle_all,
+                                ["<bs>"] = fb_actions.backspace,
+                            },
+                        },
+                    },
+                },
+            })
+            telescope.load_extension "file_browser"
+        end,
+    }
 }
 
 return M

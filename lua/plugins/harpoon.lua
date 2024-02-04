@@ -4,8 +4,11 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim"
     },
+    keys = function()
+        require 'user.plugins.harpoon'.keys()
+    end,
     config = function()
-        require 'user.plugins.harpoon'
+        require 'user.plugins.harpoon'.setup()
     end,
 }
 

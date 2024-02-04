@@ -19,9 +19,9 @@ M.user_options = {
 M.cmp_setup = {
     cmp = {
         experimental = {
-            ghost_text = true,
+            ghost_text = true
         },
-        sources = require("cmp").config.sources({
+        sources = require('cmp').config.sources({
             { name = "nvim_lua" },
             { name = "nvim_lsp" },
             { name = "luasnip" },
@@ -33,19 +33,20 @@ M.cmp_setup = {
     cmp_cmdline = {
         type = ":",
         opts = {
-            mapping = require("cmp").mapping.preset.cmdline(),
-            sources = require("cmp").config.sources({
-                { name = "cmdline" },
+            mapping = require('cmp').mapping.preset.cmdline(),
+            sources = require('cmp').config.sources({
+                { name = "cmdline" }
             }),
-        },
-    },
+        }
+    }
 }
+
 
 --Overwrite default installed formatters, lsps, parsers
 M.ensure_installed = {
     conform = {
         "stylua",
-        "prettier",
+        "prettier"
     },
     mason_lspconfig = {
         "bashls",
@@ -60,8 +61,7 @@ M.ensure_installed = {
         "svelte",
         "tailwindcss",
         "taplo",
-        "tsserver",
-        'yamlls'
+        "tsserver"
     },
     parsers = {
         "bash",
@@ -83,14 +83,37 @@ M.ensure_installed = {
         "typescript",
         "vim",
         "vimdoc",
-        "xml",
-    },
+        "xml"
+    }
+}
+
+M.servers = {
+    bashls = true,
+    html = true,
+    svelte = require 'core.lsp.servers.svelte',
+    cssls = true,
+    omnisharp = require('core.lsp.servers.omnisharp'),
+    lua_ls = require("core.lsp.servers.lua_ls"),
+    intelephense = require("core.lsp.servers.intelephense"),
+    jsonls = require("core.lsp.servers.jsonls"),
+    clangd = require("core.lsp.servers.clangd"),
+    powershell_es = require('core.lsp.servers.powershell_es'),
+    emmet_language_server = require('core.lsp.servers.emmet_language_server'),
+    tailwindcss = require 'core.lsp.servers.tailwindcss',
+    tsserver = require("core.lsp.servers.tsserver"),
 }
 
 M.formatters = {
     lua = { "stylua" },
     javascript = { "prettierd", "prettier" },
-    typescript = { "prettierd", "prettier" },
+    typescript = { "prettierd", "prettier" }
+}
+
+M.harpoon = {
+    settings = {
+        save_on_toggle = true,
+        sync_on_ui_close = true,
+    }
 }
 
 M.which_key = {
@@ -105,30 +128,12 @@ M.which_key = {
         g = false,
     },
     motions = {
-        counts = true,
-    },
+        counts = true
+    }
 }
 
 M.neoscroll = {
     respect_scrolloff = true,
-}
-
-M.neodev = {
-    library = {
-        enabled = true,
-        runtime = vim.env.RUNTIME,
-        plugins = vim.fn.stdpath('data') .. '\\lazy\\'
-    },
-    lspconfig = true,
-    pathStrict = true
-}
-
-M.neoconf = {
-    import = {
-        vscode = false,
-        coc = false,
-        nlsp = false
-    }
 }
 
 return M

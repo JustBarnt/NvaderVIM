@@ -2,7 +2,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })()
+            require 'nvim-treesitter.install'.update({ with_sync = true })()
         end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-refactor",
@@ -10,23 +10,20 @@ return {
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
         config = function()
-            if not pcall(require, "nvim-treesitter") then
+            if not pcall(require, 'nvim-treesitter') then
                 return
             end
 
-            local opts = require "core.treesitter"
-            local treesitter = require "nvim-treesitter.configs"
-            local exist, config = pcall(require, "user.config")
-            local parsers = exist and type(config) == "table" and config.ensure_installed.parsers or {}
+            local opts = require 'core.treesitter'
+            local treesitter = require 'nvim-treesitter.configs'
+            local exist, config = pcall(require, 'user.config')
+            local parsers = exist and type(config) == 'table' and config.ensure_installed.parsers or {}
 
             treesitter.setup({
                 ensure_installed = parsers,
-                indent = {
-                    enable = true,
-                },
                 highlight = opts.Highlight,
                 refactor = opts.Refactor,
-                context_commentstring = require("ts_context_commentstring").setup({
+                context_commentstring = require('ts_context_commentstring').setup({
                     enable_autocmd = false,
                 }),
                 textobjects = opts.Textobjects,
