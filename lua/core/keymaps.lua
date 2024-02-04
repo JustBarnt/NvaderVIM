@@ -22,7 +22,7 @@ M.Default = function()
             require('telescope.actions').close(vim.api.nvim_get_current_buf())
         end
 
-    end, { desc = "Close Float/Window", noremap = true })
+    end, { desc = "Close Float/Window", noremap = false })
 
     -- Disable use of Arrow Keys: use (HJKL)
     map("n", "<Left>", ":echo 'Use h instead'<CR>")
@@ -47,6 +47,9 @@ M.Default = function()
     map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move Pane: Up" })
     map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move Pane: Right" })
 
+    -- Easy return to normal mode
+    map("i", "JK", "<ESC>", { desc = "Return to normal mode" })
+
     -- Split Buffer
     map("n", "<leader>bv", ":vsplit", { desc = "Prompt Split Buffer" })
 
@@ -64,11 +67,18 @@ M.Default = function()
     map("n", "<leader>sc", ':let @/ = ""<CR>', { desc = "Clear Search Highlights" })
 
     -- Move line up and down in VISUAL MODE
-    map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Selected lines down", noremap = true })
-    map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Selected lines up", noremap = true })
+    map("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move Selected lines down", noremap = false })
+    map("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move Selected lines up", noremap = false })
 
     -- Show Lazy UI
     map("n", "<leader>L", ":Lazy<CR>", { desc = "Show Lazy " })
+
+    -- Saving and Quitting Files Quicker
+    map("n", "<leader>w", ":w<CR>", { desc = "Save File" })
+    map("n", "<leader>W", ":w!<CR>", { desc = "Overwrite File" })
+    map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
+    map("n", "<leader>Q", ":q!<CR>", { desc = "Quit without saving" })
+    map("n", "<leader>qa", ":qall<CR>", { desc = "Quit All"})
 end
 return M
 
