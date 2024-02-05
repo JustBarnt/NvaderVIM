@@ -3,9 +3,9 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = "*",
     callback = function(event)
         local filetype = vim.bo[event.buf].filetype
-        local file_path = event.file
+        local file_path = event.match
 
-        if file_path:match "\\doc\\" ~= nil then
+        if file_path:match "/doc/" ~= nil then
             -- Only run if the filetype is a help file
             if filetype == "help" or filetype == "markdown" then
                 -- Get the newly opened help window
