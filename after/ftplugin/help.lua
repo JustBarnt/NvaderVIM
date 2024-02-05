@@ -9,15 +9,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
         local filetype = vim.bo[event.buf].filetype
 
         -- Only run if the filetype is a help file
-        if filetype == "help" or filetype == 'markdown' then
-            -- Get the basename of the help file
-            -- Then the file name w/o the extension
-            -- Then call h on that file name
-            local basename = vim.fs.basename(event.match)
-            local ext_idx = basename:find('%.')
-            local file = basename:sub(1, (ext_idx - 1))
-            vim.cmd.h(file)
-
+        if filetype == "help" or filetype == "markdown" then
             -- Get the newly opened help window
             -- and attempt to open a Detour() float
             local help_win = vim.api.nvim_get_current_win()
