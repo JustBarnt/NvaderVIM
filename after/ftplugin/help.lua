@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
         local filetype = vim.bo[event.buf].filetype
 
         -- Only run if the filetype is a help file
-        if filetype == "help" then
+        if filetype == "help" or filetype == 'markdown' then
             -- Get the basename of the help file
             -- Then the file name w/o the extension
             -- Then call h on that file name
