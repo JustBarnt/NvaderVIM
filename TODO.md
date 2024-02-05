@@ -19,7 +19,7 @@
 - [ ] Write Svelte Treesitter queries to improve special block highlighting and indenting
 
 ## Improve Help Float
-- [ ] Take answer from [Detour](https://github.com/carbon-steel/detour.nvim/issues/42#issuecomment-1925521633)
+- [X] Take answer from [Detour](https://github.com/carbon-steel/detour.nvim/issues/42#issuecomment-1925521633)
       and use suggestion from [Reddit](https://www.reddit.com/r/neovim/s/OL1IkISQ6y) to potential just override
       `h` instead of having to use `H`
 
