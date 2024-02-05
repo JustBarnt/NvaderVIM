@@ -1,15 +1,11 @@
-local enabled = require("core.utils").enabled
-local exists, user_config = pcall(require, "user.core")
-local commands = exists and type(user_config) == "table" and user_config.commands or {}
-
 -- Open help files only in a float
 vim.api.nvim_create_autocmd("BufWinEnter", {
     pattern = "*",
     callback = function(event)
         local filetype = vim.bo[event.buf].filetype
+        local file_path = event.file
 
-
-        if event.file:match("doc") ~= nil then
+        if file_path:match "\\doc\\" ~= nil then
             -- Only run if the filetype is a help file
             if filetype == "help" or filetype == "markdown" then
                 -- Get the newly opened help window
