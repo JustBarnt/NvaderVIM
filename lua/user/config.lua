@@ -51,6 +51,7 @@ M.ensure_installed = {
     mason_lspconfig = {
         "bashls",
         "clangd",
+        "emmet_language_server",
         "html",
         "intelephense",
         "jsonls",
@@ -72,6 +73,7 @@ M.ensure_installed = {
         "html",
         "javascript",
         "json",
+        "jsonc",
         "lua",
         "markdown",
         "markdown_inline",
@@ -105,8 +107,8 @@ M.servers = {
 
 M.formatters = {
     lua = { "stylua" },
-    javascript = { "prettierd", "prettier" },
-    typescript = { "prettierd", "prettier" }
+    javascript = { "prettier" },
+    typescript = { "prettier" }
 }
 
 M.harpoon = {

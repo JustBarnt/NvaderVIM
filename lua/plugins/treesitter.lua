@@ -1,12 +1,11 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        build = function()
-            require 'nvim-treesitter.install'.update({ with_sync = true })()
-        end,
+        tag = "v0.9.2",
+        build = ":TSUpdate",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-refactor",
-            "nvim-treesitter/nvim-treesitter-textobjects",
+            { "nvim-treesitter/nvim-treesitter-textobjects", commit = "dd0b203" },
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
         config = function()
@@ -28,11 +27,8 @@ return {
                 }),
                 textobjects = opts.Textobjects,
             })
-
-            vim.treesitter.query.set("javascript", "context", "")
-            vim.treesitter.query.set("typescript", "context", "")
-            vim.treesitter.query.set("lua", "context", "")
             vim.treesitter.query.set("xml", "context", "")
+            vim.treesitter.query.set("typescript", 'textobjects', "")
         end,
     },
 }
