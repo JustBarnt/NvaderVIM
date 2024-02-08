@@ -4,6 +4,12 @@ local vim_opts = require 'core.utils'.vim_options
 -- local home_path = os.getenv("HOMEPATH")
 -- vim.g.python3_host_prog = "C:" .. home_path .. "/AppData/Local/Programs/Python/Python3/python.exe"
 
+vim.filetype.add({
+    extension = {
+        postcss = 'css'
+    }
+})
+
 vim.opt.shortmess:append("sWAIcCqF")
 
 vim_opts({

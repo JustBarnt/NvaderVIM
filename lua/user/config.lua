@@ -50,6 +50,7 @@ M.ensure_installed = {
     },
     mason_lspconfig = {
         "bashls",
+        "cssls",
         "clangd",
         "emmet_language_server",
         "html",
@@ -101,7 +102,7 @@ M.servers = {
     clangd = require("core.lsp.servers.clangd"),
     powershell_es = require('core.lsp.servers.powershell_es'),
     emmet_language_server = require('core.lsp.servers.emmet_language_server'),
-    tailwindcss = require 'core.lsp.servers.tailwindcss',
+    tailwindcss = true, --require 'core.lsp.servers.tailwindcss',
     tsserver = require("core.lsp.servers.tsserver"),
 }
 
