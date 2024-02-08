@@ -2,7 +2,7 @@ local rose_pine = require "rose-pine"
 local pallets = require 'user.theme-colors'
 
 rose_pine.setup({
-    dim_inactive_windows = true,
+    -- dim_inactive_windows = true,
     bold_vert_split = true,
     disable_background = true,
     highlight_groups = {

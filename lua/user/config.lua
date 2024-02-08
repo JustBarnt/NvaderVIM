@@ -41,6 +41,10 @@ M.cmp_setup = {
     }
 }
 
+M.autocmds = {
+    trailing_whitespace = false,
+}
+
 
 --Overwrite default installed formatters, lsps, parsers
 M.ensure_installed = {
