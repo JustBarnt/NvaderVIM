@@ -7,3 +7,9 @@ if enabled(commands, 'format') then
         require('conform').format({ async = true, lsp_fallback = false })
     end, { bang = true })
 end
+
+if enabled(commands, 'telescope_highlight_tags') then
+    vim.api.nvim_create_user_command("TelescopeHighlights", function()
+        require('telescope.builtin').highlights()
+    end, {bang = true})
+end

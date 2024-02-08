@@ -1,18 +1,31 @@
-local rose_pine = require 'rose-pine'
-
+local rose_pine = require "rose-pine"
+local pallets = require 'user.theme-colors'
 
 rose_pine.setup({
-  variant = "main",
-  dark_variant = "main",
-  bold_vert_split = true,
-  disable_background = true,
-  highlight_groups = {
-    ColorColumn = { bg = "pine", blend = 15 },
-    StatusLine = { fg = "iris", bg = "pine", blend = 10 },
-    Search = { fg = "iris", bg = "subtle", blend = 40 },
-    FloatBorder = { bg = "#1A1C33", blend = 50 },
-    IncSearch = { fg = "iris", bg = "rose", blend = 40 },
-  },
+    dim_inactive_windows = true,
+    bold_vert_split = true,
+    disable_background = true,
+    highlight_groups = {
+        ColorColumn = { bg = "rose", blend = 15 },
+        TelescopeBorder = { fg = "overlay", bg = "overlay" },
+        TelescopeNormal = { fg = "subtle", bg = "overlay" },
+        TelescopeSelection = { fg = "text", bg = "highlight_med" },
+        TelescopeSelectionCaret = { fg = "love", bg = "highlight_med" },
+        TelescopeMultiSelection = { fg = "text", bg = "highlight_high" },
+
+        -- Colors The titles for Telescope
+        TelescopeTitle = { fg = "base", bg = "love" },
+        TelescopePromptTitle = { fg = "base", bg = "pine" },
+        TelescopePreviewTitle = { fg = "base", bg = "iris" },
+
+        -- Colors the Preview window for Telescope
+        TelescopePreviewNormal = { fg = "text", bg = pallets.main.surface },
+        TelescopePreviewBorder = { fg = pallets.main.surface, bg = pallets.main.surface },
+
+        -- Colors the Prompt window for Telescope
+        TelescopePromptNormal = { fg = "text", bg = "surface" },
+        TelescopePromptBorder = { fg = "surface", bg = "surface" },
+    },
 })
 
-vim.cmd.colorscheme("rose-pine")
+vim.cmd.colorscheme "rose-pine-moon"
