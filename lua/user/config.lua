@@ -42,7 +42,8 @@ M.cmp_setup = {
 }
 
 M.autocmds = {
-    disable_auto_comment = true,
+    --TODO: Add keybind that disables and enables this
+    disable_auto_comment = false,
     help_in_float = true,
     highlight_yank = true,
     cursor_line = true,
