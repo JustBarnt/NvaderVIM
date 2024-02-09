@@ -20,6 +20,9 @@ return {
 
             treesitter.setup({
                 ensure_installed = parsers,
+                indent = {
+                    enable = true,  
+                },
                 highlight = opts.Highlight,
                 refactor = opts.Refactor,
                 context_commentstring = require('ts_context_commentstring').setup({
