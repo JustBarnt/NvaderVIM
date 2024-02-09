@@ -57,9 +57,7 @@ M.Default = function()
     map("n", "J", "mzJ`z")
 
     -- Return to file explorer
-    map("n", "<leader>pv", ":echo User <leader>ef for Current Dir | <leader>ed for Working Dir<CR>")
-    map("n", "<leader>ef", ":Lexplore %:p:h<CR><CR>", { desc = "Explore Current Directory" })
-    map("n", "<leader>ed", ":Lexplore<CR><CR>", { desc = "Explore Working Directory"})
+    map("n", "<leader>pv", ":Lexplore<CR><CR>", { desc = "Explore Working Directory"})
 
     -- Close Buffer & Close Buffer without saving
     map("n", "<leader>x", ":bd<CR>", { desc = "Close Current Buffer" })
