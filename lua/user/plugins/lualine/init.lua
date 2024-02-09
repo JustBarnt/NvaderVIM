@@ -50,7 +50,7 @@ lualine.setup({
             {
                 components.harpoon_component,
                 color = { fg = moon.text, bg = moon.highlight_low },
-                separator = { right = "" },
+                separator = { right = "" },
             },
         },
         lualine_c = {
@@ -66,7 +66,7 @@ lualine.setup({
                 icon = "",
                 style = "%H:%M",
                 color = { fg = moon.text, bg = moon.highlight_med },
-                separator = { left = "" },
+                separator = { left = "" },
             },
         },
         lualine_y = {
