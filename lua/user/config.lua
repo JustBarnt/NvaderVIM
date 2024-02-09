@@ -42,6 +42,11 @@ M.cmp_setup = {
 }
 
 M.autocmds = {
+    disable_auto_comment = true,
+    help_in_float = true,
+    highlight_yank = true,
+    cursor_line = true,
+    cursor_line_control = true,
     trailing_whitespace = false,
 }
 
