@@ -30,7 +30,7 @@ vim_opts({
         showmatch = true,
         ignorecase = true,
         smartcase = true,
-        hidden = false,
+        hidden = true,
         equalalways = false,
         splitright = true,
         splitbelow = true,

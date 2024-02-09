@@ -25,10 +25,10 @@ M.Default = function()
     end, { desc = "Close Float/Window", noremap = false })
 
     -- Disable use of Arrow Keys: use (HJKL)
-    map("n", "<Left>", ":echo 'Use h instead'<CR>")
-    map("n", "<Down>", ":echo 'Use j instead'<CR>")
-    map("n", "<Up>", ":echo 'Use k instead'<CR>")
-    map("n", "<Right>", ":echo 'Use l instead'<CR>")
+    map("n", "<Left>", "<NOP>")
+    map("n", "<Down>", "<NOP>")
+    map("n", "<Up>", "<NOP>")
+    map("n", "<Right>", "<NOP>")
 
     -- Fix descrepancy between nvim builtin matching (%) and nvim-comment plugin
     map("n", "<leader>_gc", "<CMD>call CommentOperator(visualmode())<CR>")
@@ -57,7 +57,9 @@ M.Default = function()
     map("n", "J", "mzJ`z")
 
     -- Return to file explorer
-    map("n", "<leader>pv", vim.cmd.Ex, { desc = "Show File Tree" })
+    map("n", "<leader>pv", ":echo User <leader>ef for Current Dir | <leader>ed for Working Dir<CR>")
+    map("n", "<leader>ef", ":Lexplore %:p:h<CR><CR>", { desc = "Explore Current Directory" })
+    map("n", "<leader>ed", ":Lexplore<CR><CR>", { desc = "Explore Working Directory"})
 
     -- Close Buffer & Close Buffer without saving
     map("n", "<leader>x", ":bd<CR>", { desc = "Close Current Buffer" })
@@ -72,13 +74,6 @@ M.Default = function()
 
     -- Show Lazy UI
     map("n", "<leader>L", ":Lazy<CR>", { desc = "Show Lazy " })
-
-    -- Saving and Quitting Files Quicker
-    map("n", "<leader>w", ":w<CR>", { desc = "Save File" })
-    map("n", "<leader>W", ":w!<CR>", { desc = "Overwrite File" })
-    map("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-    map("n", "<leader>Q", ":q!<CR>", { desc = "Quit without saving" })
-    map("n", "<leader>qa", ":qall<CR>", { desc = "Quit All"})
-end
+    end
 return M
 
