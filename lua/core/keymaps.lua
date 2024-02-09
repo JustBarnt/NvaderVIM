@@ -57,7 +57,7 @@ M.Default = function()
     map("n", "J", "mzJ`z")
 
     -- Return to file explorer
-    map("n", "<leader>pv", ":Lexplore<CR><CR>", { desc = "Explore Working Directory"})
+    map("n", "<leader>pv", vim.cmd.Ex, { desc = "Explore Working Directory"})
 
     -- Close Buffer & Close Buffer without saving
     map("n", "<leader>x", ":bd<CR>", { desc = "Close Current Buffer" })
