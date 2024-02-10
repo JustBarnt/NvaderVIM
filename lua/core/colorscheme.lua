@@ -1,5 +1,5 @@
 local rose_pine = require "rose-pine"
-local pallets = require 'user.theme-colors'
+local pallets = require "user.theme-colors"
 
 rose_pine.setup({
     -- dim_inactive_windows = true,
@@ -7,6 +7,16 @@ rose_pine.setup({
     disable_background = true,
     highlight_groups = {
         ColorColumn = { bg = "rose", blend = 15 },
+
+        -- Gitsigns
+        GitsignsAdd = { fg = pallets.main.iris },
+        GitsignsDelete = { fg = pallets.main.love },
+        GitsignsChange = { fg = pallets.main.gold },
+        GitsignsUntracked = { fg = pallets.dawn.pine },
+        GitsignsTopdelete = { fg = pallets.dawn.love },
+        GitsignsChangedelete = { fg = pallets.dawn.rose },
+
+        -- Telescope Start
         TelescopeBorder = { fg = "overlay", bg = "overlay" },
         TelescopeNormal = { fg = "subtle", bg = "overlay" },
         TelescopeSelection = { fg = "text", bg = "highlight_med" },
