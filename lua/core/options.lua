@@ -21,11 +21,10 @@ vim_opts({
         pumblend = 17,
         wildmode = "longest:full",
         wildoptions = "pum",
-        
         termguicolors = true,
         showmode = false,
         showcmd = true,
-        cmdheight = 0,
+        cmdheight = 1,
         incsearch = true,
         showmatch = true,
         ignorecase = true,
