@@ -6,11 +6,22 @@ neorg.setup({
         ["core.defaults"] = {},
         ["core.itero"] = {},
         -- ["core.ui.calendar"] = {},
-        ["core.concealer"] = {},
+        ["core.concealer"] = {
+            config = {
+                icon_preset = "varied",
+                icons = {
+                    code_block = {
+                        conceal = true,
+                        content_only = true,
+                        highlight = "CursorLine",
+                    },
+                },
+            },
+        },
         ["core.completion"] = {
             config = {
                 engine = "nvim-cmp",
-            }
+            },
         },
         ["core.dirman"] = {
             config = {
@@ -19,6 +30,12 @@ neorg.setup({
                     work = "~/notes/work",
                     time_sheets = "~/CommSys/Neorg/timesheets",
                 },
+                index = "index.neorg",
+            },
+        },
+        ["core.esupports.metagen"] = {
+            config = {
+                type = "auto",
             },
         },
     },

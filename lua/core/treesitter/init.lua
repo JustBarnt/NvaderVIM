@@ -7,6 +7,18 @@ local exist, user_config = pcall(require, "user.config")
 local parsers = exist and type(user_config) == "table" and user_config.ensure_installed.parsers or {}
 local config = exist and type(user_config) == "table" and user_config.treesitter or {}
 
+local list = require("nvim-treesitter.parsers").get_parser_configs()
+
+---@class ParserInfo[]
+list.norg = {
+    install_info = {
+        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+        branch = "main",
+        files = { "src/parser.c", "src/scanner.cc" },
+    },
+    maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
+}
+
 treesitter.setup({
     ensure_installed = parsers,
     indent = {
