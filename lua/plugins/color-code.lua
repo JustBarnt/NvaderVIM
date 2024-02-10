@@ -1,7 +1,10 @@
 return {
-    "uga-rosa/ccc.nvim",
-    event = "BufReadPre",
-    config = function()
-        require 'user.plugins.color-code'.setup()
-    end,
+    {
+        "uga-rosa/ccc.nvim",
+        event = "BufReadPre",
+        config = function()
+            local config = require("user.plugins.color-code").config
+            require("ccc").setup(config)
+        end,
+    },
 }
