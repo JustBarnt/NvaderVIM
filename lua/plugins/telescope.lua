@@ -9,7 +9,7 @@ return {
         config = function()
             local map = require('core.utils').map
             local builtin = require('telescope.builtin')
-            local config = require("user.plugins.telescope").config
+            local config = require("core.telescope").config
 
             require('telescope').setup(config)
 
