@@ -83,7 +83,6 @@ local lsp_attach = function(client, bufnr)
 
 	if filetype == "typescript" or filetype == "lua" then
 		client.server_capabilities.semanticTokensProvider = nil
-        require("inlay-hints").on_attach(client, bufnr)
 	end
 
 end
