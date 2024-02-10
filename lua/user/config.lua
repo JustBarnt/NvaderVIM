@@ -105,7 +105,6 @@ M.harpoon = {
 M.which_key = {
     plugins = {
         marks = false,
-        registers = false,
     },
     presets = {
         operators = false,
