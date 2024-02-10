@@ -14,33 +14,6 @@ M.user_options = {
     },
 }
 
--- Override default completion settings
----@class cmp.ConfigSchema
-M.cmp_setup = {
-    cmp = {
-        experimental = {
-            ghost_text = true
-        },
-        sources = require('cmp').config.sources({
-            { name = "nvim_lua" },
-            { name = "nvim_lsp" },
-            { name = "luasnip" },
-        }, {
-            { name = "path" },
-            { name = "buffer", keyword_length = 5 },
-        }),
-    },
-    cmp_cmdline = {
-        type = ":",
-        opts = {
-            mapping = require('cmp').mapping.preset.cmdline(),
-            sources = require('cmp').config.sources({
-                { name = "cmdline" }
-            }),
-        }
-    }
-}
-
 M.autocmds = {
     --TODO: Add keybind that disables and enables this
     disable_auto_comment = false,
