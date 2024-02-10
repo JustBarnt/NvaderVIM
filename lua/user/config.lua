@@ -1,3 +1,5 @@
+local actions = require "telescope.actions"
+local trouble = require "trouble.providers.telescope"
 local M = {}
 
 -- NOTE: Config is for enabling and disabling item.
@@ -24,12 +26,11 @@ M.autocmds = {
     trailing_whitespace = false,
 }
 
-
 --Overwrite default installed formatters, lsps, parsers
 M.ensure_installed = {
     conform = {
         "stylua",
-        "prettier"
+        "prettier",
     },
     mason_lspconfig = {
         "bashls",
@@ -46,7 +47,7 @@ M.ensure_installed = {
         "svelte",
         "tailwindcss",
         "taplo",
-        "tsserver"
+        "tsserver",
     },
     parsers = {
         "bash",
@@ -69,37 +70,37 @@ M.ensure_installed = {
         "typescript",
         "vim",
         "vimdoc",
-        "xml"
-    }
+        "xml",
+    },
 }
 
 M.servers = {
     bashls = true,
     html = true,
-    svelte = require 'core.lsp.servers.svelte',
+    svelte = require "core.lsp.servers.svelte",
     cssls = true,
-    omnisharp = require('core.lsp.servers.omnisharp'),
-    lua_ls = require("core.lsp.servers.lua_ls"),
-    intelephense = require("core.lsp.servers.intelephense"),
-    jsonls = require("core.lsp.servers.jsonls"),
-    clangd = require("core.lsp.servers.clangd"),
-    powershell_es = require('core.lsp.servers.powershell_es'),
-    emmet_language_server = require('core.lsp.servers.emmet_language_server'),
+    omnisharp = require "core.lsp.servers.omnisharp",
+    lua_ls = require "core.lsp.servers.lua_ls",
+    intelephense = require "core.lsp.servers.intelephense",
+    jsonls = require "core.lsp.servers.jsonls",
+    clangd = require "core.lsp.servers.clangd",
+    powershell_es = require "core.lsp.servers.powershell_es",
+    emmet_language_server = require "core.lsp.servers.emmet_language_server",
     tailwindcss = true, --require 'core.lsp.servers.tailwindcss',
-    tsserver = require("core.lsp.servers.tsserver"),
+    tsserver = require "core.lsp.servers.tsserver",
 }
 
 M.formatters = {
     lua = { "stylua" },
     javascript = { "prettier" },
-    typescript = { "prettier" }
+    typescript = { "prettier" },
 }
 
 M.harpoon = {
     settings = {
         save_on_toggle = true,
         sync_on_ui_close = true,
-    }
+    },
 }
 
 M.which_key = {
@@ -113,12 +114,115 @@ M.which_key = {
         g = false,
     },
     motions = {
-        counts = true
-    }
+        counts = true,
+    },
 }
 
 M.neoscroll = {
     respect_scrolloff = true,
+}
+
+M.treesitter = {
+    Highlight = {
+        enable = true,
+
+        -- TODO: Create Queries for Svelte the highlight/indent queries for special blocks don't seem to match
+        -- NOTE: May need to enable for Svelte to get it to respect Svelte Special blocks
+        -- NOTE: https://github.com/Himujjal/tree-sitter-svelte?tab=readme-ov-file#for-neovim-peeps
+        additional_vim_regex_highlighting = false,
+    },
+
+    Refactor = {
+        highlight_definitions = {
+            enable = true,
+            disable = { "xml" },
+            clear_on_cursor_move = true,
+        },
+
+        highlight_current_scope = { enable = false },
+
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "<leader>cR",
+            },
+        },
+
+        navigation = false,
+
+        incremental_selection = {
+            enable = true,
+        },
+    },
+
+    Textobjects = {
+        move = {
+            enable = true,
+            set_jumps = true,
+
+            goto_next_start = {
+                ["]p"] = "@parameter.inner",
+                ["]m"] = "@function.outer",
+                ["]]"] = "@class.outer",
+            },
+            goto_next_end = {
+                ["]M"] = "@function.outer",
+                ["]["] = "@class.outer",
+            },
+            goto_previous_start = {
+                ["[p"] = "@parameter.inner",
+                ["[m"] = "@function.outer",
+                ["[["] = "@class.outer",
+            },
+            goto_previous_end = {
+                ["[M"] = "@function.outer",
+                ["[]"] = "@class.outer",
+            },
+        },
+
+        select = {
+            enable = true,
+
+            -- Jump forward automatically like targets.vim
+            lookahead = true,
+
+            keymaps = {
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+
+                ["ac"] = "@conditional.outer",
+                ["ic"] = "@conditional.inner",
+
+                ["aa"] = "@parameter.outer",
+                ["ia"] = "@parameter.inner",
+
+                ["av"] = "@variable.outer",
+                ["iv"] = "@variable.inner",
+            },
+        },
+    },
+}
+
+M.telescope = {
+    defaults = {
+        mappings = {
+            i = { ["<c-t>"] = trouble.open_with_trouble },
+            n = { ["<c-t>"] = trouble.open_with_trouble },
+        },
+    },
+    pickers = {
+        buffers = {
+            mappings = {
+                i = {
+                    ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+                    ["<c-q>"] = actions.close,
+                },
+            },
+        },
+        find_files = {
+            find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
+        },
+    },
 }
 
 return M

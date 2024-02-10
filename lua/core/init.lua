@@ -1,13 +1,13 @@
 -- Load Base Keymaps
 require("core.keymaps").Default()
 
--- Bootstrap Lazy
-require "core.lazy"
+-- Bootstrapping Lazy
+require 'core.lazy'
 
 -- Bootstrap Config
 require 'core.options'
+-- require 'core.completion'
 require 'core.lsp'
-require 'core.completion'
 require 'core.treesitter'
 require 'core.telescope'
 require "core.colorscheme"

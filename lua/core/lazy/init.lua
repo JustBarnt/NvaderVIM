@@ -61,3 +61,5 @@ require("lazy").setup('plugins', {
         },
     },
 })
+
+require 'core.completion'

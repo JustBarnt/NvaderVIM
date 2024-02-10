@@ -1,28 +1,13 @@
-local actions = require "telescope.actions"
-local trouble = require "trouble.providers.telescope"
+local map = require("core.utils").map
+local builtin = require "telescope.builtin"
+local telescope = require 'telescope'
+local exists, user_config = pcall(require, 'telescope')
+local config = exists and type(user_config) == 'table' and user_config.telescope or {}
 
-local M = {}
+telescope.setup(config)
 
-M.config = {
-    defaults = {
-        mappings = {
-            i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
-        },
-    },
-    pickers = {
-        buffers = {
-            mappings = {
-                i = {
-                    ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
-                    ["<c-q>"] = actions.close,
-                },
-            },
-        },
-        find_files = {
-            find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
-        },
-    },
-}
-
-return M
+--Keys
+map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
+map("n", "<leader>fh", builtin.help_tags, { desc = "Help Tags" })
+map("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep" })
+map("n", "<leader>/", builtin.buffers, { desc = "Search Buffers" })

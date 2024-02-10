@@ -2,9 +2,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Do not load plugins if I have to open VSCode for some rare reason
 if not vim.g.vscode then
-    require 'core'
+    require "core"
 else
-    require 'core.keymaps'.Default() -- Still want out basic keymaps, those work just fine in VSCode
+    require("core.keymaps").Default()
 end

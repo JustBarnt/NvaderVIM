@@ -1,8 +1,11 @@
-local M = {}
 local cmp = require "cmp"
+local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
+
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 ---@class cmp.ConfigSchema
-M.config = {
+local config = {
     mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
@@ -14,7 +17,6 @@ M.config = {
     },
     -- Order sources are defined are the order they appear on the completion menu
     sorting = {
-        -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
         comparators = {
             cmp.config.compare.offset,
             cmp.config.compare.exact,
@@ -42,13 +44,13 @@ M.config = {
     },
     snippet = {
         expand = function(args)
-            require("luasnip").lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     experimental = {
         ghost_text = true,
     },
-    sources = require("cmp").config.sources({
+    sources = cmp.config.sources({
         { name = "nvim_lua" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
@@ -57,20 +59,40 @@ M.config = {
         { name = "buffer", keyword_length = 5 },
     }),
     formatting = {
-        format = require("lspkind").cmp_format({
+        format = lspkind.cmp_format({
             mode = "text",
             maxwidth = function()
                 return math.floor(vim.o.columns * 0.45)
             end,
             menu = {
-                nvim_lua = "[Lua]",
-                nvim_lsp = "[LSP]",
-                buffer = "[Buf]",
-                cmdline = "[Cmd]",
-                luasnip = "[Snip]",
+                nvim_lua = "Lua",
+                nvim_lsp = "LSP",
+                buffer = "Buffer",
+                cmdline = "Cmdline",
+                luasnip = "Snippet",
             },
         }),
     },
 }
 
-return M
+-- Setup autocompletion for LSP and others
+cmp.setup(config)
+
+-- Setup autocompletion for search
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "buffer" },
+    }),
+})
+
+-- Setup autocompletion for cmdline
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "cmdline" },
+    }),
+    formatting = {
+        fields = { "abbr", "kind" },
+    },
+})

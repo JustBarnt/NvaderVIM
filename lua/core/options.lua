@@ -1,4 +1,4 @@
-local vim_opts = require 'core.utils'.vim_options
+local vim_opts = require("core.utils").vim_options
 
 -- Assumes you are on windows with python installed in you appdata folder (default) install path
 -- local home_path = os.getenv("HOMEPATH")
@@ -6,11 +6,10 @@ local vim_opts = require 'core.utils'.vim_options
 
 vim.filetype.add({
     extension = {
-        postcss = 'css'
-    }
+        postcss = "css",
+    },
 })
-
-vim.opt.shortmess:append("sWAIcCqF")
+vim.opt.shortmess:append "sWAIcCqF"
 
 vim_opts({
     ---@class vim.opt
@@ -22,6 +21,7 @@ vim_opts({
         pumblend = 17,
         wildmode = "longest:full",
         wildoptions = "pum",
+        
         termguicolors = true,
         showmode = false,
         showcmd = true,
@@ -61,13 +61,13 @@ vim_opts({
         list = false,
         listchars = { eol = "󰌑" },
         fillchars = { eob = "~" },
-        undodir = vim.fn.stdpath('state') .. '\\undotree\\',
+        undodir = vim.fn.stdpath "state" .. "\\undotree\\",
         undofile = true,
         signcolumn = "yes",
-        colorcolumn = ""
+        colorcolumn = "",
     },
 })
 
-local exist, config = pcall(require, 'user.config')
-local opts = exist and type(config) == 'table' and config.user_options or {}
+local exist, config = pcall(require, "user.config")
+local opts = exist and type(config) == "table" and config.user_options or {}
 vim_opts(opts)
