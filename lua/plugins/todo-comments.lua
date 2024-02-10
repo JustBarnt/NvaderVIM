@@ -4,10 +4,18 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
     },
-    keys = function()
-        require("user.plugins.todo-comments").keys()
-    end,
     config = function()
-        require("user.plugins.todo-comments").setup()
+        local map = require("core.utils").map
+        local todo = require 'todo-comments'
+        todo.setup({})
+
+        -- Keys
+        map("n", "]t", function()
+            todo.jump_next()
+        end, { desc = "Next Todo" })
+
+        map("n", "[t", function()
+            todo.jump_prev()
+        end, { desc = "Previous Todo" })
     end,
 }
