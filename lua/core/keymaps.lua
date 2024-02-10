@@ -56,9 +56,6 @@ M.Default = function()
     -- Center when joining lines
     map("n", "J", "mzJ`z")
 
-    -- Return to file explorer
-    map("n", "<leader>pv", vim.cmd.Ex, { desc = "Explore Working Directory"})
-
     -- Close Buffer & Close Buffer without saving
     map("n", "<leader>x", ":bd<CR>", { desc = "Close Current Buffer" })
     map("n", "<leader>X", ":bd!<CR>", { desc = "Close Current Buffer W/O Saving" })
