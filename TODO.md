@@ -1,13 +1,10 @@
 # Todo
-- [ ] Refactor plugin spec as follows for user config
-    - `user/plugins/[plugin]/init.lua`
-        - Returns a module with at minimum a config object
-    - Other files can be in the `[plugin]` dir --- init will import those and add them to the module
 - [ ] Install and setup Neorg
 - [ ] Setup `Which-Key`
     - Includes adding all plugins that use `<leader>`
 - [ ] Setup help-doc
 - [ ] Trouble: Finish setup (create key maps)
+
 ## Clean-up
 - [ ] use cond enabled and is !vim.g.vscode for plugins
     - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent

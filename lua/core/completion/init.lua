@@ -47,6 +47,8 @@ local config = {
         { name = "buffer", keyword_length = 5 },
     }, {
         { name = "nerdfont" },
+    }, {
+        { name = "neorg" }
     }),
     formatting = {
         format = lspkind.cmp_format({
