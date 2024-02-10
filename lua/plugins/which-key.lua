@@ -7,6 +7,10 @@ return {
         vim.o.timeoutlen = 300
     end,
     config = function()
-        require 'user.plugins.which-key'.which_key.setup()
+        local wk = require "which-key"
+        local exists, user_config = pcall(require, 'user.config')
+        local config = exists and type(user_config) == "table" and user_config.which_key or {}
+
+        wk.setup(config)
     end,
 }
