@@ -1,10 +1,8 @@
-local lualine = require "lualine"
+local M = {}
 local components = require "user.plugins.lualine.lualine_components"
-local main = require("user.theme-colors").main
 local moon = require("user.theme-colors").moon
-local dawn = require("user.theme-colors").dawn
 
-lualine.setup({
+M.config = {
     options = {
         --- @usage 'rose-pine' | 'rose-pine-alt'
         theme = "rose-pine",
@@ -91,4 +89,6 @@ lualine.setup({
             },
         },
     },
-})
+}
+
+return M

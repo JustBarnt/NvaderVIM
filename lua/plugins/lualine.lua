@@ -2,6 +2,7 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "ColorScheme",
     config = function()
-        require 'user.plugins.lualine'
+        local config = require("user.plugins.lualine").config
+        require("lualine").setup(config)
     end,
 }
