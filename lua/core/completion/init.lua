@@ -1,11 +1,9 @@
 local cmp = require "cmp"
-local types = require 'cmp.types'
+local types = require "cmp.types"
 local luasnip = require "luasnip"
 local lspkind = require "lspkind"
-local compare = require 'core.completion.comparators'.compare
-
+local compare = require("core.completion.comparators").compare
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-
 ---@class cmp.ConfigSchema
 local config = {
     mapping = {
@@ -43,12 +41,11 @@ local config = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
     }, {
+        { name = "nerdfont" },
         { name = "path" },
         { name = "buffer", keyword_length = 5 },
     }, {
-        { name = "nerdfont" },
-    }, {
-        { name = "neorg" }
+        { name = "neorg" },
     }),
     formatting = {
         format = lspkind.cmp_format({

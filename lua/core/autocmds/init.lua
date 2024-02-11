@@ -26,7 +26,7 @@ if enabled(cmds, "highlight_yank") then
 end
 
 if enabled(cmds, "help_in_float") then
-    vim.api.nvim_create_autocmd("BufWinEnter", {
+    cmd("BufWinEnter", {
         pattern = "*",
         callback = function(event)
             local filetype = vim.bo[event.buf].filetype
