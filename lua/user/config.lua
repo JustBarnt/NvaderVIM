@@ -30,6 +30,7 @@ M.autocmds = {
     cursor_line = true,
     cursor_line_control = true,
     trailing_whitespace = false,
+    show_message_float = true,
 }
 
 --Overwrite default installed formatters, lsps, parsers
