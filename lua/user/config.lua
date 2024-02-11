@@ -16,6 +16,12 @@ M.user_options = {
     },
 }
 
+M.user_commands = {
+    quit_all = true,
+    format = true,
+    telescope_highlight_tags = true
+}
+
 M.autocmds = {
     --TODO: Add keybind that disables and enables this
     disable_auto_comment = false,

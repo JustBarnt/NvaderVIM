@@ -4,6 +4,7 @@ local luasnip = require "luasnip"
 local lspkind = require "lspkind"
 local compare = require("core.completion.comparators").compare
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
 ---@class cmp.ConfigSchema
 local config = {
     mapping = {
@@ -37,13 +38,13 @@ local config = {
         ghost_text = true,
     },
     sources = cmp.config.sources({
-        { name = "nvim_lua" },
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
+        { name = "nvim_lsp", priority = 1 },
+        { name = "nvim_lua", priority = 2 },
     }, {
-        { name = "nerdfont" },
-        { name = "path" },
-        { name = "buffer", keyword_length = 5 },
+        { name = "path", priority = 1 },
+        { name = "nerdfont", priority = 2 },
+        { name = "luasnip", priority = 3 },
+        { name = "buffer", keyword_length = 5, priority = 3 },
     }, {
         { name = "neorg" },
     }),
@@ -59,6 +60,7 @@ local config = {
                 buffer = "Buffer",
                 cmdline = "Cmdline",
                 luasnip = "Snippet",
+                nerdfont = "Icon",
             },
         }),
     },
