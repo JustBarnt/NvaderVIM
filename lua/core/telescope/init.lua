@@ -1,7 +1,7 @@
 local map = require("core.utils").map
 local builtin = require "telescope.builtin"
 local telescope = require 'telescope'
-local exists, user_config = pcall(require, 'telescope')
+local exists, user_config = pcall(require, 'user.config')
 local config = exists and type(user_config) == 'table' and user_config.telescope or {}
 
 telescope.setup(config)
