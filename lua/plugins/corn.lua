@@ -5,8 +5,7 @@ return {
             local map = require("core.utils").map
             local config = require("user.plugins.corn").config
             require("corn").setup(config)
-
-            vim.diagnostic.config({ virtual_text = false })
+            
 
             -- Keys
             map("n", "<leader>cd", "<CMD>Corn toggle<CR>", { desc = "Toggle Corner Diagnostics" })
