@@ -8,11 +8,11 @@ My personal Nvim Distro
 
 Via `git`:
 
-```
+```bash
 # Windows
 git clone https://github.com/justbarnt/justbarnt.nvim ~/AppData/Local/nvim/
 
-#Unix
+# Unix
 git clone https://github.com/justbarnt/justbarnt.nvim ~/.config/nvim/
 
 ```
