@@ -27,6 +27,9 @@ wk.register({
         t = {
             name = "Template",
         },
+        x = {
+            name = "Trouble"
+        }
     },
     ["<leader>a"] = { "Actions Per Minute" },
     ["<leader>_"] = { "which_key_ignore" },

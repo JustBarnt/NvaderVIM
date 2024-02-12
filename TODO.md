@@ -1,10 +1,5 @@
-# Todo
--  Install and setup Neorg
--  Add User Commands to config to enable or disable
-- Setup `Which-Key`
-    - Includes adding all plugins that use `<leader>`
+# TODO
 - Setup help-doc
-- Trouble: Finish setup (create key maps)
 - lazygit nvim or fugitive
 
 ## Keymaps
