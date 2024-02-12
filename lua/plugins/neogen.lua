@@ -13,16 +13,16 @@ return {
             snippet_engine = "luasnip",
         })
 
-        map("n", "<leader>nf", function()
+        map("n", "<leader>tf", function()
             neogen.generate({ type = "func" })
-        end, { desc = "Generate Function Doc Types"})
+        end, { desc = "Generate Docs: Function"})
 
-        map("n", "<leader>nt", function()
+        map("n", "<leader>tt", function()
             neogen.generate({ type = "type" })
-        end, { desc = "Generate Type Doc Types"})
+        end, { desc = "Generate Docs: Type"})
 
-        map("n", "<leader>nc", function()
+        map("n", "<leader>tc", function()
             neogen.generate({ type = "class" })
-        end, { desc = "Generate Type Doc Types"})
+        end, { desc = "Generate Docs: Class"})
     end,
 }

@@ -1,6 +1,6 @@
 return {
     keys = {
-        { "<leader>cR", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+        { "<leader>cH", "<cmd>ClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
     },
     root_dir = function(fname)
         return require("lspconfig.util").root_pattern(

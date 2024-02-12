@@ -9,6 +9,6 @@ return {
         -- Keys
         map("n", "<leader>apm", function()
             apm:toggle_monitor()
-        end, { desc = "Vim Actions Per Minute" })
+        end, { desc = "Actions Per Minute" })
     end,
 }

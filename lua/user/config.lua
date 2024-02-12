@@ -25,6 +25,7 @@ M.user_commands = {
 M.autocmds = {
     --TODO: Add keybind that disables and enables this
     disable_auto_comment = false,
+    disable_wk_ops = true,
     help_in_float = true,
     highlight_yank = true,
     cursor_line = true,
@@ -107,21 +108,6 @@ M.harpoon = {
     settings = {
         save_on_toggle = true,
         sync_on_ui_close = true,
-    },
-}
-
-M.which_key = {
-    plugins = {
-        marks = false,
-    },
-    presets = {
-        operators = false,
-        motions = false,
-        z = false,
-        g = false,
-    },
-    motions = {
-        counts = true,
     },
 }
 

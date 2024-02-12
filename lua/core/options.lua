@@ -49,6 +49,8 @@ vim_opts({
         linebreak = false,
         foldmethod = "marker",
         foldlevel = 0,
+        -- timeout = true,
+        -- timeoutlen = 500,
         modelines = 1,
         belloff = "all",
         clipboard = "unnamedplus",

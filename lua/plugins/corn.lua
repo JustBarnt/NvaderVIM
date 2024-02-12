@@ -6,8 +6,8 @@ return {
             require('corn').setup({})
 
             -- Keys
-            map("n", "<leader>ct", "<CMD>CornToggle<CR>", { desc = "Toggle Corner Diagnostics" })
-            map("n", "<leader>cs", "<CMD>CornScopeCycle<CR>", { desc = "Cycle Scope Types" })
+            map("n", "<leader>cd", "<CMD>Corn toggle<CR>", { desc = "Toggle Corner Diagnostics" })
+            map("n", "<leader>cs", "<CMD>Corn scope_cycle<CR>", { desc = "Cycle Scope Types" })
         end,
     },
 }

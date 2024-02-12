@@ -47,18 +47,11 @@ M.Default = function()
     map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move Pane: Up" })
     map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move Pane: Right" })
 
-    -- Easy return to normal mode
-    map("i", "JK", "<ESC>", { desc = "Return to normal mode" })
-
-    -- Split Buffer
-    map("n", "<leader>bv", ":vsplit", { desc = "Prompt Split Buffer" })
-
     -- Center when joining lines
     map("n", "J", "mzJ`z")
 
     -- Close Buffer & Close Buffer without saving
     map("n", "<leader>x", ":bd<CR>", { desc = "Close Current Buffer" })
-    map("n", "<leader>X", ":bd!<CR>", { desc = "Close Current Buffer W/O Saving" })
 
     -- Clear Highlight after searching
     map("n", "<leader>sc", ':let @/ = ""<CR>', { desc = "Clear Search Highlights" })

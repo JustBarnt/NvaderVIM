@@ -6,6 +6,7 @@ require 'core.lazy'
 
 -- Bootstrap Config
 require 'core.options'
+require 'core.whichkey'
 require 'core.completion'
 require 'core.lsp'
 require 'core.treesitter'

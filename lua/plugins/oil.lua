@@ -7,8 +7,8 @@ return {
         keys = function()
             local map = require("core.utils").map
             local oil = require("oil")
-            map("n", "<leader>fe", oil.toggle_float, { desc = "Open Directory in Float"})
-            map("n", "<leader>pv", oil.open, {desc = "Open Directory"})
+            map("n", "<leader>de", oil.toggle_float, { desc = "Open Directory in Float"})
+            map("n", "<leader>do", oil.open, {desc = "Open Directory"})
         end,
         config = function()
             local config = require("user.plugins.oil").config
