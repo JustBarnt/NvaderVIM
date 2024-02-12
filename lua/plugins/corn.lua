@@ -1,6 +1,7 @@
 return {
     {
         "RaafatTurki/corn.nvim",
+        enabled = false,
         config = function()
             local map = require("core.utils").map
             local config = require("user.plugins.corn").config
