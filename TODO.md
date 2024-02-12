@@ -16,6 +16,8 @@ For setting up overrwritable keymaps
 - [ ] Write Svelte Treesitter queries to improve special block highlighting and indenting
 
 ## After Release
+- [ ] Dashboard 
+- [ ] Nvim-Tree?
 - [ ] DAP setup
     - [ ] C/C#
     - [ ] JS/TS
