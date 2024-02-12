@@ -1,7 +1,7 @@
 local M = {}
 
 M.config = {
-    scope = "file",
+    scope = "line",
     border_style = "solid",
 }
 
