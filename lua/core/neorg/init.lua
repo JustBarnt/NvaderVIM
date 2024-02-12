@@ -27,7 +27,7 @@ neorg.setup({
             config = {
                 workspaces = {
                     notes = "~/notes/personal",
-                    work = "~/notes/work",
+                    daily = "~/CommSys/Neorg/daily",
                     time_sheets = "~/CommSys/Neorg/timesheets",
                 },
                 index = "index.neorg",

@@ -25,7 +25,6 @@ M.user_commands = {
 M.autocmds = {
     --TODO: Add keybind that disables and enables this
     disable_auto_comment = false,
-    disable_wk_ops = true,
     help_in_float = true,
     highlight_yank = true,
     cursor_line = true,
@@ -94,7 +93,7 @@ M.servers = {
     clangd = require "core.lsp.servers.clangd",
     powershell_es = require "core.lsp.servers.powershell_es",
     emmet_language_server = require "core.lsp.servers.emmet_language_server",
-    tailwindcss = true, --require 'core.lsp.servers.tailwindcss',
+    tailwindcss = true,
     tsserver = require "core.lsp.servers.tsserver",
 }
 

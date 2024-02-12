@@ -13,10 +13,10 @@ local list = require("nvim-treesitter.parsers").get_parser_configs()
 list.norg = {
     install_info = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg",
-        branch = "main",
         files = { "src/parser.c", "src/scanner.cc" },
+        cxx_standard = "c++14",
+        use_makefile = false,
     },
-    maintainers = { "@JoeyGrajciar", "@vhyrro", "@mrossinek" },
 }
 
 treesitter.setup({
