@@ -6,7 +6,7 @@ My personal Nvim Distro
 
 ## Installing it
 
-Via `gh`:
+Via `git`:
 
 ```
 # Windows
