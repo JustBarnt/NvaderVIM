@@ -20,6 +20,10 @@ git clone https://github.com/justbarnt/justbarnt.nvim ~/AppData/Local/nvim/
 git clone https://github.com/justbarnt/justbarnt.nvim ~/.config/nvim/
 
 ```
+### Windows Requirements
+> llvm, clangd, gcc, mingw (All Compliler related for Tree-Sitter)
+> fd, ripgrep: fd is blazingly fast `find`, ripgrep is a blazingly fast regex search utility. Telescope utilizes both of these
+
 ## Features and structure
 - Todo
 

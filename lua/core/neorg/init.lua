@@ -23,6 +23,18 @@ neorg.setup({
                 engine = "nvim-cmp",
             },
         },
+        ["core.integrations.treesitter"] = {
+            config = {
+                parser_configs = {
+                    norg = {
+                        branch = "main",
+                        files = { "src/parser.c", "src/scanner.cc"},
+                        url = "https://github.com/nvim-neorg/tree-sitter-norg",
+                        revision = '014073fe8016d1ac440c51d22c77e3765d8f6855'
+                    }
+                }
+            }
+        },
         ["core.dirman"] = {
             config = {
                 workspaces = {
