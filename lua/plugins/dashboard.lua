@@ -64,7 +64,7 @@ return {
             end
 
 
-            require('dashboard').setup(opts)
+            require('dashboard').setup({})
         end,
     },
 }

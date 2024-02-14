@@ -8,8 +8,8 @@ local cmds = exist and type(config) == "table" and config.autocmds or {}
 local clear = { clear = true }
 
 if enabled(cmds, "dashboard_start") then
-    cmd('User', {
-        pattern = "DashboardLoaded",
+    cmd('VimEnter', {
+        pattern = "*",
         desc = "Toggles Dashboard",
         group = augroup("dashboard_start", clear),
         callback = function()
@@ -17,7 +17,7 @@ if enabled(cmds, "dashboard_start") then
                 require('oil').close()
             end
             
-            vim.cmd.Dashboard()
+            vim.cmd[[:Dashboard]]
         end,
     })
 end

@@ -13,6 +13,17 @@ return {
         require("ibl").setup({
             scope = { highlight = scope },
             indent = { highlight = indent },
+            exclude = {
+                filetypes = {
+                    "help",
+                    "dashboard",
+                    "Trouble",
+                    "trouble",
+                    "lazy",
+                    "mason",
+                    "oil",
+                },
+            },
         })
     end,
 }
