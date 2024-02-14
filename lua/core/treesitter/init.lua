@@ -10,15 +10,16 @@ local config = exist and type(user_config) == "table" and user_config.treesitter
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 
 ---@class ParserInfo[]
-list.norg = {
+
+--[[ list.norg = {
     install_info = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg",
         files = { "src/parser.c", "src/scanner.cc" },
         cxx_standard = "c++14",
-        use_makefile = true,
+        use_makefile = false,
     },
     maintainers = { "@JoeyGrajciar", "@vhyrro" },
-}
+} ]]
 
 treesitter.setup({
     ensure_installed = parsers,

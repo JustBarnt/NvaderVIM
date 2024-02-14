@@ -69,7 +69,6 @@ M.ensure_installed = {
         "lua",
         "markdown",
         "markdown_inline",
-        "norg",
         "php",
         "regex",
         "svelte",
@@ -198,18 +197,23 @@ M.treesitter = {
 
 M.telescope = {
     defaults = {
+        initial_mode = "insert",
         mappings = {
             i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble, ["<c-d>"] = actions.delete_buffer },
+            n = { ["<c-t>"] = trouble.open_with_trouble },
         },
     },
     pickers = {
         buffers = {
+            initial_mode = "normal",
             mappings = {
                 i = {
                     ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
                     ["<c-q>"] = actions.close,
                 },
+                n = {
+                    ["d"] = actions.delete_buffer
+                }
             },
         },
         find_files = {
