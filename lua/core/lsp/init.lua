@@ -78,10 +78,10 @@ local lsp_attach = function(client, bufnr)
             require("detour").Detour()
         end, { desc = "Go-To Definition" })
     end
-
+--[[ 
     if filetype == "typescript" or filetype == "lua" then
         client.server_capabilities.semanticTokensProvider = nil
-    end
+    end ]]
 end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()

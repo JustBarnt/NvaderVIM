@@ -26,11 +26,10 @@ neorg.setup({
         ["core.dirman"] = {
             config = {
                 workspaces = {
-                    notes = "~/notes/personal",
                     daily = "~/CommSys/Neorg/daily",
                     time_sheets = "~/CommSys/Neorg/timesheets",
+                    projects = "~/CommSys/Neorg/projects"
                 },
-                index = "index.neorg",
             },
         },
         ["core.esupports.metagen"] = {
