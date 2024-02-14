@@ -25,6 +25,7 @@ M.user_commands = {
 M.autocmds = {
     --TODO: Add keybind that disables and enables this
     disable_auto_comment = false,
+    dashboard_start = true,
     help_in_float = true,
     highlight_yank = true,
     cursor_line = true,
