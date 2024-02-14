@@ -15,8 +15,9 @@ list.norg = {
         url = "https://github.com/nvim-neorg/tree-sitter-norg",
         files = { "src/parser.c", "src/scanner.cc" },
         cxx_standard = "c++14",
-        use_makefile = false,
+        use_makefile = true,
     },
+    maintainers = { "@JoeyGrajciar", "@vhyrro" },
 }
 
 treesitter.setup({

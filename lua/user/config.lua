@@ -69,6 +69,7 @@ M.ensure_installed = {
         "lua",
         "markdown",
         "markdown_inline",
+        "norg",
         "php",
         "regex",
         "svelte",
