@@ -1,6 +1,7 @@
 # TODO
 - Setup help-doc
 - lazygit nvim or fugitive
+- Add keymaps to retoggle cmp using <C-.>?
 
 ## Keymaps
 For setting up overrwritable keymaps

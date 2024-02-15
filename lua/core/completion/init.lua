@@ -7,15 +7,18 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 ---@class cmp.ConfigSchema
 local config = {
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
+        -- Navigating
         ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-Up>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-Down>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-d>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }), { "i" }),
         ["<Tab>"] = cmp.config.disable,
-    },
+    }),
     -- Order sources are defined are the order they appear on the completion menu
     sorting = {
         comparators = {
@@ -84,6 +87,6 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     }),
     formatting = {
-        fields = { "abbr", "kind" },
+        fields = { "abbr" },
     },
 })
