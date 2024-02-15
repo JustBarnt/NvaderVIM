@@ -26,9 +26,8 @@ neorg.setup({
         ["core.dirman"] = {
             config = {
                 workspaces = {
-                    daily = "~/CommSys/Neorg/daily",
-                    time_sheets = "~/CommSys/Neorg/timesheets",
-                    projects = "~/CommSys/Neorg/projects"
+                    work = "~/CommSys/Work",
+                    personal = "~/bwilliams/personal",
                 },
             },
         },

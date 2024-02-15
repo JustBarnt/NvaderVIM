@@ -8,6 +8,10 @@ My personal Nvim Distro
 
 Via `git`:
 
+*RECOMENDATION*
+Install via Unix/WSL if would want to take advantage of Neorg.
+Getting the parsers to install on Windows is an absolute nightmare.
+
 ```bash
 # Windows
 git clone https://github.com/justbarnt/justbarnt.nvim ~/AppData/Local/nvim/
