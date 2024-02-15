@@ -35,7 +35,7 @@ end
 local autocmd = require("core.utils").autocmd
 local map = require("core.utils").map
 local autocmd_clear = vim.api.nvim_clear_autocmds
-
+local inlays = require 'core.lsp.inlay'
 
 local lsp_init = function(client)
     client.config.flags = client.config.flags or {}
@@ -78,10 +78,8 @@ local lsp_attach = function(client, bufnr)
             require("detour").Detour()
         end, { desc = "Go-To Definition" })
     end
---[[ 
-    if filetype == "typescript" or filetype == "lua" then
-        client.server_capabilities.semanticTokensProvider = nil
-    end ]]
+
+
 end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
