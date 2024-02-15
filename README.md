@@ -20,9 +20,15 @@ git clone https://github.com/justbarnt/justbarnt.nvim ~/AppData/Local/nvim/
 git clone https://github.com/justbarnt/justbarnt.nvim ~/.config/nvim/
 
 ```
-### Windows Requirements
-> llvm, clangd, gcc, mingw (All Compliler related for Tree-Sitter)
-> fd, ripgrep: fd is blazingly fast `find`, ripgrep is a blazingly fast regex search utility. Telescope utilizes both of these
+### Neorg
+Neorg is a Neovim implementation of OrgMode from Emacs. Using Neorg on windows has a few caveats.
+From my experience it seems the treesitter parser for `.norg` files only successfully builds when I am in a `.norg` file
+and I run `:Neorg sync-parsers`. If I try to run that command outside of `.norg` file the `Norg` parser builds incorrectly.
+> This doesn't appear to be an issue on linux?
+
+### Recommened Windows Packages
+- [llvm, clangd] or gcc and mingw (All Compliler related for Tree-Sitter)
+- fd, ripgrep: fd is blazingly fast `find`, ripgrep is a blazingly fast regex search utility. Telescope utilizes both of these
 
 ## Features and structure
 - Todo

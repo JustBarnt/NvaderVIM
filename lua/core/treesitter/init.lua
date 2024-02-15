@@ -6,7 +6,7 @@ local treesitter = require "nvim-treesitter.configs"
 local exist, user_config = pcall(require, "user.config")
 local parsers = exist and type(user_config) == "table" and user_config.ensure_installed.parsers or {}
 local config = exist and type(user_config) == "table" and user_config.treesitter or {}
-require('nvim-treesitter.install').compilers = { "clang" }
+-- require('nvim-treesitter.install').compilers = { "clang" }
 ---@class ParserInfo[]
 local list = require("nvim-treesitter.parsers").get_parser_configs()
 
