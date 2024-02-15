@@ -47,6 +47,9 @@ M.Default = function()
     map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move Pane: Up" })
     map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move Pane: Right" })
 
+    map({"n", "t"}, "<S-h>", "[[<Cmd>bp<CR>]]", { desc = "Jump to Previous Buffer"})
+    map({"n", "t"}, "<S-l>", "[[<Cmd>bn<CR>]]", { desc = "Jump to Next Buffer"})
+
     -- Center when joining lines
     map("n", "J", "mzJ`z")
 
