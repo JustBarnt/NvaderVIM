@@ -1,40 +1,35 @@
 return {
-	filetypes = {
-		"javascript",
-		"javascriptreact",
-		"javascript.jsx",
-		"typescript",
-		"typescriptreact",
-		"typescript.tsx",
-	},
-	settings = {
-		javascript = {
-			inlayhints = {
-                includeinlayparameternamehints = "all", -- 'none' | 'literals' | 'all';
-                includeinlayparameternamehintswhenargumentmatchesname = false,
-                includeinlayfunctionparametertypehints = true,
-                includeinlayvariabletypehints = false,
-                includeinlaypropertydeclarationtypehints = true,
-                includeinlayfunctionlikereturntypehints = false,
-				includeinlayenummembervaluehints = true,
-			},
-            suggest = {
-                includecompletionsformoduleexports = true,
-            }
-		},
-		typescript = {
-			inlayhints = {
-                includeinlayparameternamehints = "all", -- 'none' | 'literals' | 'all';
-                includeinlayparameternamehintswhenargumentmatchesname = false,
-                includeinlayfunctionparametertypehints = true,
-                includeinlayvariabletypehints = false,
-                includeinlaypropertydeclarationtypehints = true,
-                includeinlayfunctionlikereturntypehints = false,
-				includeinlayenummembervaluehints = true,
-			},
-            suggest = {
-                includecompletionsformoduleexports = true,
-            }
-		},
-	},
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+    },
+    settings = {
+        javascript = {
+            inlayHints = {
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+            },
+        },
+        typescript = {
+            inlayHints = {
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+            },
+        },
+    },
 }
