@@ -10,10 +10,10 @@ Via `git`:
 
 ```bash
 # Windows
-git clone https://github.com/justbarnt/justbarnt.nvim ~/AppData/Local/nvim/
+git clone https://github.com/justbarnt/justnvim ~/AppData/Local/nvim/
 
 # Unix
-git clone https://github.com/justbarnt/justbarnt.nvim ~/.config/nvim/
+git clone https://github.com/justbarnt/justnvim ~/.config/nvim/
 
 ```
 ## Features and structure
