@@ -10,6 +10,10 @@ For setting up overrwritable keymaps
       merge them, that way uses can safely overwrite default maps
       I set.
 
+
+## Custom Code actions menu
+https://github.com/nvim-telescope/telescope.nvim/pull/878
+
 ## Clean-up
 - [ ] use cond enabled and is !vim.g.vscode for plugins
     - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent
@@ -17,7 +21,7 @@ For setting up overrwritable keymaps
 
 ## After Release
 - [ ] nvim-spectre 
-- [ ] Dashboard 
+- [X] Dashboard 
 - [ ] Nvim-Tree?
 - [ ] DAP setup
     - [ ] C/C#

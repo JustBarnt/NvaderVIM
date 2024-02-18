@@ -20,7 +20,7 @@ if enabled(cmds, "dashboard_start") then
             vim.cmd[[:Dashboard]]
         end,
     })
-end
+end 
 
 if enabled(cmds, "disable_auto_comment") then
     cmd("BufEnter", {

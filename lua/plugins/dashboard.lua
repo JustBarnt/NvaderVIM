@@ -4,25 +4,12 @@ return {
         event = "VimEnter",
         config = function()
             local logo = [[
-        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⠶⠶⠛⠛⠛⠛⠓⠲⠶⢦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-        ⠀⠀⠀⠀⠀⠀⠀⠀⣠⡴⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠶⣤⡀⠀⠀⠀⢀⣀⣀⡀⠀⠀⠀
-        ⠀⠀⠀⠀⠀⢀⣴⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⢷⣤⡾⠛⠉⠉⠛⢷⣄⠀
-        ⠀⠀⠀⠀⣰⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣷⡀⢠⠶⢦⠀⢹⡆
-        ⠀⠀⢀⣾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡾⠋⠁⠀⠉⠛⢶⣄⠀⠀⠀⠀⠀⠀⠀⠈⢻⣎⠀⣸⠇⢸⡇
-        ⠀⢀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠙⣧⡀⠀⠀⠀⠀⠀⠀⠀⢻⡿⠋⢀⣾⠃
-        ⠀⣸⠿⠖⠀⠀⠀⠀⠀⠰⠿⠿⠷⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⡀⠀⠀⠀⠀⠀⠀⠀⣿⡶⠟⠁⠀
-        ⠀⣿⢦⡀⠀⠀⠀⠀⢀⡴⠶⣒⣲⢶⣄⠀⢻⣆⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀
-        ⢸⣿⡏⣇⠀⠀⠀⢰⣏⣴⣿⣿⣿⣷⣜⣷⠀⢻⣦⡀⠀⠀⠀⠀⠀⠀⢸⡟⠀⠀⠀⠀⠀⠀⠀⠀⣧⠀⠀⠀
-        ⢸⣿⡇⣿⠀⠀⠀⣸⢸⣿⣿⣿⣿⣿⣿⢸⠆⠀⠙⠿⣦⣄⣀⣀⣀⣠⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀
-        ⢸⣿⣷⣿⢿⣿⡿⠿⣦⡻⣿⣿⣿⡿⢏⡾⠀⠀⠀⠀⠀⠉⠙⠛⠋⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀
-        ⠀⣯⡿⣹⣦⡏⠀⠀⠈⠻⣶⡶⠶⠶⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠇⠀⠀⠀
-        ⠀⣿⠃⢀⣿⣿⡀⠀⠀⠀⠘⢷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡿⠀⠀⠀⠀
-        ⠀⢿⣤⣼⣧⣼⣧⡀⠀⠀⣴⣾⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠿⠋⠀⠀⠀⠀⣸⠃⠀⠀⠀⠀
-        ⠀⠈⢿⡙⢿⣄⣘⣿⡶⠶⠾⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡟⠁⠀⠀⠀⠀⠀⣴⠏⠀⠀⠀⠀⠀
-        ⠀⠀⠈⠻⣦⣀⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⣀⠀⠀⠀⢀⣼⠏⠀⠀⠀⠀⠀⠀
-        ⠀⠀⠀⠀⠀⠙⢻⣶⣤⣄⣀⡀⠀⠀⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣈⣽⢿⡄⠀⠈⣿⠀⠀⠀⠀⠀⠀⠀
-        ⠀⠀⠀⠀⠀⠀⠀⠻⣦⡿⠉⠛⠛⠻⠿⣧⠀⢠⣿⠤⠤⠴⠶⠶⠿⣿⣿⠃⠘⣷⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀
-        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣧⡼⠁⠀⠀⠀⠀⠀⠠⠖⠂⠀⠀⠘⠷⠟⠀⠀⠀⠀⠀⠀⠀⠀
+███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
             ]]
 
             logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -35,17 +22,19 @@ return {
                 config = {
                     header = vim.split(logo, "\n"),
                     center = {
-                        { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
+                        { action = "bd | Oil", desc = " Close Dashboard", icon = " ", key = "x" },
+                        { action = "Telescope find_files", desc = " Find file w/Current Directory", icon = " ", key = "f" },
                         { action = "ene | startinsert", desc = " New file", icon = " ", key = "n" },
-                        { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
+                        { action = "Telescope oldfiles only_cwd=true", desc = " Recent files", icon = " ", key = "r" },
                         { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
                         {
-                            action = [[lua require("lazyvim.util").telescope.config_files()()]],
+                            action = [[lua require('telescope.builtin').find_files({cwd = vim.fn.stdpath('config')})]],
                             desc = " Config",
                             icon = " ",
                             key = "c",
                         },
                         { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
+                        { action = "Mason", desc = " Mason", icon = "󰒋 ", key = "m" },
                         { action = "qa", desc = " Quit", icon = " ", key = "q" },
                     },
                     footer = function()
@@ -63,8 +52,7 @@ return {
                 button.key_format = "  %s"
             end
 
-
-            require('dashboard').setup({})
+            require("dashboard").setup(opts)
         end,
     },
 }
