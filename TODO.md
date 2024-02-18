@@ -1,7 +1,10 @@
 # TODO
 - Setup help-doc
 - lazygit nvim or fugitive
+<<<<<<< HEAD
 - Add keymaps to retoggle cmp using <C-.>?
+=======
+>>>>>>> feat-dashboard
 
 ## Keymaps
 For setting up overrwritable keymaps
@@ -11,6 +14,13 @@ For setting up overrwritable keymaps
       merge them, that way uses can safely overwrite default maps
       I set.
 
+<<<<<<< HEAD
+=======
+
+## Custom Code actions menu
+https://github.com/nvim-telescope/telescope.nvim/pull/878
+
+>>>>>>> feat-dashboard
 ## Clean-up
 - [ ] use cond enabled and is !vim.g.vscode for plugins
     - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent
@@ -18,7 +28,11 @@ For setting up overrwritable keymaps
 
 ## After Release
 - [ ] nvim-spectre 
+<<<<<<< HEAD
 - [ ] Dashboard 
+=======
+- [X] Dashboard 
+>>>>>>> feat-dashboard
 - [ ] Nvim-Tree?
 - [ ] DAP setup
     - [ ] C/C#
