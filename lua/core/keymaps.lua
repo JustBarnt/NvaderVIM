@@ -13,10 +13,13 @@ M.Default = function()
     -- Prevent macro keybinds
     map("n", "Q", "<NOP>")
     map("n", "q", function()
-        local num_of_wins = vim.api.nvim_list_wins()
+        local windows = vim.api.nvim_list_wins()
         local ft = vim.bo.ft
-
-        if #num_of_wins > 1 and ft ~= 'TelescopePrompt' then
+        
+        -- Solution is instead of trying to close the windows, its check the buffers and just close the current buffer instead of the current
+        -- window, when there is only one buffer, open Oil in current dir
+       
+        if #windows > 1 and ft ~= 'TelescopePrompt' then
             vim.api.nvim_win_close(0, true)
         elseif ft == 'TelescopePrompt' then
             require('telescope.actions').close(vim.api.nvim_get_current_buf())

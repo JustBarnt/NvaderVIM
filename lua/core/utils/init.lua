@@ -11,6 +11,24 @@ local vim_options = function(options)
 	end
 end
 
+--- Closes empty windows from neovim
+--- returns current listed windows and a list of closed windows
+---@param windows any[]
+---@return {windows:any[], deleted: any[]}
+function M.close_empty_wins(windows)
+    local closed_win
+    for i = 1, #windows do
+        if vim.tbl_isempty(windows[i]) then
+            vim.api.nvim_win_close(windows[1], true)
+            table.insert(closed_win, windows[1])
+        end
+    end
+
+    vim.print("Windows Closed: " .. tostring(closed_win))
+
+    return {windows, closed = closed_win}
+end
+
 local map = function(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
 	if opts then
