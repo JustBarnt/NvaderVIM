@@ -6,3 +6,4 @@ return {
         map("n", "<leader>mb", "<CMD>ShowMessageFloat<CR>", { desc = "Show Scratch Message Buffer" })
     end,
 }
+
