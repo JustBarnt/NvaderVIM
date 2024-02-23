@@ -4,6 +4,7 @@ local lsps = exist and type(config) == "table" and config.ensure_installed.mason
 local servers = exist and type(config) == "table" and config.servers or {}
 local neodev = vim.F.npcall(require, "neodev")
 local neoconf = vim.F.npcall(require, "neoconf")
+
 if neodev then
     neodev.setup({
         library = {

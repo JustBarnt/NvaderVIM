@@ -1,9 +1,16 @@
 return {
-    root_dir = require('lspconfig.util').root_pattern("lua", ".stylua.toml", "lazy-lock.json", ".neoconf.json", "neoconf.json"),
+    root_dir = require("lspconfig.util").root_pattern(
+        "lua",
+        ".stylua.toml",
+        "lazy-lock.json",
+        ".neoconf.json",
+        "neoconf.json"
+    ),
     settings = {
         Lua = {
+            runtime = { version = "LuaJIT" },
             workspace = {
-                checkThirdParty = false
+                checkThirdParty = false,
             },
             telemetry = { enable = false },
             completion = {
@@ -19,7 +26,7 @@ return {
             diagnostics = {
                 disable = {
                     "incomplete-signature-doc",
-                    "missing-fields"
+                    "missing-fields",
                 },
                 global = {
                     "vim",
@@ -27,6 +34,5 @@ return {
                 unusedLocalExclude = { "_*" },
             },
         },
-    }
+    },
 }
-
