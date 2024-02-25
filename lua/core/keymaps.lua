@@ -1,10 +1,10 @@
-local map = require 'core.utils'.map
+local map = require("core.utils").map
 
 local M = {}
 
 M.Default = function()
     -- Paste from register
-    map("i", "<C-v>", "<C-r>\"", { desc = "Insert Mode Paste" })
+    map("i", "<C-v>", '<C-r>"', { desc = "Insert Mode Paste" })
 
     -- Move to the Start / End of a line without leaving insert mode
     map("i", "<C-b>", "<C-o>0", { desc = "Jump to front of line" })
@@ -13,16 +13,14 @@ M.Default = function()
     -- Prevent macro keybinds
     map("n", "Q", "<NOP>")
     map("n", "q", function()
-        local windows = vim.api.nvim_list_wins()
-        local ft = vim.bo.ft
-        
-        -- Solution is instead of trying to close the windows, its check the buffers and just close the current buffer instead of the current
-        -- window, when there is only one buffer, open Oil in current dir
-       
-        if #windows > 1 and ft ~= 'TelescopePrompt' then
-            vim.api.nvim_win_close(0, true)
-        elseif ft == 'TelescopePrompt' then
-            require('telescope.actions').close(vim.api.nvim_get_current_buf())
+        -- Closes a floating window
+        local win_id = vim.api.nvim_get_current_win()
+
+        if vim.api.nvim_win_get_config(win_id).zindex then
+            vim.api.nvim_win_close(win_id, true)
+        elseif #vim.api.nvim_list_wins() >= 2 and vim.api.nvim_get_current_win() ~= vim.api.nvim_list_wins()[1] then
+            vim.print(vim.api.nvim_list_wins())
+            vim.api.nvim_win_close(win_id, false)
         end
 
     end, { desc = "Close Float/Window", noremap = false })
@@ -50,8 +48,8 @@ M.Default = function()
     map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move Pane: Up" })
     map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move Pane: Right" })
 
-    map({"n", "t"}, "<S-h>", "[[<Cmd>bp<CR>]]", { desc = "Jump to Previous Buffer"})
-    map({"n", "t"}, "<S-l>", "[[<Cmd>bn<CR>]]", { desc = "Jump to Next Buffer"})
+    map({ "n", "t" }, "<S-h>", "[[<Cmd>bp<CR>]]", { desc = "Jump to Previous Buffer" })
+    map({ "n", "t" }, "<S-l>", "[[<Cmd>bn<CR>]]", { desc = "Jump to Next Buffer" })
 
     -- Center when joining lines
     map("n", "J", "mzJ`z")
@@ -68,6 +66,5 @@ M.Default = function()
 
     -- Show Lazy UI
     map("n", "<leader>L", ":Lazy<CR>", { desc = "Show Lazy " })
-    end
+end
 return M
-

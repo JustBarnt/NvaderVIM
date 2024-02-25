@@ -3,9 +3,9 @@ local text = ""
 
 -- Override LSP diagnostics support if its supported.
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-    signs = { severity_limit = "Warning" },
-    underline = { severity_limit = "Warning" },
-    virtual_text = { severity_limit = "Warning" },
+    signs = { min = "Warning" },
+    underline = { min = "Warning" },
+    virtual_text = { min = "Warning" },
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = ""}
