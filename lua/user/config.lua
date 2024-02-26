@@ -95,7 +95,7 @@ M.servers = {
     powershell_es = require "core.lsp.servers.powershell_es",
     emmet_language_server = require "core.lsp.servers.emmet_language_server",
     tailwindcss = true,
-    tsserver = require "core.lsp.servers.tsserver",
+    -- tsserver = require "core.lsp.servers.tsserver",
 }
 
 M.formatters = {

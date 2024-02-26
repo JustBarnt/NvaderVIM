@@ -119,6 +119,12 @@ for server, server_config in pairs(servers) do
     setup_server(server, server_config)
 end
 
+require('typescript-tools').setup({
+    settings = {
+        code_lens = "all",
+    }
+})
+
 require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
