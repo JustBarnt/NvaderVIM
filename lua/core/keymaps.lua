@@ -19,7 +19,6 @@ M.Default = function()
         if vim.api.nvim_win_get_config(win_id).zindex then
             vim.api.nvim_win_close(win_id, true)
         elseif #vim.api.nvim_list_wins() >= 2 and vim.api.nvim_get_current_win() ~= vim.api.nvim_list_wins()[1] then
-            vim.print(vim.api.nvim_list_wins())
             vim.api.nvim_win_close(win_id, false)
         end
 

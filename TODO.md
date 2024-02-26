@@ -1,4 +1,6 @@
 # TODO
+- Set Telescope UI-Select picker to normal mode default
+- Install cheat.nvim (cheat.sh) plugin
 - Setup help-doc
 - lazygit nvim or fugitive
 - Add keymaps to retoggle cmp using <C-.>?
