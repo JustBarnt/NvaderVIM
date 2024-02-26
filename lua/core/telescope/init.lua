@@ -5,6 +5,7 @@ local exists, user_config = pcall(require, 'user.config')
 local config = exists and type(user_config) == 'table' and user_config.telescope or {}
 
 telescope.setup(config)
+telescope.load_extension('ui-select')
 
 --Keys
 map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
