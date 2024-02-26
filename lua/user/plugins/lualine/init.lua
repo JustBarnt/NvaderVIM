@@ -10,21 +10,7 @@ M.config = {
         -- section_separators = { left = '', right = ''},
     },
     sections = {
-        lualine_a = {
-            {
-                "buffers",
-                hide_filename_extension = true,
-                filetype_names = {
-                    TelescopePrompt = "Telescope 󰭎",
-                },
-                use_mode_colors = true,
-                symbols = {
-                    modified = " ●", -- Text to show when the buffer is modified
-                    alternate_file = "#", -- Text to show to identify the alternate file
-                    directory = "", -- Text to show when the buffer is a directory
-                },
-            },
-        },
+        lualine_a = { },
         lualine_b = {
             {
                 "branch",
