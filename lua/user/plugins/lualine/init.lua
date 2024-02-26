@@ -10,7 +10,20 @@ M.config = {
         -- section_separators = { left = '', right = ''},
     },
     sections = {
-        lualine_a = { },
+        lualine_a = {
+            {
+                "filename",
+                file_statue = true,
+                path = 1,
+                use_mode_colors = true,
+                symbols = {
+                    modified = "",
+                    read_only = "",
+                    unnamed = "󰂾",
+                    newfile = ""
+                },
+            },
+        },
         lualine_b = {
             {
                 "branch",
