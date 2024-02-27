@@ -4,6 +4,7 @@ local lsps = exist and type(config) == "table" and config.ensure_installed.mason
 local servers = exist and type(config) == "table" and config.servers or {}
 local neodev = vim.F.npcall(require, "neodev")
 local neoconf = vim.F.npcall(require, "neoconf")
+
 if neodev then
     neodev.setup({
         library = {
@@ -117,6 +118,12 @@ end
 for server, server_config in pairs(servers) do
     setup_server(server, server_config)
 end
+
+require('typescript-tools').setup({
+    settings = {
+        code_lens = "all",
+    }
+})
 
 require("conform").setup({
     formatters_by_ft = {

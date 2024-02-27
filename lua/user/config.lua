@@ -95,7 +95,7 @@ M.servers = {
     powershell_es = require "core.lsp.servers.powershell_es",
     emmet_language_server = require "core.lsp.servers.emmet_language_server",
     tailwindcss = true,
-    tsserver = require "core.lsp.servers.tsserver",
+    -- tsserver = require "core.lsp.servers.tsserver",
 }
 
 M.formatters = {
@@ -204,6 +204,11 @@ M.telescope = {
             n = { ["<c-t>"] = trouble.open_with_trouble },
         },
     },
+    extensions = {
+        ["ui-select"] = {
+            require('telescope.themes').get_dropdown()
+        },
+    },
     pickers = {
         buffers = {
             initial_mode = "normal",
@@ -217,9 +222,7 @@ M.telescope = {
                 }
             },
         },
-        find_files = {
-            find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
-        },
+        find_files = require('core.utils').select_find_command(),--vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
     },
 }
 

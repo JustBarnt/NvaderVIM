@@ -12,16 +12,15 @@ M.config = {
     sections = {
         lualine_a = {
             {
-                "buffers",
-                hide_filename_extension = true,
-                filetype_names = {
-                    TelescopePrompt = "Telescope 󰭎",
-                },
+                "filename",
+                file_statue = true,
+                path = 1,
                 use_mode_colors = true,
                 symbols = {
-                    modified = " ●", -- Text to show when the buffer is modified
-                    alternate_file = "#", -- Text to show to identify the alternate file
-                    directory = "", -- Text to show when the buffer is a directory
+                    modified = "",
+                    read_only = "",
+                    unnamed = "󰂾",
+                    newfile = ""
                 },
             },
         },

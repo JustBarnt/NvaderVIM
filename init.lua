@@ -2,6 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+
 if not vim.g.vscode then
     require "core"
     if vim.g.loaded_undotree then
