@@ -15,6 +15,7 @@ end
 --find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
 function M.select_find_command()
     local rg_command = {
+        initial_mode = "insert",
         hidden = true,
         find_command = {
             "rg",
@@ -32,6 +33,7 @@ function M.select_find_command()
         },
     }
     local fd_command = {
+        initial_mode = "insert",
         find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
     }
 

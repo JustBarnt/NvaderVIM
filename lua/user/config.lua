@@ -198,7 +198,7 @@ M.treesitter = {
 
 M.telescope = {
     defaults = {
-        initial_mode = "insert",
+        initial_mode = "normal",
         mappings = {
             i = { ["<c-t>"] = trouble.open_with_trouble },
             n = { ["<c-t>"] = trouble.open_with_trouble },
@@ -206,7 +206,7 @@ M.telescope = {
     },
     extensions = {
         ["ui-select"] = {
-            require('telescope.themes').get_dropdown()
+            require('telescope.themes').get_dropdown(),
         },
     },
     pickers = {
