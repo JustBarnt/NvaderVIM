@@ -9,7 +9,13 @@ vim.filetype.add({
         postcss = "css",
     },
 })
-vim.opt.shortmess:append "sWAIcCqF"
+vim.opt.shortmess = {
+    a = true,
+    c = true, -- Do not show completion messages
+    F = true, -- Do not show file info when editing 
+    W = true, -- Do not show "written" -> when saving file
+    I = true, -- do not show intro message
+}
 
 vim_opts({
     ---@class vim.opt
