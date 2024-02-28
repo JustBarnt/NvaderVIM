@@ -24,8 +24,5 @@ return {
         map("n", "<leader>xl", function()
             require("trouble").toggle("loclist")
         end, { desc = "Trouble Local List" })
-        map("n", "gR", function()
-            require("trouble").toggle("lsp_references")
-        end, { desc = "LSP References" })
     end,
 }

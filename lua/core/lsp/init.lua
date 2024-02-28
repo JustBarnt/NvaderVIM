@@ -36,6 +36,7 @@ end
 local autocmd = require("core.utils").autocmd
 local map = require("core.utils").map
 local autocmd_clear = vim.api.nvim_clear_autocmds
+local builtins = require 'telescope.builtin'
 local inlays = require 'core.lsp.inlay'
 
 local lsp_init = function(client)
@@ -47,12 +48,12 @@ local augroup_highlight = vim.api.nvim_create_augroup("custom-lsp-reference", { 
 
 local lsp_attach = function(client, bufnr)
     local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-
     map("i", "<C-s>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
     map("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Symbols" })
     map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Actions" })
+    map("n", "gr", builtins.lsp_references, { desc = "Symbol References"})
     map("n", "gD", vim.lsp.buf.declaration, { desc = "Go-To Declaration" })
-    map("n", "gT", vim.lsp.buf.type_definition, { desc = "Go-To Defintion" })
+    map("n", "gT", builtins.lsp_type_definitions, { desc = "Go-To Defintion" })
     map("n", "K", vim.lsp.buf.hover, { desc = "Peek Definition" })
     map("n", "<leader>lf", "<CMD>LspFormat<CR>", { desc = "LSP Format" })
     map("n", "<leader>lr", "<CMD>LspRestart<CR>", { desc = "LSP Restart" })
@@ -68,6 +69,10 @@ local lsp_attach = function(client, bufnr)
         autocmd({ "CursorMoved", augroup_highlight, vim.lsp.buf.clear_references, bufnr })
     end
 
+    if filetype == "typescript" or filetype == "lua" then
+        client.server_capabilities.semanticTokensProvider = nil
+    end
+
     if filetype == "cs" then
         map("n", "gd", function()
             require("omnisharp_extended").lsp_definitions()
@@ -79,8 +84,6 @@ local lsp_attach = function(client, bufnr)
             require("detour").Detour()
         end, { desc = "Go-To Definition" })
     end
-
-
 end
 
 local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
