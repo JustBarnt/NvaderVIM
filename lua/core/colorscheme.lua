@@ -39,3 +39,4 @@ rose_pine.setup({
 })
 
 vim.cmd.colorscheme "rose-pine-moon"
+vim.cmd.hi 'Comment gui=none'
