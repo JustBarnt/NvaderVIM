@@ -55,7 +55,6 @@ M.ensure_installed = {
         "svelte",
         "tailwindcss",
         "taplo",
-        "tsserver",
     },
     parsers = {
         "bash",
