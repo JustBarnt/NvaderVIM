@@ -3,9 +3,11 @@
 - [ ] Setup Nvim-CMP to match kickstart
 - [ ] Install cheat.nvim (cheat.sh) plugin
 - [ ] Automatically open Oil when last buffer closes instead of an Empty buffer
-- Setup help-doc
-- lazygit nvim or fugitive
-- Add keymaps to retoggle cmp using <C-.>?
+- [ ] Setup help-doc
+- [ ] lazygit nvim or fugitive
+- [ ] Setup Commands (As splits)
+      Open Timesheets (Neorg)
+      Open Daily Tasks (Neorg)
 
 ## Keymaps
 For setting up overrwritable keymaps
@@ -26,7 +28,6 @@ https://github.com/nvim-telescope/telescope.nvim/pull/878
 ## After Release
 - [ ] nvim-spectre 
 - [X] Dashboard 
-- [ ] Nvim-Tree?
 - [ ] DAP setup
     - [ ] C/C#
     - [ ] JS/TS

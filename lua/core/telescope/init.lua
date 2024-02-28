@@ -11,7 +11,7 @@ telescope.load_extension "themes"
 --Basic Telescope builtin
 --see :h Telescope.builtin
 map("n", "<leader>fh", builtin.help_tags, { desc = "Find Help Tags" })
-map("n", "<leader>fk", builtin.keymaps, { desc = "Find Keymaps" })
+map("n", "<leader>fk", function() builtin.keymaps({ show_plug = false}) end, { desc = "Find Keymaps" })
 map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
 map("n", "<leader>fs", builtin.builtin, { desc = "Find Telescope Builtins" })
 map("n", "<leader>fw", builtin.grep_string, { desc = "Find Word in File " })

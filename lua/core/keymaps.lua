@@ -45,6 +45,7 @@ M.Default = function()
     map({ "n", "t" }, "<C-j>", [[<Cmd>wincmd j<CR>]], { desc = "Move Pane: Down" })
     map({ "n", "t" }, "<C-k>", [[<Cmd>wincmd k<CR>]], { desc = "Move Pane: Up" })
     map({ "n", "t" }, "<C-l>", [[<Cmd>wincmd l<CR>]], { desc = "Move Pane: Right" })
+    map('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
     map({ "n", "t" }, "<S-h>", "[[<Cmd>bp<CR>]]", { desc = "Jump to Previous Buffer" })
     map({ "n", "t" }, "<S-l>", "[[<Cmd>bn<CR>]]", { desc = "Jump to Next Buffer" })
