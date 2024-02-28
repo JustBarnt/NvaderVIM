@@ -1,10 +1,16 @@
 # TODO
 - [x] Setup Telescope UI-Select picker to normal mode default
+- [x] lazygit nvim or fugitive
+- [X] Dashboard
+- [ ] Add a [health](https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/health.lua) command 
+- [ ] nvim-spectre
+- [ ] DAP setup
+    - [ ] C/C#
+    - [ ] JS/TS
 - [ ] Setup Nvim-CMP to match kickstart
 - [ ] Install cheat.nvim (cheat.sh) plugin
 - [ ] Automatically open Oil when last buffer closes instead of an Empty buffer
 - [ ] Setup help-doc
-- [ ] lazygit nvim or fugitive
 - [ ] Setup Commands (As splits)
       Open Timesheets (Neorg)
       Open Daily Tasks (Neorg)
@@ -24,10 +30,3 @@ https://github.com/nvim-telescope/telescope.nvim/pull/878
 - [ ] use cond enabled and is !vim.g.vscode for plugins
     - Figure out what plugins are vscode safe, like nvim-surround should be safe, but GUI plugins arent
 - [ ] Write Svelte Treesitter queries to improve special block highlighting and indenting
-
-## After Release
-- [ ] nvim-spectre 
-- [X] Dashboard 
-- [ ] DAP setup
-    - [ ] C/C#
-    - [ ] JS/TS
