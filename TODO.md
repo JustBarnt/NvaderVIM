@@ -2,6 +2,7 @@
 - [x] Setup Telescope UI-Select picker to normal mode default
 - [ ] Setup Nvim-CMP to match kickstart
 - [ ] Install cheat.nvim (cheat.sh) plugin
+- [ ] Automatically open Oil when last buffer closes instead of an Empty buffer
 - Setup help-doc
 - lazygit nvim or fugitive
 - Add keymaps to retoggle cmp using <C-.>?
