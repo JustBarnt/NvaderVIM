@@ -82,10 +82,10 @@ M.ensure_installed = {
 }
 
 M.servers = {
-    bashls = true,
-    html = true,
-    svelte = require "core.lsp.servers.svelte",
-    cssls = true,
+    bashls = {},
+    html = {},
+    svelte = {},
+    cssls = {},
     omnisharp = require "core.lsp.servers.omnisharp",
     lua_ls = require "core.lsp.servers.lua_ls",
     intelephense = require "core.lsp.servers.intelephense",
@@ -93,7 +93,7 @@ M.servers = {
     clangd = require "core.lsp.servers.clangd",
     powershell_es = require "core.lsp.servers.powershell_es",
     emmet_language_server = require "core.lsp.servers.emmet_language_server",
-    tailwindcss = true,
+    tailwindcss = {},
     -- tsserver = require "core.lsp.servers.tsserver",
 }
 
