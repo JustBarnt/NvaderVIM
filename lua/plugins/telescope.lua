@@ -5,12 +5,8 @@ return {
         branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
+            "andrew-george/telescope-themes"
         },
     },
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
-        dependencies = {
-            "nvim-telescope/telescope.nvim"
-        }
-    }
 }

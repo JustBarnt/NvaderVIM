@@ -6,6 +6,7 @@ local config = exists and type(user_config) == 'table' and user_config.telescope
 
 telescope.setup(config)
 telescope.load_extension('ui-select')
+telescope.load_extension('themes')
 
 --Keys
 map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
