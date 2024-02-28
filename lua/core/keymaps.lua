@@ -21,7 +21,6 @@ M.Default = function()
         elseif #vim.api.nvim_list_wins() >= 2 and vim.api.nvim_get_current_win() ~= vim.api.nvim_list_wins()[1] then
             vim.api.nvim_win_close(win_id, false)
         end
-
     end, { desc = "Close Float/Window", noremap = false })
 
     -- Disable use of Arrow Keys: use (HJKL)
@@ -65,5 +64,9 @@ M.Default = function()
 
     -- Show Lazy UI
     map("n", "<leader>L", ":Lazy<CR>", { desc = "Show Lazy " })
+
+    -- Clear HLSearch
+    map("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear Search Highlights" })
 end
+
 return M
