@@ -1,7 +1,4 @@
 # TODO
-- [x] Setup Telescope UI-Select picker to normal mode default
-- [x] lazygit nvim or fugitive
-- [X] Dashboard
 - [ ] Add a [health](https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/health.lua) command 
 - [ ] nvim-spectre
 - [ ] DAP setup
