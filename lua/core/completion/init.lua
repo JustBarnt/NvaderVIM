@@ -5,6 +5,8 @@ local lspkind = require "lspkind"
 local compare = require("core.completion.comparators").compare
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
+--Follow this for setting up auto doxygen like snippets: https://github.com/NormalNvim/NormalNvim/blob/main/lua/plugins/4-dev.lua#L88C10-L88C18
+
 ---@class cmp.ConfigSchema
 local config = {
     mapping = cmp.mapping.preset.insert({

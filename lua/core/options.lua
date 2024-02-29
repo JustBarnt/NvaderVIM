@@ -9,7 +9,13 @@ vim.filetype.add({
         postcss = "css",
     },
 })
-vim.opt.shortmess:append "sWAIcCqF"
+vim.opt.shortmess = {
+    a = true,
+    c = true, -- Do not show completion messages
+    F = true, -- Do not show file info when editing 
+    W = true, -- Do not show "written" -> when saving file
+    I = true, -- do not show intro message
+}
 
 vim_opts({
     ---@class vim.opt
@@ -34,8 +40,9 @@ vim_opts({
         equalalways = false,
         splitright = true,
         splitbelow = true,
-        updatetime = 1000,
-        hlsearch = false,
+        updatetime = 250,
+        timeoutlen = 300,
+        hlsearch = true,
         scrolloff = 10,
         cursorline = false,
         autoindent = true,
@@ -45,23 +52,15 @@ vim_opts({
         shiftwidth = 4,
         softtabstop = 4,
         expandtab = true,
-        breakindent = false,
-        showbreak = string.rep(" ", 3),
-        linebreak = false,
-        foldmethod = "marker",
-        foldlevel = 0,
-        -- timeout = true,
-        -- timeoutlen = 500,
-        modelines = 1,
+        breakindent = true,
         belloff = "all",
         clipboard = "unnamedplus",
         inccommand = "split",
         swapfile = false,
         mouse = "a",
         joinspaces = false,
-        list = false,
-        listchars = { eol = "󰌑" },
-        fillchars = { eob = "~" },
+        list = true,
+        listchars = { tab = '» ', trail = '·', nbsp = '␣' },
         undodir = vim.fn.stdpath "state" .. "\\undotree\\",
         undofile = true,
         signcolumn = "yes",
