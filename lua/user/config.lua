@@ -19,7 +19,7 @@ M.user_options = {
 M.user_commands = {
     quit_all = true,
     format = true,
-    telescope_highlight_tags = true
+    telescope_highlight_tags = true,
 }
 
 M.autocmds = {
@@ -197,15 +197,19 @@ M.treesitter = {
 
 M.telescope = {
     defaults = {
-        initial_mode = "normal",
-        mappings = {
-            i = { ["<c-t>"] = trouble.open_with_trouble },
-            n = { ["<c-t>"] = trouble.open_with_trouble },
-        },
+        initial_mode = "insert",
     },
     extensions = {
         ["ui-select"] = {
-            require('telescope.themes').get_dropdown(),
+            require("telescope.themes").get_cursor({ initial_mode = "normal" }),
+        },
+        cmdline = {
+            picker = {
+                layout_config = {
+                    width = 60,
+                    height = 10,
+                },
+            },
         },
     },
     pickers = {
@@ -217,17 +221,11 @@ M.telescope = {
                     ["<c-q>"] = actions.close,
                 },
                 n = {
-                    ["d"] = actions.delete_buffer
-                }
+                    ["d"] = actions.delete_buffer,
+                },
             },
         },
-        live_grep = {
-            initial_mode = "insert",
-        },
-        help_tags = {
-            initial_mode = 'insert',
-        },
-        find_files = require('core.utils').select_find_command(),--vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
+        find_files = require("core.utils").select_find_command(), --vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
     },
 }
 
