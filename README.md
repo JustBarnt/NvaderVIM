@@ -1,8 +1,7 @@
 # A Neovim Plugin Template
 
 ![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
-
-# JustNVIM
+# NvaderVIM
 This is my creation of an opinated Neovim Distribution.
 
 ### Why?
