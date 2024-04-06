@@ -1,15 +1,13 @@
-# A Neovim Plugin Template
-
 ![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
 # NvaderVIM
-This is my creation of an opinated Neovim Distribution.
+This is my creation of a Neovim Distribution.
 
 ### Why?
-Other Distros included multiple plugins I didn't use and I wanted to use this as a good experience to learn more about neovim
-itself.
+Other Distros included multiple plugins I didn't use and I wanted to use this as a good experience to learn more about neovim itself. As well as this sounded fun to build.
 
 ## Pre-requisites
 1. Neovim >= 0.9.5
+  a. Althrough I recommend you build from nightly
 2. a `C` compliler for `nvim-treesitter`
     a. `make` optional, but there are plugins that use `make` such as `telescope-fzf` for fuzzy finding
 3. [Ripgrep](https://github.com/BurntSushi/ripgrep) is required for Telescope grep searching which this Distribution uses as a core feature
@@ -23,11 +21,48 @@ itself.
 1. [Nerd Fonts](https://nerdfonts.com) - All icons used are nerd font specific so without them icons will look similar to what you see in github when looking at icons defined in the repo
 2. [lazygit](https://github.com/jesseduffield/lazygit) - a TUI git application I integrate this inside of [toggleterm](https://github.com/akinsho/toggleterm.nvim) to provide a seemless what to use git without having to leave neovim
 3. [Node](https://nodejs.org) - Required to download several LSP's
-4. `sqlite3` - `telescope-frecency` and `legendary` both use this to recommend files, keys, commands you frequently use without this installed those features are disabled
 
-## Installing
->TODO
+## Installation
+
+### Linux/Mac OS (Unix)
+
+#### Make a backup of your current nvim and shared folder
+
+```shell
+mv ~/.config/nvim ~/.config/nvim.bak
+mv ~/.local/share/nvim ~/.local/share/nvim.bak
+mv ~/.local/state/nvim ~/.local/state/nvim.bak
+mv ~/.cache/nvim ~/.cache/nvim.bak
+```
+
+#### Clone the template repository
+
+```shell
+git clone https://github.com/JustBarnt/NvaderVIM ~/.config/nvim
+rm -rf ~/.config/nvim/.git
+nvim
+```
+
+### Windows (Powershell)
+
+#### Make a backup of your current nvim and nvim-data folder
+
+```pwsh
+Rename-Item -Path $env:LOCALAPPDATA\nvim -NewName $env:LOCALAPPDATA\nvim.bak
+Rename-Item -Path $env:LOCALAPPDATA\nvim-data -NewName $env:LOCALAPPDATA\nvim-data.bak
+```
+
+#### Clone the repository
+
+```pwsh
+git clone https://github.com/JustBarnt/NvaderVIM $env:LOCALAPPDATA\nvim
+Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
+nvim
+```
 
 ### Configuration
 1. You need to move|copy `lua/default_config.lua` -> `lua/user/config.lua`
 2. After that your config will overwrite anything of the items you see defined in the configuration
+
+# TODO
+- [] Add Preview Images
