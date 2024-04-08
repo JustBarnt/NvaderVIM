@@ -4,7 +4,7 @@ local command = vim.api.nvim_create_user_command
 local harpoon = require "harpoon"
 
 command("HarpoonAdd", function()
-  harpoon:list():append()
+  harpoon:list():add()
 end, { bang = false })
 
 command("HarpoonMenu", function()
