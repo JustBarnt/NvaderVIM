@@ -155,7 +155,7 @@ return {
         {
           name = "Default",
           opts = {
-            sticky = false,
+            sticky = true,
           },
         },
       },
