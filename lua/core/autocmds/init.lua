@@ -1,5 +1,10 @@
 local utils = require "core.utils"
 
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = "*.lua",
+  command = [[setlocal shiftwidth=2]],
+})
+
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "*",
   callback = function(event)
