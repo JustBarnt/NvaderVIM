@@ -19,7 +19,7 @@ return {
       remove = {},
       rename = {},
       open_pre = {},
-      open = { "Neotree toggle", "Telescope find_files" },
+      open = { "Neotree show", "Telescope find_files" },
     },
   },
   config = function(_, opts)
