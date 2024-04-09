@@ -5,14 +5,12 @@ M.conform = {
     "stylua",
     "prettierd",
     "prettier",
-    "pretty-php",
   },
   formatters_by_ft = {
     lua = { "stylua" },
     svelte = { "prettierd" },
     javascript = { { "prettierd", "prettier" } },
     typescript = { { "prettierd", "prettier" } },
-    php = { "pretty-php" },
   },
 }
 
