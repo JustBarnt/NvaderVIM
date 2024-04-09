@@ -12,7 +12,6 @@ return {
       "andrew-george/telescope-themes",
       "debugloop/telescope-undo.nvim",
     },
-    cmd = { "Telescope", "TodoTelescope", "TelescopeHighlights" },
     keys = function()
       local builtin = require "telescope.builtin"
       return {
