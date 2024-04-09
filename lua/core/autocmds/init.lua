@@ -9,7 +9,11 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*.lua",
-  command = [[setlocal shiftwidth=2]],
+  callback = function()
+    vim.cmd[[setlocal shiftwidth=2]]
+    vim.notify "running"
+  end,
+  -- command = [[setlocal shiftwidth=2]],
 })
 
 vim.api.nvim_create_autocmd("TermOpen", {
