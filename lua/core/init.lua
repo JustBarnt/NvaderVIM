@@ -1,6 +1,3 @@
--- Load Core Settings
-require "core.options"
-
 -- Bootstrap Neovim to work with poweshell if we are on Windows
 if vim.fn.has "win32" == 1 then
   local powershell_options = {
