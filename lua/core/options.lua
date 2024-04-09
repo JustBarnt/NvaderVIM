@@ -1,4 +1,6 @@
 local vim_opts = require("core.utils").vim_options
+local exist, config = pcall(require, "user.config")
+local opts = exist and type(config) == "table" and config.options or {}
 
 vim.opt.shortmess = {
   c = true, -- Do not show completion messages
@@ -6,8 +8,8 @@ vim.opt.shortmess = {
   I = true, -- do not show intro message
 }
 
-vim_opts {
-  ---@class vim.opt
+---@class vim.opt
+local default_opt = {
   opt = {
     commentstring = "",
     numberwidth = 5,
@@ -62,6 +64,5 @@ vim_opts {
   },
 }
 
-local exist, config = pcall(require, "user.config")
-local opts = exist and type(config) == "table" and config.options or {}
-vim_opts(opts)
+local merged_opts = vim.tbl_deep_extend("force", default_opt, opts)
+vim_opts(merged_opts)
