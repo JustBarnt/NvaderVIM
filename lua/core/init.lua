@@ -40,6 +40,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy = require "lazy"
 ---@class LazySpec
+-- TODO: For integrating VSCODE support to load only plugins it needs
+--       https://github.com/isaksamsten/nvim-config/blob/e6eac29e17df6a2314f109d74952331cb52b2a00/lua/config/lazy.lua#L13
 local plugins_spec = { { import = "core.plugins" }, { import = "plugins" }, {
   "justinsgithub/wezterm-types",
 } }
