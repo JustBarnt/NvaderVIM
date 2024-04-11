@@ -36,8 +36,8 @@ return {
     enabled = utils.enabled("plugins", "inc-rename"),
     command = "IncRename",
     opts = {
-      hl_group = "Substitute",
-      input_buffer_type = "dressing",
+      -- hl_group = "Substitute",
+      -- input_buffer_type = "dressing",
     },
     config = function(_, opts)
       require("inc_rename").setup(utils.create_spec("inc-rename", opts))

@@ -5,7 +5,12 @@ return {
   event = "VeryLazy",
   opts = {
     input = {
-      enabled = false,
+      enabled = true,
+      override = function(conf)
+        conf.col = -1
+        conf.row = 0
+        return conf
+      end
     },
     select = {
       get_config = function(opts)
