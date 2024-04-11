@@ -130,7 +130,7 @@ return {
               },
             },
           },
-          find_files = require("core.utils").select_find_command(), --vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
+          find_files = require("core.utils").select_find_command(vim.fn.executable),
         },
       }
     end,

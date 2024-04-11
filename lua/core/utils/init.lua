@@ -89,7 +89,8 @@ end
 
 --- Sets the Telescope find_files picker to RipGrep on windows if
 --- the user is on windows
-function M.select_find_command()
+---@param executable integer Interger value if command is found
+function M.select_find_command(executable)
   local rg_command = {
     initial_mode = "insert",
     hidden = true,
@@ -119,19 +120,21 @@ function M.select_find_command()
 
   local fd_command = {
     initial_mode = "insert",
-    hidden = true,
-    no_ignore = true,
-    file_ignore_patterns = {
-      "node_modules",
-      ".git",
-      ".svn",
-      "build",
-      ".obj",
-    },
-    find_command = vim.fn.executable == 1 and { "fd", "--strip-cwd-prefix", "--type", "f" } or nil,
+    find_command = vim.fn.executable == 1 and {
+      "fd",
+      "--type=f",
+      "--color=never",
+      "--path-separator=/",
+      "--hidden",
+      "--include",
+      "lua/**/user/*",
+      "--exclude",
+      "!{.git/*,.svelte-kit/*,target/*,node_modules/*}, lua/user/*",
+      -- "--strip-cwd-prefix",
+    }
   }
 
-  if vim.fn.glob(vim.fn.getcwd() .. "/.svelte-kit"):match "%.svelte%-kit" ~= nil then
+  if executable ~= 1 then
     return rg_command
   else
     return fd_command
