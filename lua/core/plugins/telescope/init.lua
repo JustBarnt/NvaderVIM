@@ -143,6 +143,7 @@ return {
 
       telescope.setup(telescope_config)
 
+      -- TODO: pcall require theses incase they get disabled
       telescope.load_extension "themes"
       telescope.load_extension "luasnip"
       telescope.load_extension "undo"
