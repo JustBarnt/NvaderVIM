@@ -165,6 +165,10 @@ return {
     end,
   },
   {
+    "tpope/vim-sleuth",
+    enabled = utils.enabled("plugins", "vim-sleuth");
+  },
+  {
     "folke/todo-comments.nvim",
     enabled = utils.enabled("plugins", "todo-comments"),
     event = "VeryLazy",
