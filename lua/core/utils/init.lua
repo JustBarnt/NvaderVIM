@@ -87,8 +87,7 @@ function M.get_window_location(direction)
   return nil
 end
 
---- Sets the Telescope find_files picker to RipGrep on windows if
---- the user is on windows
+--- Sets the executable used for find_files based on whether or not FD is found.
 ---@param executable integer Interger value if command is found
 function M.select_find_command(executable)
   local rg_command = {
