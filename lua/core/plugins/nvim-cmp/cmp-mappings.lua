@@ -11,7 +11,7 @@ function M.insert(cmp, luasnip)
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
     -- Close Completion Menu
-    ["<TAB>"] = cmp.mapping.abort(),
+    ["<C-q>"] = cmp.mapping.abort(),
 
     -- Confirm Selection
     ["<C-y>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }, { "i" }),
@@ -34,7 +34,7 @@ function M.insert(cmp, luasnip)
         fallback()
       end
     end, { "i", "s" }), -- Select Completion Item
-    ["<CR>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }, { "i" }),
+    ["<CR>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }),
   }
 end
 

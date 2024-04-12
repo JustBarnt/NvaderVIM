@@ -15,9 +15,11 @@ return {
     },
     config = function()
       -- Getting required imports from plugins
+      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
       local cmp = require "cmp"
       local luasnip = require "luasnip"
       local lspkind = require "lspkind"
+      local cmp_utils = require "core.utils.cmp"
       -- Distro Related Helpers
       local comparators = require "core.plugins.nvim-cmp.cmp-comparators"
       local mappings = require "core.plugins.nvim-cmp.cmp-mappings"
@@ -26,6 +28,10 @@ return {
       luasnip.config.setup {}
       ---@class cmp.ConfigSchema
       local config = {
+        enabled = function()
+          return cmp_utils.is_enabled()
+        end,
+        preselect = cmp.PreselectMode.Item,
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -42,6 +48,11 @@ return {
         },
         window = {
           completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+          },
+          documentation = {
             winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
             col_offset = -3,
             side_padding = 0,
@@ -63,7 +74,11 @@ return {
       -- Setup autocompletion for search cmdline
       cmp.setup(config)
       cmp.setup.cmdline({ "/", "?" }, { mapping = cmp.mapping.preset.cmdline(), sources = sources.search() })
-      cmp.setup.cmdline(":", { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline() })
+      cmp.setup.cmdline(
+        ":",
+        { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline(), preselect = cmp.PreselectMode.Item }
+      )
+      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
   {
