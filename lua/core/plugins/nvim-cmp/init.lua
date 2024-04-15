@@ -19,7 +19,6 @@ return {
       local cmp = require "cmp"
       local luasnip = require "luasnip"
       local lspkind = require "lspkind"
-      local cmp_utils = require "core.utils.cmp"
       -- Distro Related Helpers
       local comparators = require "core.plugins.nvim-cmp.cmp-comparators"
       local mappings = require "core.plugins.nvim-cmp.cmp-mappings"
@@ -28,9 +27,6 @@ return {
       luasnip.config.setup {}
       ---@class cmp.ConfigSchema
       local config = {
-        enabled = function()
-          return cmp_utils.is_enabled()
-        end,
         preselect = cmp.PreselectMode.Item,
         snippet = {
           expand = function(args)
