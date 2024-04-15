@@ -10,7 +10,7 @@ return {
     },
     config = function(_, opts)
       require("nvim-autopairs").setup(utils.create_spec("nvim-autopairs", opts))
-          end,
+    end,
   },
   {
     "numToStr/Comment.nvim",
@@ -46,6 +46,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
+    cmd = "Neogen",
     keys = function()
       local neogen = require "neogen"
       return {
