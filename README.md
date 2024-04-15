@@ -7,9 +7,9 @@ Other Distros included multiple plugins I didn't use and I wanted to use this as
 
 ## Pre-requisites
 1. Neovim >= 0.9.5
-  a. Althrough I recommend you build from nightly
+  lthrough I recommend you build from nightly
 2. a `C` compliler for `nvim-treesitter`
-    a. `make` optional, but there are plugins that use `make` such as `telescope-fzf` for fuzzy finding
+    make` optional, but there are plugins that use `make` such as `telescope-fzf` for fuzzy finding
 3. [Ripgrep](https://github.com/BurntSushi/ripgrep) is required for Telescope grep searching which this Distribution uses as a core feature
 4. [fd](https://github.com/sharkdp/fd) is a cross-platform `find` like program that `Telescope` uses for its 'find_files' functionality to deliver insanely fast file searching
 5. Git >= 2.19.0
