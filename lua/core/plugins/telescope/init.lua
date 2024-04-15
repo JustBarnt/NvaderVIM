@@ -14,12 +14,11 @@ return {
     },
     keys = function()
       local builtin = require "telescope.builtin"
+      local tele_utils = require "core.utils.telescope"
       return {
         { "<leader>sr", "<CMD>Telescope frecency workspace=CWD<CR>", desc = "Search Recent Telescopes" },
         { "<leader>sh", builtin.help_tags, desc = "Search Help Tags" },
-        { "<leader>sf", builtin.find_files, desc = "Search Files" },
         { "<leader>ss", builtin.builtin, desc = "Search Telescope Builtins" },
-        { "<leader>sg", builtin.live_grep, desc = "Search Word in File " },
         { "<leader>so", builtin.oldfiles, desc = "Search Oldfiles" },
         { "<leader>st", "<CMD>Telescope themes<CR>", desc = "Search Themes" },
         { "<leader><leader>", builtin.buffers, desc = "Search Buffers" },
@@ -27,6 +26,39 @@ return {
         { "<leader>sc", "<CMD>LegendaryCommands<CR>", desc = "Search Commands" },
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
+        {
+          "<leader>sf",
+          function()
+            builtin.find_files {
+              hidden = true,
+              no_ignore = true,
+              file_ignore_patterns = {
+                "node_modules",
+                ".git",
+                ".svn",
+                ".svelte-kit",
+                "build",
+              },
+              find_command = tele_utils.select_find_command(),
+            }
+          end,
+          desc = "Search Files",
+        },
+        {
+          "<leader>sg",
+          function()
+            if vim.fn.executable "fd" or vim.fn.executable "fdfind" == 1 then
+              builtin.find_files {
+                hidden = false,
+                no_ignore = true,
+                find_command = tele_utils.search_for_repos(),
+              }
+            else
+              vim.notify("Do you have FD installed?", vim.log.levels.WARN)
+            end
+          end,
+          desc = "Search Git Projects",
+        },
         {
           "<leader>sw",
           function()
@@ -74,6 +106,7 @@ return {
     end,
     opts = function()
       local actions = require "telescope.actions"
+      local tele_utils = require "core.utils.telescope"
       local open_with_trouble = require("trouble.sources.telescope").open
 
       return {
@@ -130,7 +163,6 @@ return {
               },
             },
           },
-          find_files = require("core.utils").select_find_command(vim.fn.executable),
         },
       }
     end,
@@ -144,7 +176,7 @@ return {
       telescope.setup(telescope_config)
 
       -- TODO: pcall require theses incase they get disabled
-      telescope.load_extension "themes"
+      pcall(telescope.load_extension, "themes")
       telescope.load_extension "luasnip"
       telescope.load_extension "undo"
       telescope.load_extension "noice"

@@ -11,10 +11,19 @@
 ---@field ensure_installed string[]
 ---@field formatters_by_ft table<string, string[]|string|string[][]>
 
----@class JustNvimTelescope
+---@class TelescopeOpts
 ---@field defaults table Default configuration for telescope `:h telescope.defaults`
 ---@field pickers table Configuration for telescope pickers: `:h telescope.pickers`
 ---@field extensions table Configuration for telescope extensions: `:h telescope.extensions`
+
+---@class RepoOpts
+---@field enable_home_dir boolean
+---@field search_dirs string[]
+
+---@class JustNvimTelescope
+---@field Telescope TelescopeOpts
+---@field RepoSettings RepoOpts
+
 
 ---@class JustNvimFeatures
 ---@field plugins {[string]: boolean} Table containing a key value pair of plugins to disiable
