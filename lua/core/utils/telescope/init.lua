@@ -23,13 +23,14 @@ function M.select_find_command()
     "--color=never",
     "--path-separator=/",
     "--hidden",
-    "--include",
-    "lua/**/user/*",
+    "--no-ignore",
     "--exclude",
-    "!{.git/*,.svelte-kit/*,target/*,node_modules/*}, lua/user/*",
+    "!{.git/*,.svelte-kit/*,target/*,node_modules/*}, !lua/user/",
   }
 
-  if vim.fn.executable "fd" or vim.fn.executable "fdfind" ~= 1 then
+  local has_fd = vim.fn.executable("fd") or vim.fn.executable("fdfind");
+
+  if has_fd == 0 then
     return rg_command
   else
     return fd_command
