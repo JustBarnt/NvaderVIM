@@ -26,7 +26,7 @@ return {
   },
   {
     "folke/flash.nvim",
-    event = "BufReadPre",
+    event = "VeryLazy",
     enabled = utils.enabled("plugins", "flash"),
         -- stylua: ignore
         keys = {
@@ -37,7 +37,17 @@ return {
             { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         },
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      ---@type table<string, Flash.Config>
+      modes = {
+        char = {
+          jump_labels = true,
+        },
+        treesitter = {
+          search = { incremental = true },
+        },
+      },
+    },
     config = function(_, opts)
       require("flash").setup(utils.create_spec("flash", opts))
     end,
@@ -166,7 +176,7 @@ return {
   },
   {
     "tpope/vim-sleuth",
-    enabled = utils.enabled("plugins", "vim-sleuth");
+    enabled = utils.enabled("plugins", "vim-sleuth"),
   },
   {
     "folke/todo-comments.nvim",
