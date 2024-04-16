@@ -33,11 +33,11 @@ return {
               hidden = true,
               no_ignore = true,
               file_ignore_patterns = {
-                "node_modules",
-                ".git",
-                ".svn",
-                ".svelte-kit",
-                "build",
+                "node_modules/",
+                ".git/",
+                ".svn/",
+                ".svelte-kit/",
+                "build/",
               },
               find_command = tele_utils.select_find_command(),
             }

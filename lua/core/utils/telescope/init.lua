@@ -25,10 +25,16 @@ function M.select_find_command()
     "--hidden",
     "--no-ignore",
     "--exclude",
-    "!{.git/*,.svelte-kit/*,target/*,node_modules/*}, !lua/user/",
+    ".git/**",
+    "--exclude",
+    ".svelte-kit/**",
+    "--exclude",
+    "target/**",
+    "--exclude",
+    "node_modules/**",
   }
 
-  local has_fd = vim.fn.executable("fd") or vim.fn.executable("fdfind");
+  local has_fd = vim.fn.executable "fd" or vim.fn.executable "fdfind"
 
   if has_fd == 0 then
     return rg_command
@@ -44,11 +50,12 @@ function M.search_for_repos()
   local find_command = {
     "fd",
     "--hidden",
+    "--color=never",
     "--no-ignore-vcs",
     "--case-sensitive",
     "--absolute-path",
     "--regex",
-    "^\\.git$|.svn$",
+    "^/.git$|.svn$",
   }
 
   for i = 1, #config.search_dirs do
