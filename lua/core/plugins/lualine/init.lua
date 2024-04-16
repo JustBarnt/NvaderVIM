@@ -1,12 +1,11 @@
 local utils = require "core.utils"
 return {
   "nvim-lualine/lualine.nvim",
-  event = "BufReadPre",
   dependencies = {
     "abeldekat/harpoonline",
     version = "*",
   },
-  enabled = utils.enabled("plugins", "lualine"),
+  enabled = false,
   event = "ColorScheme",
   opts = function()
     local components = require "plugins.components.lualine_components"
