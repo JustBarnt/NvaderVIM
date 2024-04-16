@@ -6,7 +6,7 @@ return {
     event = "VeryLazy",
     branch = "0.1.x",
     dependencies = {
-      { "piersolenski/telescope-import.nvim", enabled = vim.fn.executable "rg" },
+      { "piersolenski/telescope-import.nvim", enabled = vim.fn.executable "rg" == 1 },
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
       "andrew-george/telescope-themes",
@@ -177,14 +177,11 @@ return {
 
       -- TODO: pcall require theses incase they get disabled
       pcall(telescope.load_extension, "themes")
-      telescope.load_extension "luasnip"
-      telescope.load_extension "undo"
-      telescope.load_extension "noice"
-      telescope.load_extension "pomodori"
-
-      if vim.fn.executable "rg" then
-        telescope.load_extension "import"
-      end
+      pcall(telescope.load_extension, "luasnip")
+      pcall(telescope.load_extension, "undo")
+      pcall(telescope.load_extension, "noice")
+      pcall(telescope.load_extension, "pomodori")
+      pcall(telescope.load_extension, "import")
     end,
   },
 }
