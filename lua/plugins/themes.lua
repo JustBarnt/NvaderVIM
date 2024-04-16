@@ -88,4 +88,9 @@ return {
       require("nordic").setup(utils.create_spec("nordic", opts))
     end,
   },
+  {
+    "AstroNvim/astrotheme",
+    priority = 1000,
+    lazy = false,
+  },
 }
