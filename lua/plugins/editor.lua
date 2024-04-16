@@ -2,6 +2,18 @@ local utils = require "core.utils"
 
 return {
   {
+    "axkirillov/hbac.nvim",
+    event = "VeryLazy",
+    enabled = utils.enabled("plugins", "hbac"),
+    opts = {
+      autoclose = true,
+      threshold = 5,
+    },
+    config = function(_, opts)
+      require("hbac").setup(utils.create_spec("hbac", opts))
+    end,
+  },
+  {
     "famiu/bufdelete.nvim",
     event = "VeryLazy",
     enabled = utils.enabled("plugins", "bufdelete"),
