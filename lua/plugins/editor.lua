@@ -139,7 +139,7 @@ return {
   {
     "shellRaining/hlchunk.nvim",
     event = "BufReadPre",
-    enabled = utils.enabled("plugins", "hlchunk"),
+    enabled = false, --utils.enabled("plugins", "hlchunk"),
     opts = { blank = { enable = false }, chunk = { chars = { right_arrow = "─" } }, line_num = { enable = false } },
     config = function(_, opts)
       require("hlchunk").setup(utils.create_spec("hlchunk", opts))
@@ -203,27 +203,6 @@ return {
     opts = {},
     config = function(_, opts)
       require("todo-comments").setup(utils.create_spec("todo-comments", opts))
-    end,
-  },
-  {
-    "theprimeagen/vim-apm",
-    enabled = utils.enabled("plugins", "vim-apm"),
-    keys = {
-      {
-        "<leader>apm",
-        function()
-          require("vim-apm"):toggle_monitor()
-        end,
-        desc = "Toggle Actions Per Minute",
-      },
-    },
-    opts = {
-      reporter = {
-        type = "memory",
-      },
-    },
-    config = function(_, opts)
-      require("vim-apm"):setup(utils.create_spec("vim-apm", opts))
     end,
   },
   {
