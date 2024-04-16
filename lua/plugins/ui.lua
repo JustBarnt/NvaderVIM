@@ -35,6 +35,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
+    tag = "v0.7",
     enabled = utils.enabled("plugins", "gitsigns"),
     event = "BufReadPre",
     opts = {
