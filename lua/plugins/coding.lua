@@ -67,6 +67,14 @@ return {
     end,
   },
   {
+    "myzel394/jsonfly.nvim",
+    event = "VeryLazy",
+    enabled = utils.enabled("plugins", "jsonfly"),
+    keys = {
+      { "<leader>sj", "<CMD>Telescope jsonfly<CR>", desc = "Open JSONFly", ft = { "json" } },
+    },
+  },
+  {
     "booperlv/nvim-gomove",
     event = "VeryLazy",
     enabled = utils.enabled("plugins", "gomove"),

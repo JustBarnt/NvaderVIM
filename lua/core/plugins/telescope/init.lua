@@ -182,6 +182,7 @@ return {
       pcall(telescope.load_extension, "noice")
       pcall(telescope.load_extension, "pomodori")
       pcall(telescope.load_extension, "import")
+      pcall(telescope.load_extension, "jsonfly")
     end,
   },
 }
