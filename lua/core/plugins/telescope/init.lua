@@ -26,6 +26,7 @@ return {
         { "<leader>sc", "<CMD>LegendaryCommands<CR>", desc = "Search Commands" },
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
+        { "<leader>/", builtin.live_grep, desc = "Grep Project Wide" },
         {
           "<leader>sf",
           function()
@@ -81,16 +82,6 @@ return {
             }
           end,
           desc = "Search by Grep",
-        },
-        {
-          "<leader>/",
-          function()
-            builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
-              winblend = 10,
-              previewer = false,
-            })
-          end,
-          desc = "[/] Fuzzy Search Current Buffer",
         },
         {
           "<leader>s/",
