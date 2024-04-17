@@ -4,6 +4,8 @@ return {
     tag = "v2.10.0",
     opts = {
       shade_terminals = false,
+      start_in_insert = true,
+      hide_numbers = true,
     },
     keys = function()
       local lazyterm = require "core.utils.terminal"
