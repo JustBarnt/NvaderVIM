@@ -28,7 +28,7 @@ M.servers = {
   powershell_es = require "core.plugins.lsp.servers.powershell_es",
   emmet_language_server = require "core.plugins.lsp.servers.emmet_language_server",
   yamlls = require "core.plugins.lsp.servers.yamlls",
-  tailwindcss = {},
+  tailwindcss = require 'core.plugins.lsp.servers.tailwindcss',
 }
 
 return M
