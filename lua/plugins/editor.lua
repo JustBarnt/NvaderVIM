@@ -105,6 +105,19 @@ return {
     end,
   },
   {
+    "WolfeCub/harpeek.nvim",
+    enabled = utils.enabled("plugins", "harpeek"),
+    opts = {
+      format = "relative",
+    },
+    keys = {
+      {"<leader>hp", function() require("harpeek").toggle() end, desc = "Toggle Harpeek"},
+    },
+    config = function(_, opts)
+      require("harpeek").setup(utils.create_spec("harpeek", opts))
+    end,
+  },
+  {
     "theprimeagen/harpoon",
     enabled = utils.enabled("plugins", "harpoon"),
     branch = "harpoon2",
