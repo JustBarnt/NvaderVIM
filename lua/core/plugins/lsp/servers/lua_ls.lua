@@ -14,7 +14,6 @@ return {
       },
       hint = {
         enable = true,
-        arrayIndex = "Disable",
       },
       diagnostics = {
         disable = {
