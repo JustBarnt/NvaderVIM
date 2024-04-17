@@ -1,3 +1,4 @@
+local utils = require 'core.utils'
 return {
   {
     "rcarriga/nvim-notify",
@@ -10,8 +11,7 @@ return {
       timeout = 2500,
     },
     config = function(_, opts)
-      require("notify").setup(opts)
-      vim.notify = require "notify"
+      require("notify").setup(utils.create_spec("notify", opts))
     end,
   },
 }

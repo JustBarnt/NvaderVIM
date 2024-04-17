@@ -80,6 +80,8 @@ end
 -- Setting up lazy specs
 lazy.setup(plugins_spec, opts)
 
+vim.notify = require "notify"
+
 if vim.fn.findfile(vim.fn.stdpath "config" .. "/lua/colorscheme.lua") ~= "" then
   require "colorscheme"
 else
@@ -90,8 +92,10 @@ else
   vim.cmd [[colorscheme tokyonight-storm]]
 end
 
-require "core.keymaps"
-require "core.autocmds"
-require "core.user-commands"
-require "extras.commands"
-require "extras.autocmds"
+vim.schedule(function()
+  require "core.keymaps"
+  require "core.autocmds"
+  require "core.user-commands"
+  require "extras.commands"
+  require "extras.autocmds"
+end)
