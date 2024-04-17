@@ -1,12 +1,5 @@
 local utils = require "core.utils"
 
-vim.api.nvim_create_autocmd("User", {
-  pattern = "LazyVimStarted",
-  callback = function()
-    require "core.options"
-  end,
-})
-
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = "*.lua",
 --   callback = function()
