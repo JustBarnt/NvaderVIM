@@ -42,11 +42,6 @@ return {
               root_dir = server.root_dir,
               capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
             }
-            lspconfig.lua_ls.setup({
-              flags = {
-                allow_incremental_sync = false,
-              }
-            })
           end,
         },
       }
