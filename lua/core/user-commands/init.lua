@@ -23,8 +23,3 @@ command("HarpoonSelect", function(cmd)
   index = cmd.args and type(cmd.args) == "string" and tonumber(cmd.args) or ""
   harpoon:list():select(index)
 end, { bang = false, nargs = "?" })
-
-command("EdgyTerm", function()
-  local term = require "core.utils.terminal"
-  term.edgyterm_toggle()
-end, { bang = false })

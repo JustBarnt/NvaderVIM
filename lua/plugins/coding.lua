@@ -6,7 +6,7 @@ return {
     event = "InsertEnter",
     enabled = utils.enabled("plugins", "nvim-autopairs"),
     opts = {
-      disable_filetype = { "TelescopePrompt", "spectre_panel", "neo-tree", "toggleterm" },
+      disable_filetype = { "TelescopePrompt", "spectre_panel", "neo-tree" },
     },
     config = function(_, opts)
       require("nvim-autopairs").setup(utils.create_spec("nvim-autopairs", opts))

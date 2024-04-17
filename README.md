@@ -19,7 +19,6 @@ Other Distros included multiple plugins I didn't use and I wanted to use this as
 
 ### Optionals
 1. [Nerd Fonts](https://nerdfonts.com) - All icons used are nerd font specific so without them icons will look similar to what you see in github when looking at icons defined in the repo
-2. [lazygit](https://github.com/jesseduffield/lazygit) - a TUI git application I integrate this inside of [toggleterm](https://github.com/akinsho/toggleterm.nvim) to provide a seemless what to use git without having to leave neovim
 3. [Node](https://nodejs.org) - Required to download several LSP's
 
 ## Installation
