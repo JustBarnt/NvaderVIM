@@ -4,11 +4,12 @@ return {
   "rebelot/heirline.nvim",
   dependencies = {
     "zeioth/heirline-components.nvim",
+    "abeldekat/harpoonline",
   },
   event = "VeryLazy",
   opts = function()
     local lib = require "heirline-components.all"
-
+    local harpoon_component = require "core.plugins.heirline.harpoon_component".harpoon_component()
     return {
       opts = {
         disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
@@ -39,6 +40,7 @@ return {
         lib.component.fill(),
         lib.component.lsp(),
         lib.component.nav(),
+        harpoon_component,
         lib.component.mode { surround = { separator = "right" } },
       },
     }
