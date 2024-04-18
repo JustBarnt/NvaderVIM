@@ -102,6 +102,7 @@ return {
 
       return {
         defaults = {
+          path_display = { "smart" },
           mappings = {
             i = {
               ["<C-t>"] = open_with_trouble,
