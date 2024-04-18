@@ -7,6 +7,11 @@ return {
     enabled = utils.enabled("plugins", "nvim-autopairs"),
     opts = {
       disable_filetype = { "TelescopePrompt", "spectre_panel", "neo-tree" },
+      check_ts = true,
+      ts_config = {
+        lua = { 'string' },
+        javascript = { 'template_string' },
+      }
     },
     config = function(_, opts)
       require("nvim-autopairs").setup(utils.create_spec("nvim-autopairs", opts))

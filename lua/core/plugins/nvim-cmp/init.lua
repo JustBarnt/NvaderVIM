@@ -20,20 +20,26 @@ return {
       local luasnip = require "luasnip"
       local lspkind = require "lspkind"
       -- Distro Related Helpers
-      local comparators = require "core.plugins.nvim-cmp.cmp-comparators"
       local mappings = require "core.plugins.nvim-cmp.cmp-mappings"
       local sources = require "core.plugins.nvim-cmp.cmp-sources"
       -- Luasnip Setup
       luasnip.config.setup {}
+
       ---@class cmp.ConfigSchema
       local config = {
-        preselect = cmp.PreselectMode.Item,
+        -- preselect = cmp.PreselectMode.Item,
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
           end,
         },
-        completion = { completeopt = "menu,menuone,noinsert" },
+        completion = {
+          autocomplete = {
+            cmp.TriggerEvent.TextChanged,
+            cmp.TriggerEvent.InsertEnter
+          },
+          completeopt = "menu,menuone,noselect"
+        },
         performance = {
           max_view_entries = 15,
         },
@@ -72,7 +78,7 @@ return {
       cmp.setup.cmdline({ "/", "?" }, { mapping = cmp.mapping.preset.cmdline(), sources = sources.search() })
       cmp.setup.cmdline(
         ":",
-        { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline(), preselect = cmp.PreselectMode.Item }
+        { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline() }
       )
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
