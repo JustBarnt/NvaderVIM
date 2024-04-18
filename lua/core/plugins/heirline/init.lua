@@ -9,7 +9,10 @@ return {
   event = "VeryLazy",
   opts = function()
     local lib = require "heirline-components.all"
-    local harpoon_component = require "core.plugins.heirline.harpoon_component".harpoon_component()
+    local harpoon_component = require("core.plugins.heirline.harpoon_component").harpoon_component()
+
+    local left_slant = ""
+    local right_slant = ""
     return {
       opts = {
         disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
@@ -32,16 +35,22 @@ return {
         lib.component.signcolumn(),
       },
       statusline = {
-        hl = { fg = "fg", bg = "bg" },
-        lib.component.mode(),
-        lib.component.git_branch(),
-        lib.component.file_info(),
+        lib.component.mode {
+          mode_text = {},
+          surround = {
+            separator = { "", right_slant },
+          },
+        },
+        lib.component.git_branch {
+        },
+        lib.component.file_info {
+          hl = lib.hl.get_attributes("file_info"),
+        },
         lib.component.diagnostics(),
         lib.component.fill(),
         lib.component.lsp(),
         lib.component.nav(),
         harpoon_component,
-        lib.component.mode { surround = { separator = "right" } },
       },
     }
   end,
