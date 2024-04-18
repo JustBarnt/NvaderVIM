@@ -11,6 +11,13 @@ vim.opt.shortmess = {
 ---@class vim.opt
 local default_opt = {
   opt = {
+    tabstop = 2,
+    softtabstop = -1,
+    shiftwidth = 2,
+    shiftround = true,
+    autoindent = true,
+    smartindent = true,
+    cindent = true,
     commentstring = "",
     numberwidth = 5,
     statuscolumn = " %s%=%{v:relnum?v:relnum:v:lnum}%#WinSeparator#  ",
@@ -41,8 +48,6 @@ local default_opt = {
     hlsearch = true,
     scrolloff = 10,
     cursorline = false,
-    autoindent = true,
-    cindent = true,
     wrap = false,
     breakindent = true,
     belloff = "all",

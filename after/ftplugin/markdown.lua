@@ -10,5 +10,3 @@ vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.conceallevel = 3
 vim.opt.concealcursor = "nc"
-vim.opt.tabstop = 8
-vim.opt.shiftwidth = 2
