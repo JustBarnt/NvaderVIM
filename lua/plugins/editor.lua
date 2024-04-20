@@ -111,7 +111,13 @@ return {
       format = "relative",
     },
     keys = {
-      {"<leader>hp", function() require("harpeek").toggle() end, desc = "Toggle Harpeek"},
+      {
+        "<leader>hp",
+        function()
+          require("harpeek").toggle()
+        end,
+        desc = "Toggle Harpeek",
+      },
     },
     config = function(_, opts)
       require("harpeek").setup(utils.create_spec("harpeek", opts))
@@ -147,15 +153,6 @@ return {
           end, { buffer = ctx.buffer })
         end,
       }
-    end,
-  },
-  {
-    "shellRaining/hlchunk.nvim",
-    event = "BufReadPre",
-    enabled = false, --utils.enabled("plugins", "hlchunk"),
-    opts = { blank = { enable = false }, chunk = { chars = { right_arrow = "─" } }, line_num = { enable = false } },
-    config = function(_, opts)
-      require("hlchunk").setup(utils.create_spec("hlchunk", opts))
     end,
   },
   {
