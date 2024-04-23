@@ -175,6 +175,7 @@ return {
       pcall(telescope.load_extension, "pomodori")
       pcall(telescope.load_extension, "import")
       pcall(telescope.load_extension, "jsonfly")
+      pcall(telescope.load_extension, "workspaces")
     end,
   },
 }
