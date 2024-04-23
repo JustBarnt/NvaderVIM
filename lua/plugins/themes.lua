@@ -41,7 +41,15 @@ return {
       require("tokyonight").setup(utils.create_spec("tokyonight", opts))
     end,
   },
-
+  {
+    "tiagovla/tokyodark.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {},
+    config = function(_, opts)
+      require("tokyodark").setup(utils.create_spec('tokyodark', opts))
+    end,
+  },
   {
     "rebelot/kanagawa.nvim",
     priority = 1000,
