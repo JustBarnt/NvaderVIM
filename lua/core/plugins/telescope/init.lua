@@ -4,7 +4,8 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     event = "VeryLazy",
-    branch = "0.1.x",
+    commit = "7d1698f",
+    -- branch = "0.1.x",
     dependencies = {
       { "piersolenski/telescope-import.nvim", enabled = vim.fn.executable "rg" == 1 },
       "nvim-tree/nvim-web-devicons",
@@ -27,39 +28,7 @@ return {
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
         { "<leader>/", builtin.live_grep, desc = "Grep Project Wide" },
-        {
-          "<leader>sf",
-          function()
-            builtin.find_files {
-              hidden = true,
-              no_ignore = true,
-              file_ignore_patterns = {
-                "node_modules/",
-                ".git/",
-                ".svn/",
-                ".svelte-kit/",
-                "build/",
-              },
-              find_command = tele_utils.select_find_command(),
-            }
-          end,
-          desc = "Search Files",
-        },
-        {
-          "<leader>sg",
-          function()
-            if vim.fn.executable "fd" or vim.fn.executable "fdfind" == 1 then
-              builtin.find_files {
-                hidden = false,
-                no_ignore = true,
-                find_command = tele_utils.search_for_repos(),
-              }
-            else
-              vim.notify("Do you have FD installed?", vim.log.levels.WARN)
-            end
-          end,
-          desc = "Search Git Projects",
-        },
+        { "<leader>sf", builtin.find_files, desc = "Search Files" },
         {
           "<leader>sw",
           function()
@@ -102,7 +71,11 @@ return {
 
       return {
         defaults = {
-          path_display = { "smart" },
+          path_display = {
+            filename_first = {
+              reverse_directories = false,
+            },
+          },
           mappings = {
             i = {
               ["<C-t>"] = open_with_trouble,
@@ -155,6 +128,7 @@ return {
               },
             },
           },
+          find_files = tele_utils.select_find_command(),
         },
       }
     end,
