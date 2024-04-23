@@ -8,7 +8,7 @@ local colors = {
 M.config = {
   blank = { enable = false },
   chunk = { chars = { right_arrow = "─" }, style = colors.chunk },
-  indent = { enabled = false },
+  indent = { enable = false },
   line_num = { style = colors.line_num },
 }
 return M
