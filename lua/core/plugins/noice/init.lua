@@ -4,6 +4,9 @@ return {
   "folke/noice.nvim",
   -- event = "VeryLazy",
   opts = {
+    cmdline = {
+      view = "cmdline"
+    },
     ---@type NoiceRouteConfig[]
     routes = {
       {
@@ -11,30 +14,6 @@ return {
           event = "msg_show",
           kind = "",
           find = "written",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "lsp",
-          kind = "progress",
-          find = "Diagnosing",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "lsp",
-          kind = "progress",
-          find = "symbols",
-        },
-        opts = { skip = true },
-      },
-      {
-        filter = {
-          event = "lsp",
-          kind = "progress",
-          find = "tokens",
         },
         opts = { skip = true },
       },
