@@ -2,15 +2,6 @@ local utils = require "core.utils"
 
 return {
   {
-    "Bekaboo/dropbar.nvim",
-    event = "BufReadPre",
-    enabled = utils.enabled("plugins", "dropbar"),
-    opts = {},
-    config = function(_, opts)
-      require("dropbar").setup(utils.create_spec("dropbar", opts))
-    end,
-  },
-  {
     "uga-rosa/ccc.nvim",
     enabled = utils.enabled("plugins", "ccc"),
     cmd = { "CccPick", "CccConvert" },
