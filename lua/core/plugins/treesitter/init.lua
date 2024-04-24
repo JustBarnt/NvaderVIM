@@ -3,40 +3,15 @@ local utils = require "core.utils"
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "BufReadPre",
-    build = ":TSUpdate",
+    build = function()
+      require('nvim-treesitter.install').update({ with_sync = true })()
+    end,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-refactor",
-      "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
       "windwp/nvim-ts-autotag",
     },
     opts = {
-      ensure_installed = {
-        "bash",
-        "c",
-        "cmake",
-        "cpp",
-        "c_sharp",
-        "go",
-        "html",
-        "javascript",
-        "json",
-        "jsonc",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "php",
-        "regex",
-        "svelte",
-        "sql",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "xml",
-      },
+      ensure_installed = { "bash", "c", "cmake", "cpp", "c_sharp", "go", "html", "javascript", "json", "jsonc", "lua", "markdown", "markdown_inline", "php", "regex", "svelte", "sql", "toml", "tsx", "typescript", "vim", "vimdoc", "xml", },
       autotag = {
         enable = true,
         enable_rename = true,
@@ -49,76 +24,15 @@ return {
       },
       highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
       },
-
-      refactor = {
-        highlight_definitions = {
-          enable = true,
-          disable = { "xml" },
-          clear_on_cursor_move = true,
-        },
-
-        highlight_current_scope = { enable = false },
-
-        smart_rename = {
-          enable = true,
-          keymaps = {
-            smart_rename = "<leader>cR",
-          },
-        },
-
-        navigation = false,
-
-        incremental_selection = {
-          enable = true,
-        },
-      },
-      textobjects = {
-        move = {
-          enable = true,
-          set_jumps = true,
-
-          goto_next_start = {
-            ["]p"] = "@parameter.inner",
-            ["]m"] = "@function.outer",
-            ["]]"] = "@class.outer",
-          },
-          goto_next_end = {
-            ["]M"] = "@function.outer",
-            ["]["] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[p"] = "@parameter.inner",
-            ["[m"] = "@function.outer",
-            ["[["] = "@class.outer",
-          },
-          goto_previous_end = {
-            ["[M"] = "@function.outer",
-            ["[]"] = "@class.outer",
-          },
-        },
-
-        select = {
-          enable = true,
-
-          -- Jump forward automatically like targets.vim
-          lookahead = true,
-
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-
-            ["ac"] = "@conditional.outer",
-            ["ic"] = "@conditional.inner",
-
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-
-            ["av"] = "@variable.outer",
-            ["iv"] = "@variable.inner",
-          },
-        },
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "gnn",
+          node_incremental = "grn",
+          scope_incremental = "grc",
+          node_decremental = "grm"
+        }
       },
     },
     config = function(_, opts)
