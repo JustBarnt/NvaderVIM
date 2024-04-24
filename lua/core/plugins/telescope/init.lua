@@ -28,7 +28,7 @@ return {
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
         { "<leader>/", builtin.live_grep, desc = "Grep Project Wide" },
-        { "<leader>sf", builtin.find_files, desc = "Search Files" },
+        { "<leader>sf", builtin.find_files ,desc = "Search Files" },
         {
           "<leader>sw",
           function()
@@ -128,7 +128,18 @@ return {
               },
             },
           },
-          find_files = tele_utils.select_find_command(),
+          find_files = {
+            hidden = true,
+            no_ignore = true,
+            file_ignore_patterns = {
+              "node_modules/",
+              ".git/",
+              ".svn/",
+              ".svelte-kit/",
+              "build/",
+            },
+            find_command = tele_utils.select_find_command(),
+          },
         },
       }
     end,
