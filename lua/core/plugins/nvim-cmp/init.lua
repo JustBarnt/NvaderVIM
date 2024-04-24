@@ -12,6 +12,7 @@ return {
       "hrsh7th/cmp-buffer",
       "chrisgrieser/cmp-nerdfont",
       "onsails/lspkind-nvim",
+      { "MattiasMTS/cmp-dbee", ft = "sql" }
     },
     config = function()
       -- Getting required imports from plugins

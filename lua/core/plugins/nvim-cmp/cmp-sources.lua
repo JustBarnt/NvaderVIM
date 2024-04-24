@@ -18,6 +18,7 @@ function M.editor()
       entry_filter = hide_text_entries,
       group_index = 1,
     },
+    { name = "cmp-dbee", group_index = 1 },
     { name = "nvim_lua", entry_filter = hide_text_entries, group_index = 1 },
     { name = "vim-dadbod-completion", group_index = 1 },
     { name = "luasnip", group_index = 1 },
