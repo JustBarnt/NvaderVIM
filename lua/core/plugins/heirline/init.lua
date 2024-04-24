@@ -10,15 +10,18 @@ return {
   opts = function()
     local lib = require "heirline-components.all"
     local harpoon_component = require("core.plugins.heirline.harpoon_component").harpoon_component()
+    local common = require 'core.plugins.heirline.common'
+    local icons = common.icons
+    local separator = common.separators
 
     return {
       opts = {
         disable_winbar_cb = function(args) -- We do this to avoid showing it on the greeter.
           local is_disabled = not require("heirline-components.buffer").is_valid(args.buf)
-            or lib.condition.buffer_matches({
-              buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
-              filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
-            }, args.buf)
+          or lib.condition.buffer_matches({
+            buftype = { "terminal", "prompt", "nofile", "help", "quickfix" },
+            filetype = { "NvimTree", "neo%-tree", "dashboard", "Outline", "aerial" },
+          }, args.buf)
           return is_disabled
         end,
       },
@@ -36,7 +39,9 @@ return {
         lib.component.mode {},
         lib.component.git_branch {},
         lib.component.file_info {
-          hl = lib.hl.get_attributes "file_info",
+          filename = {},
+          filetype = false,
+          file_modified = {},
         },
         lib.component.diagnostics(),
         lib.component.fill(),
