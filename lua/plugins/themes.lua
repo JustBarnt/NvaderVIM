@@ -2,6 +2,21 @@ local utils = require "core.utils"
 
 return {
   {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+        transparent = true,
+        italic_comments = true,
+        hide_fillchars = true,
+        borderless_telescope = true,
+        terminal_colors = true,
+      },
+    config = function(_, opts)
+      require('cyberdream').setup(utils.create_spec('cyberdark', opts))
+    end
+  },
+  {
     "rose-pine/neovim",
     priority = 1000,
     name = "rose-pine",
@@ -98,7 +113,18 @@ return {
   },
   {
     "AstroNvim/astrotheme",
-    priority = 1000,
-    lazy = false,
-  },
+    dependencies = {
+      "AstroNvim/astroui",
+      lazy = false, -- disable lazy loading
+      priority = 10000, -- load AstroUI first
+      opts = {
+        -- set configuration options  as described below
+      }
+    },
+    lazy = false, -- disable lazy loading
+    priority = 10000, -- load AstroUI first
+    opts = {
+      -- set configuration options  as described below
+    }
+  }
 }
