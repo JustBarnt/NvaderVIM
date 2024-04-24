@@ -39,7 +39,6 @@ function M.select_find_command()
   if has_fd == 0 then
     return rg_command
   else
-    vim.notify("We using FD")
     return fd_command
   end
 end

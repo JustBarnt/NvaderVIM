@@ -128,18 +128,7 @@ return {
               },
             },
           },
-          find_files = {
-            hidden = true,
-            no_ignore = true,
-            file_ignore_patterns = {
-              "node_modules/",
-              ".git/",
-              ".svn/",
-              ".svelte-kit/",
-              "build/",
-            },
-            find_command = tele_utils.select_find_command(),
-          },
+          find_files = tele_utils.select_find_command(),
         },
       }
     end,
