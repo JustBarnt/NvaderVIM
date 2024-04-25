@@ -29,7 +29,7 @@ return {
       ---@class cmp.ConfigSchema
       local config = {
         enabled = function()
-          return not vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "dbee"
+          return vim.api.nvim_get_option_value("filetype", { buf = 0 }) ~= "dbee"
         end,
         -- preselect = cmp.PreselectMode.Item,
         snippet = {
