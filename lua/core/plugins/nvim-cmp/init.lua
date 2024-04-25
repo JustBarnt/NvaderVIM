@@ -12,7 +12,7 @@ return {
       "hrsh7th/cmp-buffer",
       "chrisgrieser/cmp-nerdfont",
       "onsails/lspkind-nvim",
-      { "MattiasMTS/cmp-dbee", ft = "sql" }
+      { "MattiasMTS/cmp-dbee", ft = "sql" },
     },
     config = function()
       -- Getting required imports from plugins
@@ -28,6 +28,9 @@ return {
 
       ---@class cmp.ConfigSchema
       local config = {
+        enabled = function()
+          return not vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "dbee"
+        end,
         -- preselect = cmp.PreselectMode.Item,
         snippet = {
           expand = function(args)
@@ -37,9 +40,9 @@ return {
         completion = {
           autocomplete = {
             cmp.TriggerEvent.TextChanged,
-            cmp.TriggerEvent.InsertEnter
+            cmp.TriggerEvent.InsertEnter,
           },
-          completeopt = "menu,menuone,noselect"
+          completeopt = "menu,menuone,noselect",
         },
         performance = {
           max_view_entries = 15,
@@ -77,10 +80,7 @@ return {
       -- Setup autocompletion for search cmdline
       cmp.setup(config)
       cmp.setup.cmdline({ "/", "?" }, { mapping = cmp.mapping.preset.cmdline(), sources = sources.search() })
-      cmp.setup.cmdline(
-        ":",
-        { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline() }
-      )
+      cmp.setup.cmdline(":", { mapping = cmp.mapping.preset.cmdline(), sources = sources.cmdline() })
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
