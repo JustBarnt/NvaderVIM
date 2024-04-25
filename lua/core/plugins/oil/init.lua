@@ -13,15 +13,19 @@ return {
     skip_confirm_for_simple_edits = true,
     prompt_save_on_select_new_entry = false,
     experimental_watch_for_changes = true,
-    is_always_hidden = function(name, bufnr)
-      local ignore = { ".sveltekit", "build", "node_modules" }
-      for i_name, _ in pairs(ignore) do
-        if i_name == name then
-          return true
+    view_options = {
+      is_always_hidden = function(name, bufnr)
+        local ignore = { ".sveltekit", "build", "node_modules" }
+        for _, i_name in pairs(ignore) do
+          if i_name == name then
+            print(name)
+            print(i_name)
+            return true
+          end
         end
-      end
-      return false
-    end,
+        return false
+      end,
+    },
   },
   config = function(_, opts)
     require("oil").setup(utils.create_spec("oil", opts))
