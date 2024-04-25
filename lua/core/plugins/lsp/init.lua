@@ -30,7 +30,7 @@ return {
       setup_utils.configure_neodev()
 
       mason.setup()
-      mason_tools.setup { ensure_installed = vim.tbl_deep_extend("force", ensure_installed, formatters) }
+      mason_tools.setup { ensure_installed = vim.tbl_deep_extend("force", ensure_installed, vim.tbl_keys(formatters)) }
       mason_config.setup {
         handlers = {
           function(server_name)
@@ -47,7 +47,11 @@ return {
       }
 
       require("typescript-tools").setup {}
-      require("conform").setup { notify_on_error = true, formatters_by_ft = formatters_by_ft }
+      require("conform").setup {
+        notify_on_error = true,
+        formatters = defaults.conform.formatters,
+        formatters_by_ft = formatters_by_ft,
+      }
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true }),
