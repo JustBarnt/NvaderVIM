@@ -6,9 +6,6 @@ if vim.g.vscode then
   return "core.keymaps"
 end
 
--- Disable netrw
-vim.g.loaded_netrwPlugin = 1
-
 require "core"
 if vim.fn.has "win32" == 1 then
   local ori_fnameescape = vim.fn.fnameescape
