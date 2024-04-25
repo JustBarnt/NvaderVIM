@@ -23,12 +23,10 @@ return {
         { "<leader>so", builtin.oldfiles, desc = "Search Oldfiles" },
         { "<leader>st", "<CMD>Telescope themes<CR>", desc = "Search Themes" },
         { "<leader><leader>", builtin.buffers, desc = "Search Buffers" },
-        { "<leader>sk", "<CMD>LegendaryKeymaps<CR>", desc = "Search Keymaps" },
-        { "<leader>sc", "<CMD>LegendaryCommands<CR>", desc = "Search Commands" },
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
         { "<leader>/", builtin.live_grep, desc = "Grep Project Wide" },
-        { "<leader>sf", builtin.find_files ,desc = "Search Files" },
+        { "<leader>sf", builtin.find_files, desc = "Search Files" },
         {
           "<leader>sw",
           function()

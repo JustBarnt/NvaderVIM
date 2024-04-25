@@ -1,4 +1,3 @@
-require "core.user-commands.legendary"
 local command = vim.api.nvim_create_user_command
 
 local harpoon = require "harpoon"
