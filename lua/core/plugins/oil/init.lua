@@ -18,8 +18,6 @@ return {
         local ignore = { ".sveltekit", "build", "node_modules" }
         for _, i_name in pairs(ignore) do
           if i_name == name then
-            print(name)
-            print(i_name)
             return true
           end
         end
@@ -30,6 +28,6 @@ return {
   config = function(_, opts)
     require("oil").setup(utils.create_spec("oil", opts))
     utils.map("n", "-", "<CMD>Oil<CR>", { desc = "Open Directory" })
-    utils.map("n", "<leader>de", "<CMD>Oil --float", { desc = "Open Directory in Float" })
+    utils.map("n", "<leader>de", "<CMD>Oil --float<CR>", { desc = "Open Directory in Float" })
   end,
 }
