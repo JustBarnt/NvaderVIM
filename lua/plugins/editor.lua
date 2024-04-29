@@ -214,27 +214,4 @@ return {
       require("todo-comments").setup(utils.create_spec("todo-comments", opts))
     end,
   },
-  {
-    "anuvyklack/windows.nvim",
-    enabled = utils.enabled("plugins", "windows"),
-    event = "VeryLazy",
-    dependencies = {
-      "anuvyklack/middleclass",
-      "anuvyklack/animation.nvim",
-    },
-    opts = {
-      autowidth = {
-        winwidth = 0.75,
-      },
-      animation = {
-        fps = 60,
-        duration = 250,
-        easing = "in_out_quad",
-      },
-    },
-    config = function(_, opts)
-      vim.o.equalalways = false
-      require("windows").setup(utils.create_spec("windows", opts))
-    end,
-  },
 }
