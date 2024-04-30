@@ -9,9 +9,9 @@ return {
       disable_filetype = { "TelescopePrompt", "spectre_panel", "neo-tree" },
       check_ts = true,
       ts_config = {
-        lua = { 'string' },
-        javascript = { 'template_string' },
-      }
+        lua = { "string" },
+        javascript = { "template_string" },
+      },
     },
     config = function(_, opts)
       require("nvim-autopairs").setup(utils.create_spec("nvim-autopairs", opts))
@@ -78,15 +78,6 @@ return {
     keys = {
       { "<leader>sj", "<CMD>Telescope jsonfly<CR>", desc = "Open JSONFly", ft = { "json" } },
     },
-  },
-  {
-    "booperlv/nvim-gomove",
-    event = "VeryLazy",
-    enabled = utils.enabled("plugins", "gomove"),
-    opts = {},
-    config = function(_, opts)
-      require("gomove").setup(utils.create_spec("gomove", opts))
-    end,
   },
   {
     "justbarnt/nvim-cheatsh",

@@ -6,6 +6,14 @@ map("i", "<C-v>", '<C-r>"', { desc = "Insert Mode Paste" })
 map("i", "<C-b>", "<C-o>0", { desc = "Jump to front of line" })
 map("i", "<C-a>", "<C-o>A", { desc = "Jump to end of line" })
 
+-- Move lines
+map("n", "<M-j>", ":m .+1<CR>==", { desc = "Move Line Down" })
+map("n", "<M-k>", ":m .-2<CR>==", { desc = "Move Line Up" })
+map("i", "<M-j>", "<ESC>:m .+1<CR>==gi", { desc = "[INSERT] Move Line Down" })
+map("i", "<M-k>", "<ESC>:m .-2<CR>==gi", { desc = "[INSERT] Move Line Up" })
+map("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "[VISUAL] Move Line Down" })
+map("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "[VISUAL] Move Line Up" })
+
 -- Prevent macro keybinds
 map("n", "Q", "<NOP>")
 map("n", "q", "<NOP>")
