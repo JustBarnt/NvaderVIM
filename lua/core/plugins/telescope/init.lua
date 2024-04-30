@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
   {
@@ -7,15 +7,17 @@ return {
     commit = "7d1698f",
     -- branch = "0.1.x",
     dependencies = {
-      { "piersolenski/telescope-import.nvim", enabled = vim.fn.executable "rg" == 1 },
+      { "piersolenski/telescope-import.nvim", enabled = vim.fn.executable("rg") == 1 },
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
       "andrew-george/telescope-themes",
       "debugloop/telescope-undo.nvim",
+      { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0" },
     },
     keys = function()
-      local builtin = require "telescope.builtin"
-      local tele_utils = require "core.utils.telescope"
+      local builtin = require("telescope.builtin")
+      local extensions = require("telescope").extensions
+      local tele_utils = require("core.utils.telescope")
       return {
         { "<leader>sr", "<CMD>Telescope frecency workspace=CWD<CR>", desc = "Search Recent Telescopes" },
         { "<leader>sh", builtin.help_tags, desc = "Search Help Tags" },
@@ -25,19 +27,19 @@ return {
         { "<leader><leader>", builtin.buffers, desc = "Search Buffers" },
         { "<leader>si", "<CMD>Telescope import<CR>", desc = "Search Module Imports" },
         { "<leader>su", "<CMD>Telescope undo<CR>", desc = "Search UndoTree" },
-        { "<leader>/", builtin.live_grep, desc = "Grep Project Wide" },
+        { "<leader>/", extensions.live_grep_args.live_grep_args, desc = "Grep Project Wide" },
         { "<leader>sf", builtin.find_files, desc = "Search Files" },
         {
           "<leader>sw",
           function()
-            builtin.grep_string { search = vim.fn.expand "<cword>" }
+            builtin.grep_string { search = vim.fn.expand("<cword>") }
           end,
           desc = "Search for Word Under Cursor",
         },
         {
           "<leader>sW",
           function()
-            builtin.grep_string { search = vim.fn.expand "<cWORD>" }
+            builtin.grep_string { search = vim.fn.expand("<cWORD>") }
           end,
           desc = "Search for Word Under Cursor",
         },
@@ -63,8 +65,8 @@ return {
       }
     end,
     opts = function()
-      local actions = require "telescope.actions"
-      local tele_utils = require "core.utils.telescope"
+      local actions = require("telescope.actions")
+      local tele_utils = require("core.utils.telescope")
       local open_with_trouble = require("trouble.sources.telescope").open
 
       return {
@@ -96,7 +98,7 @@ return {
             enable_live_preview = true,
             persist = {
               enabled = true,
-              path = vim.fn.stdpath "config" .. "/lua/colorscheme.lua",
+              path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua",
             },
           },
           import = {
@@ -131,7 +133,7 @@ return {
       }
     end,
     config = function(_, opts)
-      local telescope = require "telescope"
+      local telescope = require("telescope")
       local exists, config = pcall(require, "user.config")
       ---@class JustNvimTelescope
       local user_config = exists and type(config) == "table" and config.telescope or {}
@@ -148,6 +150,7 @@ return {
       pcall(telescope.load_extension, "import")
       pcall(telescope.load_extension, "jsonfly")
       pcall(telescope.load_extension, "workspaces")
+      pcall(telescope.load_extension, "live_grep_args")
     end,
   },
 }
