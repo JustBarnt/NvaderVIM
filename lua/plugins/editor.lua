@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
   {
@@ -42,10 +42,11 @@ return {
     enabled = utils.enabled("plugins", "flash"),
         -- stylua: ignore
         keys = {
+            { "<leader>f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash"},
             { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
             { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
             { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+            { "<c-s>", mode = { "c", "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search for ['/', '?'] " },
         },
     ---@type Flash.Config
     opts = {
@@ -61,6 +62,7 @@ return {
     },
     config = function(_, opts)
       require("flash").setup(utils.create_spec("flash", opts))
+      require("flash").toggle(false)
     end,
   },
   {
@@ -69,10 +71,10 @@ return {
     enabled = utils.enabled("plugins", "global-note"),
     opts = {
       filename = "global.norg",
-      directory = vim.fn.stdpath "data" .. "/global-note/",
+      directory = vim.fn.stdpath("data") .. "/global-note/",
       -- Floating window title.
       -- string or fun(): string
-      title = "Todo: " .. os.date "%Y/%m/%d",
+      title = "Todo: " .. os.date("%Y/%m/%d"),
 
       -- Ex command name.
       -- string
@@ -141,7 +143,7 @@ return {
     },
     opts = {},
     config = function(_, opts)
-      local harpoon = require "harpoon"
+      local harpoon = require("harpoon")
 
       harpoon:setup(utils.create_spec("harpoon", opts))
 
