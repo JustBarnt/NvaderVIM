@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
   {
@@ -27,7 +27,7 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     tag = "v0.7",
-    enabled = utils.enabled("plugins", "gitsigns"),
+    enabled = false, --utils.enabled("plugins", "gitsigns"),
     event = "BufReadPre",
     opts = {
       signs = {

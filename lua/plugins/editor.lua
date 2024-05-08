@@ -106,25 +106,6 @@ return {
     end,
   },
   {
-    "WolfeCub/harpeek.nvim",
-    enabled = utils.enabled("plugins", "harpeek"),
-    opts = {
-      format = "relative",
-    },
-    keys = {
-      {
-        "<leader>hp",
-        function()
-          require("harpeek").toggle()
-        end,
-        desc = "Toggle Harpeek",
-      },
-    },
-    config = function(_, opts)
-      require("harpeek").setup(utils.create_spec("harpeek", opts))
-    end,
-  },
-  {
     "theprimeagen/harpoon",
     enabled = utils.enabled("plugins", "harpoon"),
     branch = "harpoon2",
@@ -154,15 +135,6 @@ return {
           end, { buffer = ctx.buffer })
         end,
       }
-    end,
-  },
-  {
-    "karb94/neoscroll.nvim",
-    event = "BufReadPre",
-    enabled = utils.enabled("plugins", "neoscroll"),
-    opts = {},
-    config = function(_, opts)
-      require("neoscroll").setup(utils.create_spec("neoscroll", opts))
     end,
   },
   {

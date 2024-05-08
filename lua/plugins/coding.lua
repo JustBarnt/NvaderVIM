@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
   {
@@ -53,7 +53,7 @@ return {
     },
     cmd = "Neogen",
     keys = function()
-      local neogen = require "neogen"
+      local neogen = require("neogen")
       return {
         {
           "<leader>td",
@@ -70,14 +70,6 @@ return {
     config = function(_, opts)
       require("neogen").setup(utils.create_spec("neogen", opts))
     end,
-  },
-  {
-    "myzel394/jsonfly.nvim",
-    event = "VeryLazy",
-    enabled = utils.enabled("plugins", "jsonfly"),
-    keys = {
-      { "<leader>sj", "<CMD>Telescope jsonfly<CR>", desc = "Open JSONFly", ft = { "json" } },
-    },
   },
   {
     "justbarnt/nvim-cheatsh",
