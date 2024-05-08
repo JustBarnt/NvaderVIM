@@ -1,12 +1,9 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
   "folke/noice.nvim",
   -- event = "VeryLazy",
   opts = {
-    cmdline = {
-      view = "cmdline"
-    },
     ---@type NoiceRouteConfig[]
     routes = {
       {
