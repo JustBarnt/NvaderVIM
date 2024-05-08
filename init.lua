@@ -2,8 +2,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-test = ""
-
 if vim.g.vscode then
   require("core.keymaps")
   require("core.options")
@@ -22,11 +20,7 @@ if vim.fn.has("win32") == 1 then
 end
 
 vim.diagnostic.config {
-  virtual_text = {
-    severity = vim.diagnostic.severity.ERROR,
-    source = "if_many",
-  },
-  virtual_lines = { only_current_line = true },
+  virtual_text = false,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
@@ -41,7 +35,5 @@ vim.diagnostic.config {
       return ("%s (%s) [%s]"):format(d.message, d.source, d.code or d.user_data.lsp.code)
     end,
   },
-  underline = {
-    severity = vim.diagnostic.severity.WARN,
-  },
+  underline = true,
 }
