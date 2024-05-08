@@ -2,6 +2,17 @@ local vim_opts = require("core.utils").vim_options
 local exist, config = pcall(require, "user.config")
 local opts = exist and type(config) == "table" and config.options or {}
 
+if vim.fn.has("win32") == 1 then
+  vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
+  vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();"
+    .. "$PSStyle.vim.opt.tputRendering = [System.Management.Automation.OutputRendering]::PlainText;"
+    .. [[$PSDefaultParameterValues['vim.opt.t-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;]]
+  vim.opt.shellredir = [[2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode]]
+  vim.opt.shellpipe = [[2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode]]
+  vim.opt.shellquote = ""
+  vim.opt.shellxquote = ""
+end
+
 vim.opt.shortmess = {
   c = true, -- Do not show completion messages
   F = true, -- Do not show file info when editing
@@ -11,26 +22,26 @@ vim.opt.shortmess = {
 ---@class vim.opt
 local default_opt = {
   opt = {
+    --Tabs
     tabstop = 2,
+    vartabstop = "2",
+    shiftwidth = 0,
     softtabstop = -1,
-    shiftwidth = 2,
-    shiftround = true,
-    autoindent = true,
-    smartindent = true,
+    expandtab = true,
     cindent = true,
-    commentstring = "",
-    numberwidth = 5,
-    statuscolumn = " %s%=%{v:relnum?v:relnum:v:lnum}%#WinSeparator#  ",
+
+    -- Line Numbers
     relativenumber = true,
     number = true,
-    pumblend = 0,
-    winblend = 0,
-    pumheight = 10,
-    background = "dark",
+    signcolumn = "yes",
+    statuscolumn = " %s%=%{v:relnum?v:relnum:v:lnum}%#WinSeparator#  ",
+
+    -- Popup Menu
+    pumblend = 20,
     wildmode = "longest:full",
-    wildoptions = "pum",
-    termguicolors = true,
-    backup = false,
+    wildoptions = "pum,tagfile,fuzzy",
+
+    -- Cmdline \\ Searching
     showmode = false,
     showcmd = false,
     cmdheight = 0,
@@ -38,14 +49,22 @@ local default_opt = {
     showmatch = true,
     ignorecase = true,
     smartcase = true,
+    hlsearch = true,
+
+    -- Buffer Options
     hidden = true,
     equalalways = false,
     splitkeep = "screen",
     splitright = true,
     splitbelow = true,
+
+    -- Keypress Response
     updatetime = 250,
     timeoutlen = 300,
-    hlsearch = true,
+
+    -- Misc
+    termguicolors = true,
+    backup = false,
     scrolloff = 10,
     cursorline = false,
     wrap = false,
@@ -55,13 +74,11 @@ local default_opt = {
     inccommand = "split",
     swapfile = false,
     mouse = "a",
-    joinspaces = false,
     list = true,
     fillchars = { eob = " " },
-    listchars = { tab = "» ", trail = "·", nbsp = "␣" },
+    listchars = { extends = "⟩", precedes = "⟨", trail = "·", tab = "╏ ", nbsp = "␣" },
     foldenable = false,
     undofile = true,
-    signcolumn = "yes",
     colorcolumn = "120",
   },
 }
