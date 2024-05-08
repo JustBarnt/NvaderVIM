@@ -3,14 +3,14 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 if vim.g.vscode then
-  require "core.keymaps"
-  require "core.options"
+  require("core.keymaps")
+  require("core.options")
   return
 end
 
-require "core"
+require("core")
 
-if vim.fn.has "win32" == 1 then
+if vim.fn.has("win32") == 1 then
   local ori_fnameescape = vim.fn.fnameescape
   ---@diagnostic disable-next-line: duplicate-set-field
   vim.fn.fnameescape = function(...)
