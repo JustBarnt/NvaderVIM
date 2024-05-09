@@ -1,16 +1,8 @@
 local api = vim.api
 local M = {}
 
---- Applies all values to `vim.[scope][setting]`
----@param options table A Table of options to pass to it
-function M.vim_options(options)
-  if options ~= nil then
-    for scope, table in pairs(options) do
-      for setting, value in pairs(table) do
-        vim[scope][setting] = value
-      end
-    end
-  end
+function M.has(plugin)
+  return require("lazy.core.config").spec.plugins[plugin] ~= nil
 end
 
 --- Returns the current Mode and formats it

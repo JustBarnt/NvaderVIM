@@ -6,6 +6,5 @@ local M = {
   telescope = {},
   plugins = {},
   features = {},
-  options = { opt = {} },
 }
 return M

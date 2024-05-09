@@ -1,6 +1,4 @@
-local vim_opts = require("core.utils").vim_options
-local exist, config = pcall(require, "user.config")
-local opts = exist and type(config) == "table" and config.options or {}
+local opt = vim.opt
 
 if vim.fn.has("win32") == 1 then
   vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
@@ -13,75 +11,85 @@ if vim.fn.has("win32") == 1 then
   vim.opt.shellxquote = ""
 end
 
-vim.opt.shortmess = {
-  c = true, -- Do not show completion messages
-  F = true, -- Do not show file info when editing
-  I = true, -- do not show intro message
+if not vim.env.SSH_TTY then
+  -- Set clipboard to use system if not in an SSH Session
+  opt.clipboard = "unnamedplus" -- Use System Clipboard
+end
+
+opt.completeopt = "menu,menuone,noselect"
+opt.conceallevel = 2 -- Hide markup but not markers with subsitutes
+opt.confirm = true -- Show confirmation prompt on exiting a modified Buffer
+opt.cursorline = true -- Highlights current Line
+opt.expandtab = true -- Use spaces instead of tabs
+-- opt.formatoptions = "jcro/qlnt" -- Default: tcqj
+opt.grepformat = "%f:%l:%c:%m"
+opt.grepprg = "rg --vimgrep"
+opt.ignorecase = true -- Ignore Search Casing
+opt.inccommand = "nosplit" -- preview incremental substitutes
+opt.laststatus = 3 -- Global Statusline
+opt.list = true -- Show Invisible Chars like tabs|spaces
+opt.mouse = "a" -- Enable Mouse
+opt.number = true -- Show Line Numbers
+opt.relativenumber = true -- Relative Line Numbers
+opt.pumblend = 10 -- Popup Opacity
+opt.pumheight = 10 -- Number of entries in a popup
+opt.scrolloff = 4 -- Lines of context
+opt.shiftround = true -- Round indented lines
+opt.shiftwidth = 2 -- Size of an indent
+opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.showmode = false -- Don't show current mode since we display it the statusline
+opt.sidescrolloff = 8 -- Columns on Context
+opt.signcolumn = "yes" -- Always show the signcolumn so the window doesn't shift
+opt.smartcase = true -- Don't ignore case when searching once a capital letter is sent
+opt.smartindent = true -- Inserts indents automatically
+opt.spelllang = { "en" }
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows to the right of current
+opt.splitkeep = "screen" -- Keeps text on the same line as the screen
+opt.tabstop = 2 -- Number of spaces tabs count for
+opt.termguicolors = true -- True color support in terminal
+
+if not vim.g.vscode then
+  opt.timeoutlen = 300 -- Lower timout length for keymaps when not in VSCODE
+end
+
+opt.undofile = true
+opt.undolevels = 10000
+opt.updatetime = 200 -- Save swap file and trigger CursorHold:
+opt.virtualedit = "block" -- Allow cursor to move where there is no text in Visual Block mode
+opt.wildmode = "longest:full,full" -- Command-line completion mode
+opt.winminwidth = 5 -- Minimum Window width
+opt.wrap = false -- Disable line wrapping
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
 }
 
----@class vim.opt
-local default_opt = {
-  opt = {
-    --Tabs
-    tabstop = 2,
-    vartabstop = "2",
-    shiftwidth = 0,
-    softtabstop = -1,
-    expandtab = true,
-    cindent = true,
+if vim.fn.has("nvim-0.10") == 1 then
+  opt.smoothscroll = true
+end
 
-    -- Line Numbers
-    relativenumber = true,
-    number = true,
-    signcolumn = "yes",
-    statuscolumn = " %s%=%{v:relnum?v:relnum:v:lnum}%#WinSeparator#  ",
+-- FOLDS
+opt.foldlevel = 99
 
-    -- Popup Menu
-    pumblend = 20,
-    wildmode = "longest:full",
-    wildoptions = "pum,tagfile,fuzzy",
+if vim.fn.has("nvim-0.9.0") == 1 then
+  opt.statuscolumn = [[%!v:lua.require'core.utils.ui'.statuscolumn()]]
+  opt.foldtext = "v:lua.require'core.utils.ui'.foldtext()"
+end
 
-    -- Cmdline \\ Searching
-    showmode = false,
-    showcmd = false,
-    cmdheight = 0,
-    incsearch = true,
-    showmatch = true,
-    ignorecase = true,
-    smartcase = true,
-    hlsearch = true,
+if vim.fn.has("nvim-0.10") == 1 then
+  opt.foldmethod = "expr"
+  opt.foldexpr = "v:lua.require'core.utils.ui'.foldexpr()"
+  opt.foldtext = ""
+  opt.fillchars = "fold: "
+else
+  opt.foldmethod = "indent"
+end
 
-    -- Buffer Options
-    hidden = true,
-    equalalways = false,
-    splitkeep = "screen",
-    splitright = true,
-    splitbelow = true,
+vim.o.formatexpr = "v:lua.require'core.utils.format'.formatexpr()"
 
-    -- Keypress Response
-    updatetime = 250,
-    timeoutlen = 300,
-
-    -- Misc
-    termguicolors = true,
-    backup = false,
-    scrolloff = 10,
-    cursorline = false,
-    wrap = false,
-    breakindent = true,
-    belloff = "all",
-    clipboard = "unnamedplus",
-    inccommand = "split",
-    swapfile = false,
-    mouse = "a",
-    list = true,
-    fillchars = { eob = " " },
-    listchars = { extends = "⟩", precedes = "⟨", trail = "·", tab = "╏ ", nbsp = "␣" },
-    foldenable = false,
-    undofile = true,
-    colorcolumn = "120",
-  },
-}
-
-local merged_opts = vim.tbl_deep_extend("force", default_opt, opts)
-vim_opts(merged_opts)
+vim.g.markdown_recommended_style = 0
