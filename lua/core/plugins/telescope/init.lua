@@ -150,4 +150,17 @@ return {
       pcall(telescope.load_extension, "live_grep_args")
     end,
   },
+  {
+    "d00h/telescope-any",
+    config = function()
+      local opts = {}
+      local telescope_any = require("telescope-any").create_telescope_any(opts)
+
+      vim.api.nvim_set_keymap("n", "<leader><localleader>", "", {
+        noremap = true,
+        silent = true,
+        callback = telescope_any,
+      })
+    end,
+  },
 }
