@@ -1,4 +1,4 @@
-local utils = require 'core.utils'
+local utils = require("core.utils")
 return {
   {
     "rcarriga/nvim-notify",
@@ -7,8 +7,8 @@ return {
       background_colour = "NotifyBackground",
       fps = 60,
       render = "wrapped-compact",
-      stages = "fade",
-      timeout = 2500,
+      stages = "static",
+      timeout = 3000,
     },
     config = function(_, opts)
       require("notify").setup(utils.create_spec("notify", opts))
