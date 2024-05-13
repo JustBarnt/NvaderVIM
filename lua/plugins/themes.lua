@@ -1,20 +1,29 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 
 return {
+  {
+    "dgox16/oldworld.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function(_, opts)
+      require("oldworld").setup(opts)
+    end,
+  },
   {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
     opts = {
-        transparent = true,
-        italic_comments = true,
-        hide_fillchars = true,
-        borderless_telescope = true,
-        terminal_colors = true,
-      },
+      transparent = true,
+      italic_comments = true,
+      hide_fillchars = true,
+      borderless_telescope = true,
+      terminal_colors = true,
+    },
     config = function(_, opts)
-      require('cyberdream').setup(utils.create_spec('cyberdark', opts))
-    end
+      require("cyberdream").setup(utils.create_spec("cyberdark", opts))
+    end,
   },
   {
     "rose-pine/neovim",
@@ -47,7 +56,7 @@ return {
         -- floats = "transparent",
       },
       on_highlights = function(hl, c)
-        local highlight_overrides = require "core.ui.tokyonight"
+        local highlight_overrides = require("core.ui.tokyonight")
         highlight_overrides.overrides(hl, c)
       end,
       on_colors = function(_) end,
@@ -62,7 +71,7 @@ return {
     lazy = false,
     opts = {},
     config = function(_, opts)
-      require("tokyodark").setup(utils.create_spec('tokyodark', opts))
+      require("tokyodark").setup(utils.create_spec("tokyodark", opts))
     end,
   },
   {
@@ -71,7 +80,7 @@ return {
     lazy = false,
     opts = {
       overrides = function(colors)
-        local overrides = require "core.ui.kanagawa"
+        local overrides = require("core.ui.kanagawa")
         return vim.tbl_deep_extend(
           "force",
           {},
@@ -119,12 +128,12 @@ return {
       priority = 10000, -- load AstroUI first
       opts = {
         -- set configuration options  as described below
-      }
+      },
     },
     lazy = false, -- disable lazy loading
     priority = 10000, -- load AstroUI first
     opts = {
       -- set configuration options  as described below
-    }
-  }
+    },
+  },
 }
