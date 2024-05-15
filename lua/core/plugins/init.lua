@@ -33,4 +33,9 @@ return {
       require("core.plugins.configs.glance")
     end,
   },
+  {
+    "nacro90/numb.nvim",
+    event = "BufEnter",
+    config = true,
+  },
 }
