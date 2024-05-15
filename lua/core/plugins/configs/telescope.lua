@@ -87,4 +87,5 @@ utils.map("n", "<leader><localleader>", "", {
   noremap = true,
   silent = true,
   callback = telescope_any,
+  desc = "Telescope Command Palette",
 })
