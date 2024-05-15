@@ -2,19 +2,20 @@ local M = {}
 
 function M.on_attach(event)
   local map = require("core.utils").map
-  local builtin = require "telescope.builtin"
-  require "core.plugins.lsp.handlers"
+  local builtin = require("telescope.builtin")
+  require("core.plugins.lsp.handlers")
 
   map("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Peek Definition" })
   map("n", "<leader>e", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Diagnostic Message" })
-  map("n", "gd", function()
-    vim.lsp.buf.definition { reuse_win = true, on_list = require("core.plugins.lsp.handlers").on_list }
-    require("detour").DetourCurrentWindow()
-  end, { buffer = event.buf, desc = "Go-To Definition" })
-  map("n", "gr", builtin.lsp_references, { buffer = event.buf, desc = "Symbol References" })
-  map("n", "gI", builtin.lsp_implementations, { buffer = event.buf, desc = "Go-To Implementations" })
+  -- map("n", "gd", function()
+  --   vim.lsp.buf.definition { reuse_win = true, on_list = require("core.plugins.lsp.handlers").on_list }
+  --   require("detour").DetourCurrentWindow()
+  -- end, { buffer = event.buf, desc = "Go-To Definition" })
+  map("n", "gd", "<CMD>Glance definitions<CR>", { buffer = event.buf, desc = "Go-To Definition" })
+  map("n", "gr", "<CMD>Glance references<CR>", { buffer = event.buf, desc = "Symbol References" })
+  map("n", "gI", "<CMD>Glance implementations<CR>", { buffer = event.buf, desc = "Go-To Implementations" })
+  map("n", "gT", "<CMD>Glance type_definitions<CR>", { buffer = event.buf, desc = "Go-To Defintion" })
   map("n", "gD", vim.lsp.buf.declaration, { buffer = event.buf, desc = "Go-To Declaration" })
-  map("n", "gT", builtin.lsp_type_definitions, { buffer = event.buf, desc = "Go-To Defintion" })
   map("n", "<leader>ds", builtin.lsp_document_symbols, { buffer = event.buf, desc = "Document Symbols" })
   map("n", "<leader>ws", builtin.lsp_workspace_symbols, { buffer = event.buf, desc = "Workspace Symbols" })
   map("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "Signature Help" })

@@ -26,4 +26,11 @@ return {
       require("core.plugins.configs.telescope")
     end,
   },
+  {
+    "DNLHC/glance.nvim",
+    event = "BufEnter",
+    config = function()
+      require("core.plugins.configs.glance")
+    end,
+  },
 }
