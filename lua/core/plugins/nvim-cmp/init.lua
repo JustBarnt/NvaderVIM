@@ -1,4 +1,4 @@
-local utils = require "core.utils"
+local utils = require("core.utils")
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -10,19 +10,17 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
-      "chrisgrieser/cmp-nerdfont",
       "onsails/lspkind-nvim",
-      { "MattiasMTS/cmp-dbee", ft = "sql" },
     },
     config = function()
       -- Getting required imports from plugins
-      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-      local cmp = require "cmp"
-      local luasnip = require "luasnip"
-      local lspkind = require "lspkind"
+      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
       -- Distro Related Helpers
-      local mappings = require "core.plugins.nvim-cmp.cmp-mappings"
-      local sources = require "core.plugins.nvim-cmp.cmp-sources"
+      local mappings = require("core.plugins.nvim-cmp.cmp-mappings")
+      local sources = require("core.plugins.nvim-cmp.cmp-sources")
       -- Luasnip Setup
       luasnip.config.setup {}
 
@@ -95,7 +93,7 @@ return {
     tag = "v2.2.0",
     dependencies = { "rafamadriz/friendly-snippets", "benfowler/telescope-luasnip.nvim" },
     config = function()
-      require("luasnip.loaders.from_vscode").lazy_load { path = vim.fn.stdpath "config" .. "/snippets" }
+      require("luasnip.loaders.from_vscode").lazy_load { path = vim.fn.stdpath("config") .. "/snippets" }
       local extends = {
         typescript = { "tsdoc" },
         javascript = { "tsdoc" },
