@@ -30,46 +30,6 @@ return {
     end,
   },
   {
-    "danymat/neogen",
-    enabled = utils.enabled("plugins", "neogen"),
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    cmd = "Neogen",
-    keys = function()
-      local neogen = require("neogen")
-      return {
-        {
-          "<leader>td",
-          function()
-            neogen.generate { snippet_engine = "luasnip" }
-          end,
-          desc = "Generate Docs from Snippet",
-        },
-      }
-    end,
-    opts = {
-      snippet_engine = "luasnip",
-    },
-    config = function(_, opts)
-      require("neogen").setup(utils.create_spec("neogen", opts))
-    end,
-  },
-  {
-    "justbarnt/nvim-cheatsh",
-    enabled = utils.enabled("plugins", "nvim-cheatsh"),
-    cmd = { "Cheat", "CheatClose", "CheatList" },
-    opts = {
-      cheatsh_url = "cht.sh/",
-    },
-    keys = {
-      { "<leader>cs", "<CMD>CheatList<CR>", desc = "Search Cheat Sheets" },
-    },
-    config = function(_, opts)
-      require("nvim-cheatsh").setup(utils.create_spec("nvim-cheatsh", opts))
-    end,
-  },
-  {
     "kylechui/nvim-surround",
     version = "*",
     enabled = utils.enabled("plugins", "nvim-surround"),
@@ -87,12 +47,5 @@ return {
     config = function(_, opts)
       require("treesj").setup(utils.create_spec("treesj", opts))
     end,
-  },
-  {
-    "dmmulroy/ts-error-translator.nvim",
-    enabled = utils.enabled("plugins", "ts-error-translator"),
-    ft = { "ts", "svelte" },
-    event = "BufReadPre",
-    opts = {},
   },
 }

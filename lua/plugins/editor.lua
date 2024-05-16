@@ -28,15 +28,6 @@ return {
     end,
   },
   {
-    "pteroctopus/faster.nvim",
-    event = "VeryLazy",
-    enabled = utils.enabled("plugins", "faster"),
-    opts = {},
-    config = function(_, opts)
-      require("faster").setup(utils.create_spec("faster", opts))
-    end,
-  },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     enabled = utils.enabled("plugins", "flash"),
@@ -70,7 +61,7 @@ return {
     event = "VeryLazy",
     enabled = utils.enabled("plugins", "global-note"),
     opts = {
-      filename = "global.norg",
+      filename = "global.md",
       directory = vim.fn.stdpath("data") .. "/global-note/",
       -- Floating window title.
       -- string or fun(): string
