@@ -7,8 +7,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<leader>xx", "<CMD>Trouble<CR>", desc = "Trouble Toggle" },
-    { "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", desc = "Trouble Workspace Diagnostics" },
-    { "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", desc = "Trouble Document Diagnostics" },
+    { "<leader>xd", "<CMD>Trouble diagnostics<CR>", desc = "Trouble Document Diagnostics" },
     { "<leader>xq", "<CMD>Trouble quickfix<CR>", desc = "Trouble Quick Fix" },
     { "<leader>xl", "<CMD>Trouble loclist<CR>", desc = "Trouble Local List" },
     {
