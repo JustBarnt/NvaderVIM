@@ -9,6 +9,7 @@ if vim.fn.has("win32") == 1 then
   vim.opt.shellpipe = [[2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode]]
   vim.opt.shellquote = ""
   vim.opt.shellxquote = ""
+  vim.opt.completeslash = "slash"
 end
 
 if not vim.env.SSH_TTY then
@@ -16,14 +17,13 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,noselect,popup"
 opt.conceallevel = 2 -- Hide markup but not markers with subsitutes
 opt.confirm = true -- Show confirmation prompt on exiting a modified Buffer
 opt.cursorline = true -- Highlights current Line
 opt.expandtab = true -- Use spaces instead of tabs
 -- opt.formatoptions = "jcro/qlnt" -- Default: tcqj
 opt.grepformat = "%f:%l:%c:%m"
-opt.grepprg = "rg --vimgrep"
 opt.ignorecase = true -- Ignore Search Casing
 opt.inccommand = "nosplit" -- preview incremental substitutes
 opt.laststatus = 3 -- Global Statusline
@@ -36,7 +36,7 @@ opt.pumheight = 10 -- Number of entries in a popup
 opt.scrolloff = 4 -- Lines of context
 opt.shiftround = true -- Round indented lines
 opt.shiftwidth = 2 -- Size of an indent
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+opt.shortmess:append { W = true, I = true, c = true }
 opt.showmode = false -- Don't show current mode since we display it the statusline
 opt.sidescrolloff = 8 -- Columns on Context
 opt.signcolumn = "yes" -- Always show the signcolumn so the window doesn't shift
@@ -47,7 +47,6 @@ opt.splitbelow = true -- Put new windows below current
 opt.splitright = true -- Put new windows to the right of current
 opt.splitkeep = "screen" -- Keeps text on the same line as the screen
 opt.tabstop = 2 -- Number of spaces tabs count for
-opt.termguicolors = true -- True color support in terminal
 
 if not vim.g.vscode then
   opt.timeoutlen = 300 -- Lower timout length for keymaps when not in VSCODE
@@ -69,26 +68,16 @@ opt.fillchars = {
   eob = " ",
 }
 
-if vim.fn.has("nvim-0.10") == 1 then
-  opt.smoothscroll = true
-end
+opt.smoothscroll = true
 
 -- FOLDS
 opt.foldlevel = 99
-
-if vim.fn.has("nvim-0.9.0") == 1 then
-  opt.statuscolumn = [[%!v:lua.require'core.utils.ui'.statuscolumn()]]
-  opt.foldtext = "v:lua.require'core.utils.ui'.foldtext()"
-end
-
-if vim.fn.has("nvim-0.10") == 1 then
-  opt.foldmethod = "expr"
-  opt.foldexpr = "v:lua.require'core.utils.ui'.foldexpr()"
-  opt.foldtext = ""
-  opt.fillchars = "fold: "
-else
-  opt.foldmethod = "indent"
-end
+opt.statuscolumn = [[%!v:lua.require'core.utils.ui'.statuscolumn()]]
+opt.foldtext = "v:lua.require'core.utils.ui'.foldtext()"
+opt.foldmethod = "expr"
+opt.foldexpr = "v:lua.require'core.utils.ui'.foldexpr()"
+opt.foldtext = ""
+opt.fillchars = "fold: "
 
 vim.o.formatexpr = "v:lua.require'core.utils.format'.formatexpr()"
 

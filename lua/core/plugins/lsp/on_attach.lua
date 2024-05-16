@@ -5,12 +5,7 @@ function M.on_attach(event)
   local builtin = require("telescope.builtin")
   require("core.plugins.lsp.handlers")
 
-  map("n", "K", vim.lsp.buf.hover, { buffer = event.buf, desc = "Peek Definition" })
   map("n", "<leader>e", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Diagnostic Message" })
-  -- map("n", "gd", function()
-  --   vim.lsp.buf.definition { reuse_win = true, on_list = require("core.plugins.lsp.handlers").on_list }
-  --   require("detour").DetourCurrentWindow()
-  -- end, { buffer = event.buf, desc = "Go-To Definition" })
   map("n", "gd", "<CMD>Glance definitions<CR>", { buffer = event.buf, desc = "Go-To Definition" })
   map("n", "gr", "<CMD>Glance references<CR>", { buffer = event.buf, desc = "Symbol References" })
   map("n", "gI", "<CMD>Glance implementations<CR>", { buffer = event.buf, desc = "Go-To Implementations" })
