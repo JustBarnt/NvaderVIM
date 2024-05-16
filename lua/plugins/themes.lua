@@ -94,11 +94,6 @@ return {
     end,
   },
   {
-    "b0o/lavi.nvim",
-    priority = 1000,
-    lazy = false,
-  },
-  {
     "marko-cerovac/material.nvim",
     lazy = false,
     priority = 1000,
