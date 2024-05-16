@@ -9,17 +9,16 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "pmizio/typescript-tools.nvim",
       "b0o/schemastore.nvim",
-      "Hoffs/omnisharp-extended-lsp.nvim",
       "stevearc/conform.nvim",
     },
     config = function()
-      local lspconfig = require "lspconfig"
-      local mason = require "mason"
-      local mason_config = require "mason-lspconfig"
-      local mason_tools = require "mason-tool-installer"
-      local setup_utils = require "core.plugins.lsp.config"
-      local setup_server = require "core.plugins.lsp.on_attach"
-      local defaults = require "core.plugins.lsp.default-config"
+      local lspconfig = require("lspconfig")
+      local mason = require("mason")
+      local mason_config = require("mason-lspconfig")
+      local mason_tools = require("mason-tool-installer")
+      local setup_utils = require("core.plugins.lsp.config")
+      local setup_server = require("core.plugins.lsp.on_attach")
+      local defaults = require("core.plugins.lsp.default-config")
 
       local ensure_installed, formatters = setup_utils.create_server_install()
       local formatters_by_ft = setup_utils.create_filetype_formatters()
@@ -64,7 +63,7 @@ return {
   {
     "luckasRanarison/tailwind-tools.nvim",
     ---@type TailwindTools.Option
-    opts = { document_color = { enabled = true, kind = vim.fn.has "nvim-0.10.0-dev" and "inline" or "background" } },
+    opts = { document_color = { enabled = true, kind = vim.fn.has("nvim-0.10.0-dev") and "inline" or "background" } },
     config = function(_, opts)
       require("tailwind-tools").setup(opts)
     end,
