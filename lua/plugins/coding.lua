@@ -39,13 +39,4 @@ return {
       require("nvim-surround").setup(utils.create_spec("nvim-surround", opts))
     end,
   },
-  {
-    "Wansmer/treesj",
-    event = "VeryLazy",
-    enabled = utils.enabled("plugins", "treesj"),
-    opts = {},
-    config = function(_, opts)
-      require("treesj").setup(utils.create_spec("treesj", opts))
-    end,
-  },
 }
