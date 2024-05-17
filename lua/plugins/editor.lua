@@ -97,38 +97,6 @@ return {
     end,
   },
   {
-    "theprimeagen/harpoon",
-    enabled = utils.enabled("plugins", "harpoon"),
-    branch = "harpoon2",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      { "<leader>ha", "<CMD>HarpoonAdd<CR>", desc = "Harpoon File" },
-      { "<leader>he", "<CMD>HarpoonMenu<CR>", desc = "Show Harpoons" },
-      { "<leader>hh", "<CMD>HarpoonPrev<CR>", desc = "Previous Harpoon" },
-      { "<leader>hl", "<CMD>HarpoonPrev<CR>", desc = "Next Harpoon" },
-      { "<leader>1", "<CMD>HarpoonSelect 1<CR>", desc = "Goto Harpoon: 1" },
-      { "<leader>2", "<CMD>HarpoonSelect 2<CR>", desc = "Goto Harpoon: 2" },
-      { "<leader>3", "<CMD>HarpoonSelect 3<CR>", desc = "Goto Harpoon: 3" },
-      { "<leader>4", "<CMD>HarpoonSelect 4<CR>", desc = "Goto Harpoon: 4" },
-    },
-    opts = {},
-    config = function(_, opts)
-      local harpoon = require("harpoon")
-
-      harpoon:setup(utils.create_spec("harpoon", opts))
-
-      harpoon:extend {
-        UI_CREATE = function(ctx)
-          utils.map("n", "<C-v>", function()
-            harpoon.ui:select_menu_item { vsplit = true }
-          end, { buffer = ctx.buffer })
-        end,
-      }
-    end,
-  },
-  {
     "brenoprata10/nvim-highlight-colors",
     enabled = utils.enabled("plugins", "nvim-highlight-colors"),
     event = "BufReadPre",

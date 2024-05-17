@@ -79,6 +79,7 @@ local telescope_any_options = {
     ["ctags "] = builtin.current_buffer_tags,
     ["keymaps "] = builtin.keymaps,
     ["options "] = builtin.vim_options,
+    ["tags "] = extensions.grapple.tags,
   },
 }
 

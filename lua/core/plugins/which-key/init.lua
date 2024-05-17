@@ -20,7 +20,7 @@ return {
     },
   }, -- Empty opts means default options
   config = function(_, opts)
-    local wk = require "which-key"
+    local wk = require("which-key")
 
     wk.setup(opts)
     wk.register {
@@ -51,9 +51,7 @@ return {
           name = "Trouble",
         },
       },
-      ["<leader>a"] = { "Actions Per Minute" },
       ["<leader>_"] = { "which_key_ignore" },
-      ["<leader>s"] = { "Clear Search Highlights" },
       ["["] = { "Previous Text-Object" },
       ["]"] = { "Next Text-Object" },
       ["<C-w>"] = { "Window" },

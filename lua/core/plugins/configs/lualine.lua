@@ -1,19 +1,17 @@
 local has_lualine, lualine = pcall(require, "lualine")
 local has_lsp_progress, lsp_progress = pcall(require, "lsp-progress")
-local has_harpoonline, harpoonline = pcall(require, "harpoonline")
 
-if not has_lualine or not has_lsp_progress or not has_harpoonline then
-  error("Failed to load lualine, lsp-progress, and/or harpoonline", vim.log.levels.ERROR)
+if not has_lualine then
+  error("Failed to load lualine", vim.log.levels.ERROR)
   return
 end
 
-harpoonline.setup {
-  on_update = function()
-    require("lualine").refresh()
-  end,
-}
+if not has_lsp_progress then
+  error("Failed to load  lsp-progress", vim.log.levels.ERROR)
+  return
+end
 
-require("lsp-progress").setup {
+lsp_progress.setup {
   client_format = function(client_name, spinner, series_messages)
     if #series_messages == 0 then
       return nil
@@ -81,7 +79,7 @@ lualine.setup {
       end,
     },
     lualine_y = {
-      harpoonline.format,
+      "grapple",
       {
         "filename",
         file_status = true,
