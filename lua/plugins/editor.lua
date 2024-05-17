@@ -142,25 +142,6 @@ return {
     end,
   },
   {
-    "epwalsh/pomo.nvim",
-    enabled = utils.enabled("plugins", "pomo"),
-    cmd = { "TimerStart", "TimerRepeat" },
-    opts = {
-      update_interval = 1000,
-      notifiers = {
-        {
-          name = "Default",
-          opts = {
-            sticky = true,
-          },
-        },
-      },
-    },
-    config = function(_, opts)
-      require("pomo").setup(utils.create_spec("pomo", opts))
-    end,
-  },
-  {
     "tpope/vim-sleuth",
     enabled = utils.enabled("plugins", "vim-sleuth"),
   },
