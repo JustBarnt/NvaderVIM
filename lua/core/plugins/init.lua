@@ -18,6 +18,13 @@ local UI = {
       require("core.plugins.configs.glance")
     end,
   },
+  {
+    "RRethy/vim-illuminate",
+    event = "BufReadPre",
+    config = function()
+      require("core.plugins.configs.illuminate")
+    end,
+  },
 }
 
 local EDITOR = {
