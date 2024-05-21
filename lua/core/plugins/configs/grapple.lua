@@ -13,6 +13,7 @@ if not has_portal then
 end
 
 grapple.setup {
+  scope = "cwd",
   win_opts = {
     width = 0.5,
     height = 0.25,
