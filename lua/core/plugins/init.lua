@@ -79,7 +79,13 @@ local EDITOR = {
   },
 }
 
+local CODING = {
+  {
+    "folke/ts-comments.nvim",
+    event = "VeryLazy",
+  },
+}
+
 local THEMES = {}
 
-local CODING = {}
-return { UI, EDITOR }
+return { UI, EDITOR, CODING }
