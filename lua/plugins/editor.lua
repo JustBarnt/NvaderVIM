@@ -29,35 +29,6 @@ return {
     end,
   },
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    enabled = utils.enabled("plugins", "flash"),
-        -- stylua: ignore
-        keys = {
-            { "<leader>f", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash"},
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c", "n" }, function() require("flash").toggle() end, desc = "Toggle Flash Search for ['/', '?'] " },
-        },
-    ---@type Flash.Config
-    opts = {
-      ---@type table<string, Flash.Config>
-      modes = {
-        char = {
-          jump_labels = true,
-        },
-        treesitter = {
-          search = { incremental = true },
-        },
-      },
-    },
-    config = function(_, opts)
-      require("flash").setup(utils.create_spec("flash", opts))
-      require("flash").toggle(false)
-    end,
-  },
-  {
     "backdround/global-note.nvim",
     event = "VeryLazy",
     enabled = utils.enabled("plugins", "global-note"),
