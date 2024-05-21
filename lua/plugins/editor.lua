@@ -11,6 +11,7 @@ return {
     },
     config = function(_, opts)
       require("hbac").setup(utils.create_spec("hbac", opts))
+      utils.map("n", "<leader>pb", "<CMD>Hbac toggle_pin<CR>", { desc = "Pin/Unpin Buffer" })
     end,
   },
   {

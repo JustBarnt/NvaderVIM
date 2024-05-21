@@ -9,7 +9,7 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local telescope_utils = require("core.utils.telescope")
 local utils = require("core.utils")
-local telescope_extensions = { "themes", "luasnip", "noice", "workspaces", "live_grep_args" }
+local telescope_extensions = { "themes", "luasnip", "noice", "workspaces", "live_grep_args", "hbac" }
 
 -- Create a re-usable function for Which-key to create
 -- easy mappings that are already added to Which-key
