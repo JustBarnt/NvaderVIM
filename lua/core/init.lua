@@ -81,6 +81,7 @@ vim.api.nvim_create_autocmd("User", {
 vim.schedule(function()
   require("core.keymaps")
   require("core.autocmds")
+  require("core.commands")
   require("extras.commands")
   require("extras.autocmds")
 end)
