@@ -44,6 +44,17 @@ local EDITOR = {
     end,
   },
   {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.opt.laststatus = 3
+      vim.opt.splitkeep = "screen"
+    end,
+    config = function()
+      require("core.plugins.configs.edgy")
+    end,
+  },
+  {
     "nacro90/numb.nvim",
     event = "BufEnter",
     config = true,
