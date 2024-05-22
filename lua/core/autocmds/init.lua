@@ -1,3 +1,4 @@
+require("core.autocmds.terminal")
 local api = vim.api
 
 api.nvim_create_augroup("lualine_augroup", { clear = true })
