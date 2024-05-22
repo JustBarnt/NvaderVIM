@@ -7,7 +7,6 @@ return {
       require("nvim-treesitter.install").update { with_sync = true }()
     end,
     dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
       {
         "windwp/nvim-ts-autotag",
         config = function()
