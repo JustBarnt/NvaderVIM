@@ -22,6 +22,9 @@ utils.map("n", "<leader>sw", telescope_utils.search_word_in_project, { desc = "S
 utils.map("n", "<leader>sW", telescope_utils.search_string_in_project, { desc = "Search String in Project" })
 utils.map("n", "<leader>sp", telescope_utils.search_in_project, { desc = "Search by Grep" })
 utils.map("n", "<leader>s/", telescope_utils.search_open_files_for_word, { desc = "Search Open Files for Word" })
+utils.map("n", "<leader>vim", function()
+  builtin.find_files { cwd = vim.fn.stdpath("config") }
+end, { desc = "Find Files Neovim Config" })
 
 telescope.setup {
   defaults = {
