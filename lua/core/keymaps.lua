@@ -6,7 +6,8 @@ map("i", "<C-v>", '<C-r>"', { desc = "Insert Mode Paste" })
 map("i", "<C-b>", "<C-o>0", { desc = "Jump to front of line" })
 map("i", "<C-a>", "<C-o>A", { desc = "Jump to end of line" })
 
-test = tru
+map("n", "<leader>e", "<CMD>.lua<CR>", { desc = "Execute lua on the current line" })
+map("n", "<leader><leader>e", "<CMD>so %<CR>", { desc = "Execute the entire file" })
 
 --Override builtin diagnostic jump to also how the float of the diagnostic message
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
@@ -16,15 +17,12 @@ map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
 map("n", "<M-j>", ":m .+1<CR>==", { desc = "Move Line Down" })
 map("n", "<M-k>", ":m .-2<CR>==", { desc = "Move Line Up" })
 map("i", "<M-j>", "<ESC>:m .+1<CR>==gi", { desc = "[INSERT] Move Line Down" })
+map("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "[VISUAL] Move Line Up" })
 map("i", "<M-k>", "<ESC>:m .-2<CR>==gi", { desc = "[INSERT] Move Line Up" })
 map("v", "<M-j>", ":m '>+1<CR>gv=gv", { desc = "[VISUAL] Move Line Down" })
-map("v", "<M-k>", ":m '<-2<CR>gv=gv", { desc = "[VISUAL] Move Line Up" })
 
--- Prevent macro keybinds
-map("n", "Q", "<NOP>")
-map("n", "q", "<NOP>")
+-- Closes a floating window
 map("n", "q", function()
-  -- Closes a floating window
   local win_id = vim.api.nvim_get_current_win()
 
   if vim.api.nvim_win_get_config(win_id).zindex then
@@ -39,9 +37,6 @@ map("n", "<Left>", "<NOP>")
 map("n", "<Down>", "<NOP>")
 map("n", "<Up>", "<NOP>")
 map("n", "<Right>", "<NOP>")
-
--- Fix descrepancy between nvim builtin matching (%) and nvim-comment plugin
-map("n", "<leader>_gc", "<CMD>call CommentOperator(visualmode())<CR>")
 
 -- Center cursor when navigating search results
 map("n", "n", "nzz")
