@@ -5,7 +5,6 @@ function M.on_attach(event)
   local builtin = require("telescope.builtin")
   require("core.plugins.lsp.handlers")
 
-  map("n", "<leader>e", vim.diagnostic.open_float, { buffer = event.buf, desc = "Open Diagnostic Message" })
   map("n", "gd", "<CMD>Glance definitions<CR>", { buffer = event.buf, desc = "Go-To Definition" })
   map("n", "gr", "<CMD>Glance references<CR>", { buffer = event.buf, desc = "Symbol References" })
   map("n", "gI", "<CMD>Glance implementations<CR>", { buffer = event.buf, desc = "Go-To Implementations" })

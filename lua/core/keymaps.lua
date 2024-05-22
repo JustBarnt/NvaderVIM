@@ -6,6 +6,12 @@ map("i", "<C-v>", '<C-r>"', { desc = "Insert Mode Paste" })
 map("i", "<C-b>", "<C-o>0", { desc = "Jump to front of line" })
 map("i", "<C-a>", "<C-o>A", { desc = "Jump to end of line" })
 
+test = tru
+
+--Override builtin diagnostic jump to also how the float of the diagnostic message
+map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
+
 -- Move lines
 map("n", "<M-j>", ":m .+1<CR>==", { desc = "Move Line Down" })
 map("n", "<M-k>", ":m .-2<CR>==", { desc = "Move Line Up" })
