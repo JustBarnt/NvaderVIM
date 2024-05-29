@@ -2,6 +2,14 @@ local utils = require("core.utils")
 
 return {
   {
+    "diegoulloao/neofusion.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function(_, opts)
+      require("core.ui.neofusion")
+    end,
+  },
+  {
     "dgox16/oldworld.nvim",
     lazy = false,
     priority = 1000,

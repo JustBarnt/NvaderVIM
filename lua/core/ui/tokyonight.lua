@@ -5,7 +5,8 @@ local M = {}
 function M.overrides(hl, c)
   hl.MsgArea = { bg = c.bg_dark, fg = c.fg_dark }
   hl.SpecialCmpBorder = { bg = c.bg }
-  hl.Pmenu = { bg = c.bg }
+
+  -- hl.Pmenu = { bg = c.bg }
   -- Tree
   hl.NeoTreeNormalNC = { bg = c.bg }
   hl.NeoTreeNormal = { bg = c.bg }

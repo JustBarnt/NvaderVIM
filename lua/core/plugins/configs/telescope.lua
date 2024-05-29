@@ -28,29 +28,80 @@ end, { desc = "Find Files Neovim Config" })
 
 telescope.setup {
   defaults = {
+    layout_strategy = "vertical",
+    sorting_strategy = "ascending",
+    results_title = "",
+    prompt_prefix = "  ",
+    selection_caret = "  ",
+    entry_prefix = "   ",
+    layout_config = {
+      prompt_position = "top",
+    },
+    get_status_text = function(picker)
+      local total = picker.stats.processed or 0
+      local matches = total - (picker.stats.filtered or 0)
+
+      if matches == 0 and total == 0 then
+        return ""
+      end
+
+      return string.format("%s|%s ", matches, total)
+    end,
     path_display = { filename_first = { reverse_directories = false } },
     mappings = {
-      i = { ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist },
-      n = { ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist },
+      i = {
+        ["<C-k>"] = actions.move_selection_previous,
+        ["<C-j>"] = actions.move_selection_next,
+        ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+      },
     },
   },
   extensions = {
+    live_grep_args = {
+      previewer = false,
+      prompt_title = "Global Search (w/args)",
+    },
     themes = {
-      require("telescope.themes").get_dropdown {
-        layout_config = { width = 120, height = 60 },
-      },
       enable_live_preview = true,
+      layout_strategy = "horizontal",
+      layout_config = {
+        prompt_position = "top",
+      },
       persist = { enabled = true, path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua" },
     },
   },
   pickers = {
     buffers = {
+      previewer = false,
+      prompt_title = "Buffers",
       mappings = {
         i = { ["<c-d>"] = actions.delete_buffer },
         n = { ["d"] = actions.delete_buffer },
       },
     },
-    find_files = telescope_utils.select_find_command(),
+    find_files = {
+      telescope_utils.select_find_command(),
+      previewer = false,
+    },
+    git_commits = {
+      previewer = false,
+    },
+    git_status = {
+      previewer = false,
+    },
+    git_branches = {
+      previewer = false,
+    },
+    current_buffer_fuzzy_find = {
+      previewer = false,
+    },
+    help_tags = {
+      prompt_title = "Search Help",
+      layout_strategy = "horizontal",
+      layout_config = {
+        prompt_position = "bottom",
+      },
+    },
   },
 }
 
@@ -63,13 +114,9 @@ local telescope_any_options = {
     [""] = builtin.find_files,
     [":"] = builtin.current_buffer_fuzzy_find,
     ["/"] = extensions.live_grep_args.live_grep_args,
-    ["m "] = builtin.marks,
     ["q "] = builtin.quickfix,
-    ["l "] = builtin.loclist,
-    ["j "] = builtin.jumplist,
     ["h "] = builtin.help_tags,
     ["b "] = builtin.buffers,
-    ["d "] = builtin.diagnostics,
     ["au "] = builtin.autocommands,
     ["hi "] = builtin.highlights,
     ["gs "] = builtin.git_status,
@@ -82,7 +129,6 @@ local telescope_any_options = {
     ["ctags "] = builtin.current_buffer_tags,
     ["keymaps "] = builtin.keymaps,
     ["options "] = builtin.vim_options,
-    ["tags "] = extensions.grapple.tags,
   },
 }
 

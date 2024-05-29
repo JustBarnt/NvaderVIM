@@ -22,7 +22,7 @@ dapui.setup {}
 dap_virt_text.setup {}
 
 map("n", "<leader>b", dap.toggle_breakpoint, { desc = "Toggle Debugging Breakpoint" })
-map("n", "<leader>gb", dap.run_to_cursor, { desc = "Debug at Cursor" })
+map("n", "<leader>db", dap.run_to_cursor, { desc = "Debug at Cursor" })
 map("n", "<leader>?", function()
   dapui.eval(nil, { enter = true })
 end, { desc = "Eval varialbe under cursor" })
