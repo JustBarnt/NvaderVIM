@@ -1,4 +1,3 @@
-require("core.plugins.configs.completion.menu_colors")
 local has_cmp, cmp = pcall(require, "cmp")
 local has_lspkind, lspkind = pcall(require, "lspkind")
 local has_luasnip, luasnip = pcall(require("luasnip"))
@@ -40,9 +39,14 @@ cmp.setup {
   },
   window = {
     completion = {
-      winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+      border = "rounded",
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None",
       col_offset = -3,
       side_padding = 0,
+    },
+    documentation = {
+      border = "rounded",
+      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None",
     },
   },
   formatting = {

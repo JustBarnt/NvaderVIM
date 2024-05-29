@@ -36,6 +36,8 @@ telescope.setup {
     entry_prefix = "   ",
     layout_config = {
       prompt_position = "top",
+      width = 0.5,
+      height = 0.5,
     },
     get_status_text = function(picker)
       local total = picker.stats.processed or 0
@@ -79,6 +81,15 @@ telescope.setup {
         n = { ["d"] = actions.delete_buffer },
       },
     },
+    highlights = {
+      layout_strategy = "horizontal",
+      layout_config = {
+        prompt_position = "bottom",
+      },
+    },
+    grep_string = {
+      previewer = false,
+    },
     find_files = {
       telescope_utils.select_find_command(),
       previewer = false,
@@ -99,6 +110,8 @@ telescope.setup {
       prompt_title = "Search Help",
       layout_strategy = "horizontal",
       layout_config = {
+        height = 0.9,
+        width = 0.9,
         prompt_position = "bottom",
       },
     },
