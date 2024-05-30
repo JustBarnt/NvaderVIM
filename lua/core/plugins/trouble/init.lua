@@ -3,7 +3,7 @@ local utils = require("core.utils")
 return {
   "folke/trouble.nvim",
   event = "VeryLazy",
-  branch = "dev",
+  branch = "main",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   keys = {
     { "<leader>xx", "<CMD>Trouble<CR>", desc = "Trouble Toggle" },

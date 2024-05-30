@@ -151,4 +151,4 @@ local THEMES = {
   },
 }
 
-return { UI, EDITOR, CODING }
+return { UI, EDITOR, CODING, THEMES }
