@@ -39,14 +39,13 @@ cmp.setup {
   },
   window = {
     completion = {
-      border = "rounded",
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None",
+
+      winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
       col_offset = -3,
       side_padding = 0,
     },
     documentation = {
-      border = "rounded",
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None",
+      winhighlight = "Normal:Normal,FloatBorder:None,Search:None",
     },
   },
   formatting = {
