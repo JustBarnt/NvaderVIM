@@ -6,5 +6,8 @@ if not has_neofusion then
 end
 
 neofusion.setup {
+  overrides = {
+    ["@keyword.php"] = { fg = "#35B5FF" },
+  },
   transparent_mode = true,
 }
