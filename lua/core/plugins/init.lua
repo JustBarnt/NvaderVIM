@@ -140,15 +140,6 @@ local CODING = {
   },
 }
 
-local THEMES = {
-  {
-    "diegoulloao/neofusion.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("core.plugins.configs.neofusion")
-    end,
-  },
-}
+local THEMES = {}
 
 return { UI, EDITOR, CODING, THEMES }
