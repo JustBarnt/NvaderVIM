@@ -64,22 +64,22 @@ local EDITOR = {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "Grapple" },
     keys = {
-      { "<leader>g", "<CMD>Grapple toggle<CR>", desc = "Tag Current File" },
-      { "<leader>ge", "<CMD>Grapple toggle_tags<CR>", desc = "Toggle Tags Menu" },
+      { "<leader>h", "<CMD>Grapple toggle<CR>", desc = "Tag Current File" },
+      { "<leader>he", "<CMD>Grapple toggle_tags<CR>", desc = "Toggle Tags Menu" },
       { "<leader>1", "<CMD>Grapple select index=1<CR>", desc = "Select Tag 1" },
       { "<leader>2", "<CMD>Grapple select index=2<CR>", desc = "Select Tag 2" },
       { "<leader>3", "<CMD>Grapple select index=3<CR>", desc = "Select Tag 3" },
       { "<leader>4", "<CMD>Grapple select index=4<CR>", desc = "Select Tag 4" },
-      { "<leader>gn", "<CMD>Grapple cycle_tags next<CR>", desc = "Go-To Next Tag" },
-      { "<leader>gp", "<CMD>Grapple cycle_tags prev<CR>", desc = "Go-To Previous Tag" },
+      { "<leader>hn", "<CMD>Grapple cycle_tags next<CR>", desc = "Go-To Next Tag" },
+      { "<leader>hp", "<CMD>Grapple cycle_tags prev<CR>", desc = "Go-To Previous Tag" },
     },
     dependencies = {
       {
         "cbochs/portal.nvim",
         cmd = { "Portal" },
         keys = {
-          { "<leader>Mn", "<CMD>Portal grapple forward<CR>", desc = "Portal Grapple Next" },
-          { "<leader>Mp", "<CMD>Portal grapple backward<CR>", desc = "Portal Grapple Next" },
+          { "<leader>Hn", "<CMD>Portal grapple forward<CR>", desc = "Portal Grapple Next" },
+          { "<leader>Hp", "<CMD>Portal grapple backward<CR>", desc = "Portal Grapple Next" },
         },
       },
       "nvim-tree/nvim-web-devicons",
