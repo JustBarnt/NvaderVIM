@@ -70,12 +70,10 @@ return {
   },
   {
     "brenoprata10/nvim-highlight-colors",
-    enabled = utils.enabled("plugins", "nvim-highlight-colors"),
+    enabled = false,
     event = "BufReadPre",
     opts = {
       render = "virtual",
-      enabled_named_colors = true,
-      enabled_tailwind = true,
     },
     config = function(_, opts)
       require("nvim-highlight-colors").setup(utils.create_spec("nvim-highlight-colors", opts))

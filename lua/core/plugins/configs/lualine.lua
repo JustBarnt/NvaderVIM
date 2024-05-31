@@ -104,7 +104,14 @@ lualine.setup {
     lualine_z = {},
   },
   inactive_winbar = {
-    lualine_a = {},
+    lualine_a = {
+      {
+        "filename",
+        file_status = true,
+        newfile_status = true,
+        path = 4,
+      },
+    },
     lualine_b = {},
     lualine_c = {},
     lualine_x = {},
