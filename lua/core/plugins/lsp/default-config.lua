@@ -32,7 +32,7 @@ M.servers = {
   jsonls = require("core.plugins.lsp.servers.jsonls"),
   clangd = require("core.plugins.lsp.servers.clangd"),
   powershell_es = require("core.plugins.lsp.servers.powershell_es"),
-  emmet_language_server = require("core.plugins.lsp.servers.emmet_language_server"),
+  emmet_ls = {},
   yamlls = require("core.plugins.lsp.servers.yamlls"),
   tailwindcss = require("core.plugins.lsp.servers.tailwindcss"),
 }
