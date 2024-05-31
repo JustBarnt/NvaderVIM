@@ -60,12 +60,4 @@ return {
       })
     end,
   },
-  {
-    "luckasRanarison/tailwind-tools.nvim",
-    ---@type TailwindTools.Option
-    opts = { document_color = { enabled = true, kind = vim.fn.has("nvim-0.10.0-dev") and "inline" or "background" } },
-    config = function(_, opts)
-      require("tailwind-tools").setup(opts)
-    end,
-  },
 }
