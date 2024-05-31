@@ -25,13 +25,83 @@ local UI = {
       require("core.plugins.configs.illuminate")
     end,
   },
+  {
+    "carbon-steel/detour.nvim",
+    cmd = { "Detour", "DetourCurrentWindow" },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    tag = "v0.7",
+    event = "BufReadPre",
+    config = function()
+      require("core.plugins.configs.gitsigns")
+    end,
+  },
+  {
+    "2kabhishek/nerdy.nvim",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Nerdy",
+  },
+  {
+    "nvim-tree/nvim-web-devicons",
+    event = "VeryLazy",
+  },
 }
 
 local EDITOR = {
   {
+    "axkirillov/hbac.nvim",
+    event = "VeryLazy",
+    opts = {
+      autoclose = true,
+      threshold = 5,
+    },
+    config = function()
+      require("core.plugins.configs.hbac")
+    end,
+  },
+  {
+    "famiu/bufdelete.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "Bekaboo/deadcolumn.nvim",
+    event = "BufReadPre",
+  },
+  {
+    "backdround/global-note.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.global-note")
+    end,
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
+    enabled = false,
+    event = "BufReadPre",
+    opts = {
+      render = "virtual",
+    },
+  },
+  {
+    "tpope/vim-sleuth",
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>fc", "<CMD>TodoTelescope<CR>", desc = "Find Todo's" },
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
-    commit = "7d1698f",
-    -- branch = "0.1.x",
+    branch = "0.1.x",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
@@ -41,17 +111,6 @@ local EDITOR = {
     },
     config = function()
       require("core.plugins.configs.telescope")
-    end,
-  },
-  {
-    "folke/edgy.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.opt.laststatus = 3
-      vim.opt.splitkeep = "screen"
-    end,
-    config = function()
-      require("core.plugins.configs.edgy")
     end,
   },
   {
@@ -125,60 +184,6 @@ local CODING = {
   {
     "folke/ts-comments.nvim",
     event = "VeryLazy",
-    opts = {
-      lang = {
-        astro = "<!-- %s -->",
-        axaml = "<!-- %s -->",
-        blueprint = "// %s",
-        c = "// %s",
-        c_sharp = "// %s",
-        clojure = { ";; %s", "; %s" },
-        cpp = "// %s",
-        cs_project = "<!-- %s -->",
-        cue = "// %s",
-        fsharp = "// %s",
-        fsharp_project = "<!-- %s -->",
-        gleam = "// %s",
-        glimmer = "{{! %s }}",
-        graphql = "# %s",
-        handlebars = "{{! %s }}",
-        hcl = "# %s",
-        html = "<!-- %s -->",
-        hyprlang = "# %s",
-        ini = "; %s",
-        javascript = {
-          "// %s", -- default commentstring when no treesitter node matches
-          "/* %s */",
-          call_expression = "// %s", -- specific commentstring for call_expression
-          jsx_attribute = "// %s",
-          jsx_element = "{/* %s */}",
-          jsx_fragment = "{/* %s */}",
-          spread_element = "// %s",
-          statement_block = "// %s",
-        },
-        php = "// %s",
-        rego = "# %s",
-        rescript = "// %s",
-        rust = { "// %s", "/* %s */" },
-        sql = "-- %s",
-        svelte = "<!-- %s -->",
-        terraform = "# %s",
-        tsx = {
-          "// %s", -- default commentstring when no treesitter node matches
-          "/* %s */",
-          call_expression = "// %s", -- specific commentstring for call_expression
-          jsx_attribute = "// %s",
-          jsx_element = "{/* %s */}",
-          jsx_fragment = "{/* %s */}",
-          spread_element = "// %s",
-          statement_block = "// %s",
-        },
-        twig = "{# %s #}",
-        typescript = { "// %s", "/* %s */" }, -- langs can have multiple commentstrings
-        vue = "<!-- %s -->",
-        xaml = "<!-- %s -->",
-      },
-    },
   },
   {
     "mfussenegger/nvim-dap",
@@ -192,8 +197,33 @@ local CODING = {
       require("core.plugins.configs.dap")
     end,
   },
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("core.plugins.configs.autopairs")
+    end,
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    command = "IncRename",
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "InsertEnter",
+  },
 }
 
-local THEMES = {}
+local THEMES = {
+  {
+    "folke/tokyonight.nvim",
+    priority = 1000,
+    lazy = false,
+    config = function()
+      require("core.plugins.configs.themes.tokyonight")
+    end,
+  },
+}
 
 return { UI, EDITOR, CODING, THEMES }

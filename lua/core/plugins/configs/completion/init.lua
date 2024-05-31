@@ -1,8 +1,7 @@
 local has_cmp, cmp = pcall(require, "cmp")
 local has_lspkind, lspkind = pcall(require, "lspkind")
-local has_luasnip, luasnip = pcall(require("luasnip"))
 
-if not has_cmp and not has_lspkind and not has_luasnip then
+if not has_cmp and not has_lspkind then
   error("Failed to load cmp or one of its dependencies", vim.log.levels.ERROR)
   return
 end
@@ -77,21 +76,6 @@ cmp.setup {
     -- Invoke Completion Menu
     ["<C-Space>"] = cmp.mapping.complete {},
 
-    -- Jump to Next and Previous Snippet expansions
-    ["<C-l>"] = cmp.mapping(function(fallback)
-      if luasnip and luasnip.expand_or_locally_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
-    ["<C-h>"] = cmp.mapping(function(fallback)
-      if luasnip and luasnip.locally_jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }), -- Select Completion Item
     ["<CR>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }),
   },
 }
