@@ -58,21 +58,50 @@ lsp_progress.setup {
   end,
 }
 
+local trouble = require("trouble")
+local symbols = trouble.statusline {
+  mode = "lsp_document_symbols",
+  groups = {},
+  title = false,
+  filter = { range = true },
+  format = "{kind_icon}{symbol.name:Normal}",
+  -- The following line is needed to fix the background color
+  -- Set it to the lualine section you want to use
+  hl_group = "lualine_c_normal",
+}
+
 lualine.setup {
   options = {
     theme = "auto",
     icons_enabled = true,
     section_separators = { left = "", right = "" },
     component_separators = "",
-    disabled_filetypes = {
-      statusline = { "oil", "OIL" },
-    },
     globalstatus = true,
+  },
+  winbar = {
+    lualine_a = {
+      {
+        "filename",
+        file_status = true,
+        newfile_status = true,
+        path = 4,
+      },
+    },
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch", "diff", { "diagnostics", sections = { "error", "warn" } } },
-    lualine_c = {},
+    lualine_c = {
+      {
+        symbols.get,
+        cond = symbols.has,
+      },
+    },
     lualine_x = {
       function()
         return require("lsp-progress").progress()
@@ -80,12 +109,6 @@ lualine.setup {
     },
     lualine_y = {
       "grapple",
-      {
-        "filename",
-        file_status = true,
-        newfile_status = true,
-        path = 4,
-      },
     },
     lualine_z = { "progress", "location" },
   },
@@ -94,6 +117,14 @@ lualine.setup {
     lualine_b = {},
     lualine_c = { "filename" },
     lualine_x = { "location" },
+    lualine_y = {},
+    lualine_z = {},
+  },
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {},
   },
