@@ -10,8 +10,10 @@ map("n", "<leader>e", "<CMD>.lua<CR>", { desc = "Execute lua on the current line
 map("n", "<leader><leader>e", "<CMD>so %<CR>", { desc = "Execute the entire file" })
 
 --Override builtin diagnostic jump to also how the float of the diagnostic message
-map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
+if vim.fn.has("nvim-0.10") == 0 then
+  map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+  map("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
+end
 
 -- Move lines
 map("n", "<M-j>", ":m .+1<CR>==", { desc = "Move Line Down" })
