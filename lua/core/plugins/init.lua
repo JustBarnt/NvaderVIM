@@ -64,7 +64,7 @@ local EDITOR = {
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "Grapple" },
     keys = {
-      { "<leader>h", "<CMD>Grapple toggle<CR>", desc = "Tag Current File" },
+      { "<leader>ha", "<CMD>Grapple toggle<CR>", desc = "Tag Current File" },
       { "<leader>he", "<CMD>Grapple toggle_tags<CR>", desc = "Toggle Tags Menu" },
       { "<leader>1", "<CMD>Grapple select index=1<CR>", desc = "Select Tag 1" },
       { "<leader>2", "<CMD>Grapple select index=2<CR>", desc = "Select Tag 2" },
