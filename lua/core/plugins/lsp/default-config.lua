@@ -26,13 +26,11 @@ M.servers = {
   svelte = {},
   gopls = {},
   cssls = {},
-  -- omnisharp = {},
   lua_ls = require("core.plugins.lsp.servers.lua_ls"),
   intelephense = require("core.plugins.lsp.servers.intelephense"),
   jsonls = require("core.plugins.lsp.servers.jsonls"),
   clangd = require("core.plugins.lsp.servers.clangd"),
   powershell_es = require("core.plugins.lsp.servers.powershell_es"),
-  emmet_ls = {},
   yamlls = require("core.plugins.lsp.servers.yamlls"),
   tailwindcss = require("core.plugins.lsp.servers.tailwindcss"),
 }
