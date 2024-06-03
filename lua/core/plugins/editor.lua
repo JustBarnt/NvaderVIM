@@ -93,4 +93,10 @@ return {
       require("core.plugins.configs.grapple")
     end,
   },
+  {
+    "MagicDuck/grug-far.nvim",
+    config = function()
+      require("core.plugins.configs.grug-far")
+    end,
+  },
 }
