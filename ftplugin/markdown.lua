@@ -10,3 +10,5 @@ vim.opt.number = false
 vim.opt.relativenumber = false
 vim.opt.conceallevel = 3
 vim.opt.concealcursor = "nc"
+vim.opt.spelllang = "en_us"
+vim.opt.spell = true
