@@ -5,6 +5,7 @@ if not has_flash then
   return
 end
 
+---@module 'flash'
 flash.setup {
   ---@type table<string, Flash.Config>
   modes = {
@@ -16,4 +17,5 @@ flash.setup {
     },
   },
 }
+
 flash.toggle(false)

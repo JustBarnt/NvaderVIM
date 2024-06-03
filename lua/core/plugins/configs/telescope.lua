@@ -9,12 +9,11 @@ local actions = require("telescope.actions")
 local builtin = require("telescope.builtin")
 local telescope_utils = require("core.utils.telescope")
 local utils = require("core.utils")
-local telescope_extensions = { "themes", "luasnip", "noice", "workspaces", "live_grep_args", "hbac" }
+local telescope_extensions = { "luasnip", "noice", "workspaces", "live_grep_args", "hbac" }
 
 -- Create a re-usable function for Which-key to create
 -- easy mappings that are already added to Which-key
 
-utils.map("n", "<leader>sc", "<CMD>Telescope themes<CR>", { desc = "Search Colorschemes" })
 utils.map("n", "<leader><leader>", builtin.buffers, { desc = "Search Buffers" })
 utils.map("n", "<leader>/", extensions.live_grep_args.live_grep_args, { desc = "GRep Project" })
 utils.map("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
@@ -62,14 +61,6 @@ telescope.setup {
     live_grep_args = {
       previewer = false,
       prompt_title = "Global Search (w/args)",
-    },
-    themes = {
-      enable_live_preview = true,
-      layout_strategy = "horizontal",
-      layout_config = {
-        prompt_position = "top",
-      },
-      persist = { enabled = true, path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua" },
     },
   },
   pickers = {

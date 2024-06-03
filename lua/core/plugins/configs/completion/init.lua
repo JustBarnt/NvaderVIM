@@ -18,6 +18,7 @@ lspkind.init {}
 ---@class cmp.ConfigSchema
 cmp.setup {
   sources = {
+    { name = "lazydev", group_index = 0 },
     { name = "nvim_lsp", entry_filter = hide_text_entries },
     { name = "luasnip" },
     { name = "path" },

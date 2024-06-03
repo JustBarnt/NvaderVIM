@@ -18,3 +18,5 @@ tokyonight.setup {
   end,
   on_colors = function(_) end,
 }
+
+vim.cmd([[colorscheme tokyonight-storm]])

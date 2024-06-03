@@ -1,5 +1,6 @@
 local M = {}
 
+---@module "tokyonight"
 ---@param hl Highlights
 ---@param c ColorScheme
 function M.overrides(hl, c)

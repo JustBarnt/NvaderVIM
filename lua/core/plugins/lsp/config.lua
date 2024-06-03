@@ -3,7 +3,7 @@ local M = {}
 --- Creates a Server/Formatter install list for the Mason Tools library
 ---@return string[], string[]
 function M.create_server_install()
-  local defaults = require "core.plugins.lsp.default-config"
+  local defaults = require("core.plugins.lsp.default-config")
   local exists, user_config = pcall(require, "user.config")
   local default_servers = vim.tbl_keys(defaults.servers)
   local default_formatters = defaults.conform.formatters
@@ -18,7 +18,7 @@ end
 --- Builds a table of filetype formatters from the default and user if available
 ---@return table<string, string|string[]|string[][]>
 function M.create_filetype_formatters()
-  local defaults = require "core.plugins.lsp.default-config"
+  local defaults = require("core.plugins.lsp.default-config")
   local default_ft = defaults.conform.formatters_by_ft
   local exists, user_config = pcall(require, "user.config")
   local user_ft = exists and type(user_config) == "table" and user_config.formatters.formatters_by_ft or {}
@@ -29,19 +29,7 @@ end
 
 --- Configures Neodev and Neoconf before LSP setup
 function M.configure_neodev()
-  local neodev = vim.F.npcall(require, "neodev")
   local neoconf = vim.F.npcall(require, "neoconf")
-
-  if neodev then
-    neodev.setup {
-      override = function(_, library)
-        library.enabled = true
-        library.plugins = true
-      end,
-      lspconfig = true,
-      pathStrict = true,
-    }
-  end
 
   if neoconf then
     neoconf.setup()
