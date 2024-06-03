@@ -51,10 +51,12 @@ return {
   {
     "smjonas/inc-rename.nvim",
     command = "IncRename",
+    config = true,
   },
   {
     "kylechui/nvim-surround",
-    event = "InsertEnter",
+    event = "VeryLazy",
+    config = true,
   },
   {
     "folke/flash.nvim",
