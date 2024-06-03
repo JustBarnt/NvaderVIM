@@ -72,7 +72,7 @@ cmp.setup {
     ["<C-e>"] = cmp.mapping.abort(),
 
     -- Confirm Selection
-    ["<C-y>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }, { "i" }),
+    ["<C-y>"] = cmp.mapping(cmp.mapping.confirm { behavior = cmp.SelectBehavior.Replace, select = true }, { "i", "c" }),
 
     -- Invoke Completion Menu
     ["<C-Space>"] = cmp.mapping.complete {},
@@ -82,14 +82,12 @@ cmp.setup {
 }
 
 cmp.setup.cmdline({ "/", "?" }, {
-  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "buffer" },
   },
 })
 
 cmp.setup.cmdline(":", {
-  mapping = cmp.mapping.preset.cmdline(),
   sources = {
     { name = "cmdline" },
     { name = "path" },
