@@ -94,7 +94,8 @@ return {
     end,
   },
   {
-    "MagicDuck/grug-far.nvim",
+    -- "MagicDuck/grug-far.nvim",
+    dir = "~/nvim-plugins/grug-far.nvim",
     config = function()
       require("core.plugins.configs.grug-far")
     end,
