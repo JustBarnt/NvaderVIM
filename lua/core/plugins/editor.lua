@@ -42,9 +42,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    keys = {
-      { "<leader>fc", "<CMD>TodoTelescope<CR>", desc = "Find Todo's" },
-    },
+    config = true,
   },
   {
     "nvim-telescope/telescope.nvim",
