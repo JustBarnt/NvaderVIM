@@ -17,6 +17,7 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
+opt.breakindent = "list:-1"
 opt.colorcolumn = "100,120"
 opt.completeopt = "menu,menuone,noselect,popup"
 opt.conceallevel = 2 -- Hide markup but not markers with subsitutes
@@ -36,7 +37,7 @@ opt.pumheight = 10 -- Number of entries in a popup
 opt.scrolloff = 4 -- Lines of context
 opt.shiftround = true -- Round indented lines
 opt.shiftwidth = 2 -- Size of an indent
-opt.shortmess:append { I = true, c = true }
+opt.shortmess:append({ I = true, c = true })
 opt.showmode = false -- Don't show current mode since we display it the statusline
 opt.sidescrolloff = 8 -- Columns on Context
 opt.signcolumn = "yes" -- Always show the signcolumn so the window doesn't shift
