@@ -1,5 +1,12 @@
 return {
   {
+    "shellRaining/hlchunk.nvim",
+    event = { "CursorHold", "CursorHoldI" },
+    config = function()
+      require("core.plugins.configs.hlchunk")
+    end,
+  },
+  {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
