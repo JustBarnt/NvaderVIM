@@ -1,5 +1,12 @@
 return {
   {
+    "rasulomaroff/reactive.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.reactive")
+    end,
+  },
+  {
     "shellRaining/hlchunk.nvim",
     event = { "CursorHold", "CursorHoldI" },
     config = function()

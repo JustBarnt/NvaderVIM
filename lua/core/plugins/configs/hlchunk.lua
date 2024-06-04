@@ -14,7 +14,7 @@ hlchunk.setup({
       vertical_line = "│",
       left_top = "╭",
       left_bottom = "╰",
-      right_arrow = ">",
+      right_arrow = "─",
     },
   },
   indent = {
