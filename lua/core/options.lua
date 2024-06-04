@@ -17,7 +17,7 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
-opt.breakindent = "list:-1"
+opt.breakindentopt = "list:-1"
 opt.colorcolumn = "100,120"
 opt.completeopt = "menu,menuone,noselect,popup"
 opt.conceallevel = 2 -- Hide markup but not markers with subsitutes
