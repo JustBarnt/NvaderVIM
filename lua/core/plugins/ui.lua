@@ -12,13 +12,6 @@ return {
     end,
   },
   {
-    "DNLHC/glance.nvim",
-    event = "BufEnter",
-    config = function()
-      require("core.plugins.configs.glance")
-    end,
-  },
-  {
     "RRethy/vim-illuminate",
     event = "BufReadPre",
     config = function()
