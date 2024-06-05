@@ -7,6 +7,10 @@ end
 
 lazydev.setup({
   library = {
-    "luvit-meta/library",
+    {
+      path = "luvit-meta/library",
+      -- Only loads typings for the module when it detects the follow pattern
+      words = { "vim%.uv" },
+    },
   },
 })
