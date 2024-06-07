@@ -65,7 +65,7 @@ vim.schedule(function()
   require("extras.autocmds")
 end)
 
-vim.cmd([[colorscheme neofusion]])
+vim.cmd([[colorscheme nordic]])
 
 vim.diagnostic.config({
   virtual_text = false,

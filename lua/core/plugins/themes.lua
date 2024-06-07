@@ -8,11 +8,11 @@ return {
     end,
   },
   {
-    "diegoulloao/neofusion.nvim",
-    priority = 1000,
+    "AlexvZyl/nordic.nvim",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("core.plugins.configs.themes.neofusion")
+      require("core.plugins.configs.themes.nordic")
     end,
   },
 }

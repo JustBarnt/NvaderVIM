@@ -9,7 +9,7 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-local cmp_kinds = require("core.utils.icons").cmp_kinds
+local cmp_kinds = require("core.utils.chars").kind_icons
 
 local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")

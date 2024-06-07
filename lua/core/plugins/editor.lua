@@ -50,7 +50,6 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
-      "d00h/telescope-any",
       { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0" },
     },
     config = function()
