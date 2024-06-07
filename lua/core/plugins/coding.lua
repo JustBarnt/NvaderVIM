@@ -21,6 +21,7 @@ return {
       "hrsh7th/cmp-buffer",
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
+      "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
       require("core.plugins.configs.completion")

@@ -11,7 +11,7 @@ if not has_lsp_progress then
   return
 end
 
-lsp_progress.setup {
+lsp_progress.setup({
   client_format = function(client_name, spinner, series_messages)
     if #series_messages == 0 then
       return nil
@@ -56,30 +56,15 @@ lsp_progress.setup {
     end
     return ""
   end,
-}
+})
 
-lualine.setup {
+lualine.setup({
   options = {
     theme = "auto",
     icons_enabled = true,
     section_separators = { left = "", right = "" },
     component_separators = "",
     globalstatus = true,
-  },
-  winbar = {
-    lualine_a = {
-      {
-        "filename",
-        file_status = true,
-        newfile_status = true,
-        path = 4,
-      },
-    },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
   },
   sections = {
     lualine_a = { "mode" },
@@ -92,6 +77,12 @@ lualine.setup {
     },
     lualine_y = {
       "grapple",
+      {
+        "filename",
+        file_status = true,
+        newfile_status = true,
+        path = 4,
+      },
     },
     lualine_z = { "progress", "location" },
   },
@@ -103,19 +94,4 @@ lualine.setup {
     lualine_y = {},
     lualine_z = {},
   },
-  inactive_winbar = {
-    lualine_a = {
-      {
-        "filename",
-        file_status = true,
-        newfile_status = true,
-        path = 4,
-      },
-    },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {},
-  },
-}
+})

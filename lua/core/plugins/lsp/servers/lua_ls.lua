@@ -10,7 +10,9 @@ return {
     Lua = {
       runtime = { version = "LuaJIT" },
       completion = {
-        callSnippet = "Both",
+        completionItem = {
+          snippetSupport = false,
+        },
       },
       hint = {
         enable = true,
