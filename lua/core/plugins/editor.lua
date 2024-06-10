@@ -1,5 +1,12 @@
 return {
   {
+    "tris203/precognition.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.precognition")
+    end,
+  },
+  {
     "axkirillov/hbac.nvim",
     event = "VeryLazy",
     opts = {
