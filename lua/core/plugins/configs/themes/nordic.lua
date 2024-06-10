@@ -50,7 +50,7 @@ magenta
     dim = '#A97EA1',
 ]]
 
-local palette = require("nordic.colors")
+local C = require("nordic.colors")
 
 nordic.setup({
   bold_keywords = true,
@@ -60,31 +60,47 @@ nordic.setup({
   reduced_blue = true,
   swap_backgrounds = false,
   override = {
-    TelescopeNormal = { bg = palette.gray1 },
-    TelescopeTitle = { bg = palette.orange.base, fg = palette.black0, bold = true },
-    TelescopeBorder = { fg = palette.black0, bg = palette.black0 },
+    TelescopeNormal = { bg = C.gray1 },
+    TelescopeTitle = { bg = C.orange.base, fg = C.black0, bold = true },
+    TelescopeBorder = { fg = C.black0, bg = C.black0 },
 
-    TelescopePromptTitle = { bg = palette.orange.base, fg = palette.black0, bold = true },
-    TelescopePromptNormal = { bg = palette.black2 },
-    TelescopePromptBorder = { bg = palette.black2, fg = palette.black2 },
-    TelescopePromptPrefix = { bg = palette.black2, fg = palette.orange.bright },
+    TelescopePromptTitle = { bg = C.orange.base, fg = C.black0, bold = true },
+    TelescopePromptNormal = { bg = C.black2 },
+    TelescopePromptBorder = { bg = C.black2, fg = C.black2 },
+    TelescopePromptPrefix = { bg = C.black2, fg = C.orange.bright },
 
-    TelescopeResultsNormal = { bg = palette.gray1 },
-    TelescopeResultsBorder = { bg = palette.gray1, fg = palette.gray1 },
-    TelescopeResultsTitle = { bg = palette.orange.base, fg = palette.black0, bold = true },
+    TelescopeResultsNormal = { bg = C.gray1 },
+    TelescopeResultsBorder = { bg = C.gray1, fg = C.gray1 },
+    TelescopeResultsTitle = { bg = C.orange.base, fg = C.black0, bold = true },
 
-    TelescopePreviewNormal = { bg = palette.black2 },
-    TelescopePreviewTitle = { bg = palette.blue2, fg = palette.black0, bold = true },
-    TelescopePreviewBorder = { bg = palette.black2, fg = palette.black2 },
+    TelescopePreviewNormal = { bg = C.black2 },
+    TelescopePreviewTitle = { bg = C.blue2, fg = C.black0, bold = true },
+    TelescopePreviewBorder = { bg = C.black2, fg = C.black2 },
 
-    TelescopeSelection = { bg = palette.gray1, fg = palette.yellow.bright },
-    TelescopeSelectionCaret = { fg = palette.yellow.bright, bg = palette.gray1, bold = true },
-    TelescopeMultiIcon = { fg = palette.yellow.bright, bg = palette.gray1, bold = true },
-    TelescopeMultiSelection = { bg = palette.gray1 },
-    TelescopePreviewLine = { bg = palette.gray1 },
+    TelescopeSelection = { bg = C.gray1, fg = C.orange.bright },
+    TelescopeSelectionCaret = { fg = C.orange.bright, bg = C.gray1, bold = true },
+    TelescopeMultiIcon = { fg = C.orange.bright, bg = C.gray1, bold = true },
+    TelescopeMultiSelection = { bg = C.gray1 },
+    TelescopePreviewLine = { bg = C.gray1 },
+
+    LazyNormal = { bg = C.gray1 },
+    LazyH1 = { bg = C.orange.base, fg = C.black0, bold = true },
+    LazySpecial = { fg = C.orange.base },
+    LazyCommitType = { fg = C.orange.base },
+
+    NoiceCmdline = { fg = C.orange.base, bg = C.gray1, bold = true },
+    NoiceCmdlineIcon = { bg = C.gray1, fg = C.orange.bright },
+    NoiceCmdlineIconSearch = { bg = C.gray1, fg = C.orange.bright },
+    NoicePopupBorder = { fg = C.gray1, bg = C.gray1 },
+    NoiceCmdlinePopup = { bg = C.gray1 },
+
+    WhichKeyFloat = { bg = C.gray1 },
+    WhichKeyBorder = { fg = C.black0, bg = C.gray1 },
+
+    Pmenu = { bg = C.gray1 },
   },
   noice = {
-    style = "classic",
+    style = "flat",
   },
   telescope = {
     style = "flat",

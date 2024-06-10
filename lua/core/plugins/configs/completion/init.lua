@@ -51,14 +51,14 @@ cmp.setup({
     completion = {
       border = "rounded", -- single|rounded|none
       -- custom colors
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None", -- BorderBG|FloatBorder
+      winhighlight = "Normal:Pmenu,FloatBorder:TelescopeNormal,BorderBG:Pmenu,Search:None",
       side_padding = 0, -- padding at sides
       col_offset = -4, -- move floating box left or right
     },
     documentation = {
       border = "rounded", -- single|rounded|none
       -- custom colors
-      winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLineBG,Search:None", -- BorderBG|FloatBorder
+      winhighlight = "Normal:Pmenu,FloatBorder:TelescopeNormal,Search:None", -- BorderBG|FloatBorder
     },
   },
   formatting = {
