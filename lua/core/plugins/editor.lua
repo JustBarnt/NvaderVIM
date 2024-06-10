@@ -26,12 +26,11 @@ return {
     end,
   },
   {
-    "brenoprata10/nvim-highlight-colors",
-    enabled = false,
-    event = "BufReadPre",
-    opts = {
-      render = "virtual",
-    },
+    "uga-rosa/ccc.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.ccc")
+    end,
   },
   {
     "tpope/vim-sleuth",

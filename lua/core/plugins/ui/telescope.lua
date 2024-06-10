@@ -1,23 +1,14 @@
 local M = {}
 
 local telescope_utils = require("core.utils.telescope")
-local prompt_chars = { "▔", "▕", "▁", "▏", "▛", "▜", "▛", "▜" }
-local vert_preview_chars = { "▀", "▐", "▄", "▌", "▛", "▜", "▟", "▙" }
 
 M.vertical_layouts = {
   default = {
-    previewer = true,
+    previewer = false,
     layout_strategy = "vertical",
-    layout_config = { mirror = true },
-    preview_title = "",
-    borderchars = {
-      prompt = prompt_chars,
-      preview = vert_preview_chars,
-      results = prompt_chars,
-    },
   },
   buffers = {
-    previewer = true,
+    previewer = false,
     prompt_title = "Buffers",
     mappings = {
       i = { ["<c-d>"] = require("telescope.actions").delete_buffer },
@@ -26,7 +17,7 @@ M.vertical_layouts = {
   },
   find_files = {
     telescope_utils.select_find_command(),
-    previewer = true,
+    previewer = false,
   },
   help_tags = {
     prompt_title = "Search Help",
@@ -50,23 +41,17 @@ M.vertical_layouts = {
 }
 
 M.telescope_defaults = {
-  sort_mru = true,
+  layout_strategy = "vertical",
   sorting_strategy = "ascending",
-  layout_config = { prompt_position = "top" },
-  borderchars = {
-    prompt = prompt_chars,
-    results = prompt_chars,
-    preview = prompt_chars,
-  },
-  border = true,
-  multi_icon = "",
-  entry_prefix = "   ",
-  prompt_prefix = "   ",
-  selection_caret = "  ",
-  hl_result_eol = true,
   results_title = "",
-  winblend = 0,
-  wrap_results = false,
+  prompt_prefix = "  ",
+  selection_caret = "  ",
+  entry_prefix = "   ",
+  layout_config = {
+    prompt_position = "top",
+    width = 0.5,
+    height = 0.5,
+  },
   path_display = { filename_first = { reverse_directories = false } },
   mappings = {
     i = {
@@ -75,7 +60,6 @@ M.telescope_defaults = {
       ["<C-q>"] = require("telescope.actions").smart_send_to_qflist + require("telescope.actions").open_qflist,
     },
   },
-  preview = { treesitter = true },
 }
 
 return M
