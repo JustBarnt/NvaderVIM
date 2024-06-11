@@ -68,8 +68,8 @@ lualine.setup({
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch", "diff", { "diagnostics", sections = { "error", "warn" } } },
-    lualine_c = {},
+    lualine_b = { "branch", "diff" },
+    lualine_c = { { "diagnostics", sections = { "error", "warn" }, always_visible = true } },
     lualine_x = {
       function()
         return require("lsp-progress").progress()
