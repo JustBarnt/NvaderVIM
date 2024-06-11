@@ -43,12 +43,6 @@ nordic.setup({
     LazySpecial = { fg = C.orange.base },
     LazyCommitType = { fg = C.orange.base },
 
-    NoiceCmdline = { fg = C.orange.base, bg = C.gray1, bold = true },
-    NoiceCmdlineIcon = { bg = C.gray1, fg = C.orange.bright },
-    NoiceCmdlineIconSearch = { bg = C.gray1, fg = C.orange.bright },
-    NoicePopupBorder = { fg = C.gray1, bg = C.gray1 },
-    NoiceCmdlinePopup = { bg = C.gray1 },
-
     WhichKeyFloat = { bg = C.gray1 },
     WhichKeyBorder = { fg = C.black0, bg = C.gray1 },
 

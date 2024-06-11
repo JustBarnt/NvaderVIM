@@ -9,7 +9,7 @@ local extensions = telescope.extensions
 local builtin = require("telescope.builtin")
 local telescope_utils = require("core.utils.telescope")
 local utils = require("core.utils")
-local telescope_extensions = { "luasnip", "noice", "workspaces", "live_grep_args", "hbac" }
+local telescope_extensions = { "luasnip", "workspaces", "live_grep_args", "hbac" }
 
 telescope.setup({
   defaults = layouts.telescope_defaults,
