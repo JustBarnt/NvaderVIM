@@ -65,6 +65,9 @@ lualine.setup({
     section_separators = { left = "", right = "" },
     component_separators = "",
     globalstatus = true,
+    disabled_filetypes = {
+      statusline = { "oil" },
+    },
   },
   sections = {
     lualine_a = { "mode" },
