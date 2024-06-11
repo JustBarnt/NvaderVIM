@@ -66,7 +66,7 @@ lualine.setup({
     component_separators = "",
     globalstatus = true,
     disabled_filetypes = {
-      statusline = { "oil" },
+      statusline = { "oil", "TelescopePrompt" },
     },
   },
   sections = {
