@@ -1,5 +1,13 @@
 return {
   {
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.garbage-day")
+    end,
+  },
+  {
     "folke/lazydev.nvim",
     ft = "lua",
     config = function()
