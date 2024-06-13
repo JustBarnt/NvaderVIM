@@ -38,7 +38,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    tag = "v0.7",
+    tag = "v0.9.0",
     event = "BufReadPre",
     config = function()
       require("core.plugins.configs.gitsigns")
