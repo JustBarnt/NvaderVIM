@@ -5,18 +5,9 @@ M.conform = {
     stylua = {
       command = vim.fn.stdpath("data") .. "\\mason\\bin\\stylua.cmd",
     },
-    prettierd = {
-      command = vim.fn.stdpath("data") .. "\\mason\\bin\\prettierd.cmd",
-    },
-    prettier = {
-      command = vim.fn.stdpath("data") .. "\\mason\\bin\\prettier.cmd",
-    },
   },
   formatters_by_ft = {
     lua = { "stylua" },
-    svelte = { "prettierd" },
-    javascript = { { "prettierd", "prettier" } },
-    typescript = { { "prettierd", "prettier" } },
   },
 }
 
@@ -25,7 +16,6 @@ M.servers = {
   html = {},
   svelte = {},
   gopls = {},
-  cssls = {},
   lua_ls = require("core.plugins.lsp.servers.lua_ls"),
   intelephense = require("core.plugins.lsp.servers.intelephense"),
   jsonls = require("core.plugins.lsp.servers.jsonls"),
