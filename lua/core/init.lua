@@ -64,7 +64,7 @@ vim.schedule(function()
   require("core.commands.init")
 end)
 
-vim.cmd([[colorscheme nordic]])
+vim.cmd([[colorscheme tokyonight-storm]])
 
 vim.diagnostic.config({
   virtual_text = false,

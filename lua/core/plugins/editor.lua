@@ -102,4 +102,11 @@ return {
       require("core.plugins.configs.grug-far")
     end,
   },
+  {
+    "nguyenvukhang/nvim-toggler",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.nvim-toggler")
+    end,
+  },
 }
