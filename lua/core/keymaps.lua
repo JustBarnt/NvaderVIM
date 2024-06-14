@@ -65,3 +65,13 @@ map("n", "<leader>L", ":Lazy<CR>", { desc = "Show Lazy " })
 
 -- Clear HLSearch
 map("n", "<Esc>", "<CMD>nohlsearch<CR>", { desc = "Clear Search Highlights" })
+
+--Terminal Commands
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+map("n", "<localleader>st", function()
+  vim.cmd.new()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 12)
+  vim.wo.winfixheight = true
+  vim.cmd.term()
+end, { desc = "Start Terminal" })
