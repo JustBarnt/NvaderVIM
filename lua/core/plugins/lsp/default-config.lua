@@ -5,9 +5,18 @@ M.conform = {
     stylua = {
       command = vim.fn.stdpath("data") .. "\\mason\\bin\\stylua.cmd",
     },
+    prettierd = {
+      command = vim.fn.stdpath("data") .. "\\mason\\bin\\prettierd.cmd",
+    },
+    prettier = {
+      command = vim.fn.stdpath("data") .. "\\mason\\bin\\prettier.cmd",
+    },
   },
   formatters_by_ft = {
     lua = { "stylua" },
+    svelte = { "prettierd" },
+    javascript = { { "prettierd", "prettier" } },
+    typescript = { { "prettierd", "prettier" } },
   },
 }
 
