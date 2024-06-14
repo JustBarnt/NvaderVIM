@@ -1,5 +1,16 @@
 return {
   {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("core.plugins.configs.noice")
+    end,
+  },
+  {
     "rasulomaroff/reactive.nvim",
     event = "VeryLazy",
     config = function()

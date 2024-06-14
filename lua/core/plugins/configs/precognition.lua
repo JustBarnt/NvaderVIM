@@ -8,7 +8,7 @@ end
 local map = require("core.utils").map
 
 precognition.setup({
-  startVisible = true,
+  startVisible = false,
   showBlankVirtLine = false,
   highlightColor = { link = "@constant" },
 })

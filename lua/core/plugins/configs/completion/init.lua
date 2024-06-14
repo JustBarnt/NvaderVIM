@@ -119,11 +119,11 @@ cmp.setup.cmdline({ "/", "?" }, {
   },
 })
 
-cmp.setup.cmdline(":", {
-  sources = {
-    { name = "cmdline" },
-    { name = "path" },
-  },
-})
+-- cmp.setup.cmdline(":", {
+--   sources = {
+--     { name = "cmdline" },
+--     { name = "path" },
+--   },
+-- })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
