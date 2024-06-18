@@ -6,6 +6,9 @@ if not has_noice then
 end
 
 noice.setup({
+  popupmenu = {
+    backend = "nui",
+  },
   lsp = {
     progress = {
       enabled = false,
@@ -71,7 +74,6 @@ noice.setup({
     },
     popupmenu = {
       relative = "editor",
-      backend = "nui",
       position = {
         row = 8,
         col = "50%",

@@ -47,21 +47,19 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
-  view = {
-    entries = { name = "custom", selection_order = "near_cursor" },
-  },
   window = {
     completion = {
-      border = "rounded", -- single|rounded|none
+      border = "none", -- single|rounded|none
       -- custom colors
-      winhighlight = "Normal:Pmenu,FloatBorder:TelescopeNormal,BorderBG:Pmenu,Search:None",
+      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:FloatBorder,Search:None",
       side_padding = 0, -- padding at sides
-      col_offset = -4, -- move floating box left or right
+      col_offset = -3, -- move floating box left or right
     },
     documentation = {
-      border = "rounded", -- single|rounded|none
+      border = "none", -- single|rounded|none
       -- custom colors
-      winhighlight = "Normal:Pmenu,FloatBorder:TelescopeNormal,Search:None", -- BorderBG|FloatBorder
+      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:FloatBorder,Search:None", -- BorderBG|FloatBorder
+      side_padding = 0,
     },
   },
   formatting = {
@@ -108,7 +106,6 @@ cmp.setup({
       cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }),
       { "i", "c" }
     ),
-
     -- Invoke Completion Menu
     ["<C-Space>"] = cmp.mapping.complete({}),
 
@@ -117,15 +114,57 @@ cmp.setup({
 })
 
 cmp.setup.cmdline({ "/", "?" }, {
+
+  experimental = {
+    ghost_text = false,
+  },
+  formatting = {
+    fields = { "abbr" },
+  },
   sources = {
     { name = "buffer" },
+  },
+  view = {
+    entries = {
+      name = "wildmenu",
+      separator = " | ",
+    },
+  },
+  window = {
+    completion = {
+      border = "none", -- single|rounded|none
+      winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeNormal,Search:None",
+      winblend = 0,
+      col_offset = -4,
+    },
   },
 })
 
 -- cmp.setup.cmdline(":", {
+--   experimental = {
+--     ghost_text = false,
+--   },
+--   formatting = {
+--     fields = { "abbr" },
+--   },
 --   sources = {
 --     { name = "cmdline" },
 --     { name = "path" },
+--   },
+--   view = {
+--     entries = {
+--       name = "custom",
+--       follow_cursor = false,
+--       selection_order = "top_down",
+--     },
+--   },
+--   window = {
+--     completion = {
+--       border = "none", -- single|rounded|none
+--       winhighlight = "Normal:TelescopeNormal,FloatBorder:TelescopeNormal,Search:None",
+--       winblend = 0,
+--       col_offset = -4,
+--     },
 --   },
 -- })
 
