@@ -71,6 +71,7 @@ noice.setup({
     },
     popupmenu = {
       relative = "editor",
+      backend = "nui",
       position = {
         row = 8,
         col = "50%",

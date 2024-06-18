@@ -17,15 +17,7 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
-opt.guicursor = {
-  "n-v-c:block", -- Normal, visual, command-line: block cursor
-  "i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
-  "r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
-  "o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
-  "a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
-  "sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
-}
-
+opt.cmdheight = 0
 opt.breakindentopt = "list:-1"
 opt.colorcolumn = "100,120"
 opt.completeopt = "menu,menuone,noselect,popup"

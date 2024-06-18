@@ -47,6 +47,9 @@ cmp.setup({
   experimental = {
     ghost_text = true,
   },
+  view = {
+    entries = { name = "custom", selection_order = "near_cursor" },
+  },
   window = {
     completion = {
       border = "rounded", -- single|rounded|none
