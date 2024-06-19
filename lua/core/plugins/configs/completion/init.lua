@@ -9,8 +9,6 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
-local cmp_kinds = require("core.utils.chars").kind_icons
-
 local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 lspkind.init({})
@@ -49,44 +47,25 @@ cmp.setup({
   },
   window = {
     completion = {
-      border = "none", -- single|rounded|none
-      -- custom colors
-      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:FloatBorder,Search:None",
-      side_padding = 0, -- padding at sides
-      col_offset = -3, -- move floating box left or right
+      border = "solid",
+      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:TelescopePromptNormal,Search:None",
+      col_offset = -4,
+      side_padding = 0,
     },
     documentation = {
-      border = "none", -- single|rounded|none
-      -- custom colors
-      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:FloatBorder,Search:None", -- BorderBG|FloatBorder
-      side_padding = 0,
+      border = "solid",
+      winhighlight = "Normal:TelescopePromptNormal,FloatBorder:TelescopePromptNormal,Search:None",
     },
   },
   formatting = {
     fields = { "kind", "abbr", "menu" },
-    format = function(entry, item)
-      -- vscode like icons for cmp autocompletion
-      local fmt = lspkind.cmp_format({
-        mode = "symbol_text",
-        maxwidth = 50,
-        ellipsis_char = "...",
-        before = tailwindcss_colorizer_cmp.formatter, -- prepend tailwindcss-colorizer
-      })(entry, item)
+    format = function(entry, vim_item)
+      local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      kind.menu = "    (" .. (strings[2] or "") .. ")"
 
-      -- customize lspkind format
-      local strings = vim.split(fmt.kind, "%s", { trimempty = true })
-
-      -- strings[1] -> default icon
-      -- strings[2] -> kind
-
-      -- set different icon styles
-      fmt.kind = " " .. (cmp_kinds[strings[2]] or "") -- concatenate icon based on kind
-
-      -- append customized kind text
-      fmt.kind = fmt.kind .. " " -- just an extra space at the end
-      fmt.menu = strings[2] ~= nil and ("  " .. (strings[2] or "")) or ""
-
-      return fmt
+      return kind
     end,
   },
   mapping = {
@@ -102,10 +81,7 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.abort(),
 
     -- Confirm Selection
-    ["<C-y>"] = cmp.mapping(
-      cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }),
-      { "i", "c" }
-    ),
+    ["<C-y>"] = cmp.mapping(cmp.mapping.confirm({ behavior = cmp.SelectBehavior.Replace, select = true }), { "i", "c" }),
     -- Invoke Completion Menu
     ["<C-Space>"] = cmp.mapping.complete({}),
 

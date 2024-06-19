@@ -3,8 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 if vim.g.vscode then
-  require("core.keymaps")
-  require("core.options")
+  require("core.config.keymaps")
+  require("core.config.options")
   return
 end
 
