@@ -77,5 +77,9 @@ opt.foldlevel = 99
 opt.foldmethod = "expr"
 opt.foldtext = ""
 opt.fillchars = "fold: "
+opt.foldlevel = 99
+opt.foldmethod = "expr"
+opt.foldcolumn = "1"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.g.markdown_recommended_style = 0

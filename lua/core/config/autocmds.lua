@@ -43,10 +43,6 @@ api.nvim_create_autocmd({ "FileType" }, {
     set.linebreak = true
     set.breakat = " ^I!@*-+;:,./?"
     set.breakindent = true
-    set.foldlevel = 99
-    set.foldmethod = "expr"
-    set.foldcolumn = "1"
-    set.foldexpr = "nvim_treesitter#foldexpr()"
   end,
 })
 
