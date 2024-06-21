@@ -1,7 +1,6 @@
-local bars = {};
-local statuscolumn = require("bars/statuscolumn");
-local statusline = require("bars/statusline");
-local tabline = require("bars/tabline");
+local bars = {}
+local statuscolumn = require("bars/statuscolumn")
+local tabline = require("bars/tabline")
 
 ---+ Title: "Type definitions"
 
@@ -32,18 +31,17 @@ local tabline = require("bars/tabline");
 ---@field text { closed: string?, opened: string?, scope: string?, branch: string?, edge: string? } The text used for various parts of the foldcolumn
 ---@field space string? The character(s) to use for lines with no folds
 
-
 ---@class component Raw component config
 ---@field bg string? The highlight to use for the component
 ---@field corner_left_hl string? Highlight group to use for the left corner
 ---@field corner_left string Text for the left corner
----@field padding_left_hl string? Highlight group for the left padding 
+---@field padding_left_hl string? Highlight group for the left padding
 ---@field padding_left string? Text for the left padding
 ---@field icon_hl string? Highlight group for the icon
 ---@field icon string? Text for the icon
 ---@field text_hl string? Highlight group for the text
 ---@field text string? Text for the text
----@field padding_right_hl string? Highlight group for the right padding 
+---@field padding_right_hl string? Highlight group for the right padding
 ---@field padding_right string? Text for the right padding
 ---@field corner_right_hl string? Highlight group to use for the right corner
 ---@field corner_right string Text for the right corner
@@ -52,7 +50,7 @@ local tabline = require("bars/tabline");
 ---@field bg string? The highlight to use for the component
 ---@field corner_left_hl string? Highlight group to use for the left corner
 ---@field corner_left string Text for the left corner
----@field padding_left_hl string? Highlight group for the left padding 
+---@field padding_left_hl string? Highlight group for the left padding
 ---@field padding_left string? Text for the left padding
 ---@field icon_hl string? Highlight group for the icon
 ---@field icon string? Text for the icon
@@ -62,7 +60,7 @@ local tabline = require("bars/tabline");
 ---@field separator string? Text for the separator
 ---@field segmant_right_hl string? Highlight group for the right segmant
 ---@field segmant_right string? Text for the right segmant
----@field padding_right_hl string? Highlight group for the right padding 
+---@field padding_right_hl string? Highlight group for the right padding
 ---@field padding_right string? Text for the right padding
 ---@field corner_right_hl string? Highlight group to use for the right corner
 ---@field corner_right string Text for the right corner
@@ -76,13 +74,13 @@ local tabline = require("bars/tabline");
 ---@field bg string? The highlight to use for the component
 ---@field corner_left_hl string? Highlight group to use for the left corner
 ---@field corner_left string Text for the left corner
----@field padding_left_hl string? Highlight group for the left padding 
+---@field padding_left_hl string? Highlight group for the left padding
 ---@field padding_left string? Text for the left padding
 ---@field icon_hl string? Highlight group for the icon
 ---@field icon string? Text for the icon
 ---@field text_hl string? Highlight group for the text
 ---@field text string? Text for the text
----@field padding_right_hl string? Highlight group for the right padding 
+---@field padding_right_hl string? Highlight group for the right padding
 ---@field padding_right string? Text for the right padding
 ---@field corner_right_hl string? Highlight group to use for the right corner
 ---@field corner_right string Text for the right corner
@@ -112,111 +110,99 @@ local tabline = require("bars/tabline");
 ---@field custom_settings nil | table[] Configuration for specific filetupes and/or buftypes
 ---@field statuscolumn nil | table Configuration for the staruscolumn
 bars.default_config = {
-	global_disable = {
-		filetypes = { "help", "Lazy" },
-		buftypes = { "terminal", "nofile" }
-	},
-	custom_configs = {
-	},
+  global_disable = {
+    filetypes = { "help", "Lazy" },
+    buftypes = { "terminal", "nofile" },
+  },
+  custom_configs = {},
 
-	default = {
-		tabline = {
-			enabled = true,
-			options = {
-				components = {
-					{ type = "buffers_all" },
-					{ type = "gap" },
-					-- { type = "separator" },
-					{ type = "tabs" }
-				}
-			}
-		},
-		statusline = {
-			enabled = true,
-			options = {
-				set_defaults = true,
+  default = {
+    tabline = {
+      enabled = true,
+      options = {
+        components = {
+          { type = "buffers_all" },
+          { type = "gap" },
+          -- { type = "separator" },
+          { type = "tabs" },
+        },
+      },
+    },
+    statuscolumn = {
+      enabled = true,
+      options = {
+        set_defaults = true,
 
-				components = {
-					{ type = "mode" },
-					{ type = "buf_name" },
+        default_hl = "statuscol_bg",
+        components = {
+          {
+            type = "fold",
+            mode = "line",
 
-					{ type = "gap" },
+            text = {
+              default = " ",
+              closed = {
+                "",
+                "",
+                "",
+              },
+              opened = "",
 
-					{ type = "cursor_position" }
-				}
-			}
-		},
-		statuscolumn = {
-			enabled = true,
-			options = {
-				set_defaults = true,
+              edge = "╰",
+              branch = "┝",
+              scope = "│",
+            },
 
-				default_hl = "statuscol_bg",
-				components = {
-					{
-						type = "fold",
-						mode = "line",
+            hl = {
+              --default = "FloatShadow",
+              closed = "Special",
+              opened = "Normal",
 
-						text = {
-							default = " ",
-							closed = {
-								"", "", ""
-							},
-							opened = "",
+              scope = "Bars_scope",
+              edge = "Bars_scope",
+            },
+          },
+          {
+            type = "gap",
 
-							edge = "╰",
-							branch = "┝",
-							scope = "│"
-						},
+            text = " ",
+          },
+          {
+            type = "number",
+            mode = "hybrid",
 
-						hl = {
-							--default = "FloatShadow",
-							closed = "Special",
-							opened = "Normal",
+            hl = {
+              prefix = "Bars_glow_num_",
+              from = 0,
+              to = 9,
+            },
+            right_align = true,
+          },
+          {
+            type = "gap",
 
-							scope = "Bars_scope",
-							edge = "Bars_scope"
-						}
-					},
-					{
-						type = "gap",
+            text = " ",
+          },
+          {
+            type = "border",
 
-						text = " "
-					},
-					{
-						type = "number",
-						mode = "hybrid",
+            hl = {
+              prefix = "Bars_glow_",
+              from = 0,
+              to = 7,
+            },
+            text = "│",
+          },
+          {
+            type = "gap",
 
-						hl = {
-							prefix = "Bars_glow_num_",
-							from = 0, to = 9
-						},
-						right_align = true
-					},
-					{
-						type = "gap",
-
-						text = " "
-					},
-					{
-						type = "border",
-
-						hl = {
-							prefix = "Bars_glow_",
-							from = 0, to = 7
-						},
-						text = "│"
-					},
-					{
-						type = "gap",
-
-						text = " "
-					},
-				}
-			}
-		}
-	}
-};
+            text = " ",
+          },
+        },
+      },
+    },
+  },
+}
 
 ---_2
 ---_
@@ -225,69 +211,66 @@ bars.default_config = {
 ---@param table table Original table
 ---@param inherit_from table Table to inherit from
 ---@return table
-local inherit = function (table, inherit_from)
-	for key, value in pairs(table) do
-		if value == "inherit" then
-			table[key] = inherit_from[key];
-		end
-	end
+local inherit = function(table, inherit_from)
+  for key, value in pairs(table) do
+    if value == "inherit" then
+      table[key] = inherit_from[key]
+    end
+  end
 
-	return table;
+  return table
 end
 
-local winValidate = function (window, config)
-	local use_config = {};
+local winValidate = function(window, config)
+  local use_config = {}
 
-	if vim.tbl_contains(config.global_disable.filetypes or {}, vim.bo.filetype) then
-		goto config_set
-	end
+  if vim.tbl_contains(config.global_disable.filetypes or {}, vim.bo.filetype) then
+    goto config_set
+  end
 
-	if vim.tbl_contains(config.global_disable.buftypes or {}, vim.bo.buftype) then
-		goto config_set
-	end
+  if vim.tbl_contains(config.global_disable.buftypes or {}, vim.bo.buftype) then
+    goto config_set
+  end
 
+  if vim.islist(config.custom_configs) == true then
+    for _, conf in ipairs(config.custom_configs) do
+      if vim.tbl_contains(conf.filetypes or {}, vim.bo.filetype) and vim.tbl_contains(conf.buftypes or {}, vim.bo.buftype) then
+        use_config = inherit(conf.config, config.default or {})
 
-	if vim.islist(config.custom_configs) == true then
-		for _, conf in ipairs(config.custom_configs) do
-			if vim.tbl_contains(conf.filetypes or {}, vim.bo.filetype) and vim.tbl_contains(conf.buftypes or {}, vim.bo.buftype) then
-				use_config = inherit(conf.config, config.default or {});
+        goto config_set
+      elseif vim.tbl_contains(conf.filetypes or {}, vim.bo.filetype) or vim.tbl_contains(conf.buftypes or {}, vim.bo.buftype) then
+        use_config = inherit(conf.config, config.default or {})
 
-				goto config_set
-			elseif vim.tbl_contains(conf.filetypes or {}, vim.bo.filetype) or vim.tbl_contains(conf.buftypes or {}, vim.bo.buftype) then
-				use_config = inherit(conf.config, config.default or {});
+        goto config_set
+      end
+    end
+  end
 
-				goto config_set
-			end
-		end
-	end
+  use_config = config.default
+  ::config_set::
 
-	use_config = config.default;
-	::config_set::
-
-	statuscolumn.init(window, use_config.statuscolumn);
-	statusline.init(window, use_config.statusline);
-	tabline.init(use_config.tabline);
+  statuscolumn.init(window, use_config.statuscolumn)
+  tabline.init(use_config.tabline)
 end
 
-bars.setup = function (user_config)
-	local merged_config = vim.tbl_deep_extend("force", bars.default_config, user_config or {});
+bars.setup = function(user_config)
+  local merged_config = vim.tbl_deep_extend("force", bars.default_config, user_config or {})
 
-	vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-		pattern = "*",
-		callback = function (data)
-			local windows = vim.fn.win_findbuf(data.buf);
+  vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    pattern = "*",
+    callback = function(data)
+      local windows = vim.fn.win_findbuf(data.buf)
 
-			for _, window in ipairs(windows) do
-				winValidate(window, merged_config);
-			end
-		end
-	});
+      for _, window in ipairs(windows) do
+        winValidate(window, merged_config)
+      end
+    end,
+  })
 
-	vim.api.nvim_create_autocmd({ "WinEnter", "TabEnter" }, {
-		pattern = "*",
-		callback = function ()
-		end
-	});
+  vim.api.nvim_create_autocmd({ "WinEnter", "TabEnter" }, {
+    pattern = "*",
+    callback = function() end,
+  })
 end
 
-return bars;
+return bars
