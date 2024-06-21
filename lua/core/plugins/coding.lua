@@ -11,7 +11,7 @@ return {
     lazy = true,
   },
   {
-    "hrsh7th/nvim-cmp",
+    dir = "~/nvim-plugins/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
       "onsails/lspkind-nvim",
@@ -24,7 +24,7 @@ return {
       "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
-      require("core.plugins.configs.completion")
+      require("core.plugins.configs.cmp")
     end,
   },
   {

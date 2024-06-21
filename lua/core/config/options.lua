@@ -74,13 +74,8 @@ opt.smoothscroll = true
 
 -- FOLDS
 opt.foldlevel = 99
-opt.statuscolumn = [[%!v:lua.require'core.utils.ui'.statuscolumn()]]
-opt.foldtext = "v:lua.require'core.utils.ui'.foldtext()"
 opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.require'core.utils.ui'.foldexpr()"
 opt.foldtext = ""
 opt.fillchars = "fold: "
-
-vim.o.formatexpr = "v:lua.require'core.utils.format'.formatexpr()"
 
 vim.g.markdown_recommended_style = 0
