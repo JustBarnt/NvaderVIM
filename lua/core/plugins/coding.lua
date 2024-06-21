@@ -11,7 +11,7 @@ return {
     lazy = true,
   },
   {
-    dir = "~/nvim-plugins/nvim-cmp",
+    "justbarnt/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
       "onsails/lspkind-nvim",
