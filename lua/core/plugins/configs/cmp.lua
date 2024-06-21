@@ -132,10 +132,3 @@ cmp.setup.cmdline({ ":" }, {
 })
 
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-vim.api.nvim_create_autocmd({ "CmdlineEnter" }, {
-  pattern = "*",
-  callback = function()
-    vim.cmd([[so lua/core/plugins/configs/cmp.lua]])
-  end,
-})
