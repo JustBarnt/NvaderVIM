@@ -1,5 +1,12 @@
 return {
   {
+    "folke/edgy.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("core.plugins.configs.edgy")
+    end,
+  },
+  {
     "tris203/precognition.nvim",
     event = "VeryLazy",
     config = function()
