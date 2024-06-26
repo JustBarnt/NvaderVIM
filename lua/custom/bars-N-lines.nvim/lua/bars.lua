@@ -1,10 +1,5 @@
-local bars = {};
-local statuscolumn = require("bars/statuscolumn");
-local statusline = require("bars/statusline");
-local tabline = require("bars/tabline");
-
----@type table A table containing functions to open a specific buffer
-_G.__bufOpen = {};
+local bars = {}
+local statuscolumn = require("bars/statuscolumn")
 
 ---+ Title: "Default configuration"
 ---
@@ -17,127 +12,96 @@ _G.__bufOpen = {};
 
 ---@class setup_table Default configuration table, it will be merged with the user config
 bars.default_config = {
-	global_disable = {
-		filetypes = { "help", "lazy" },
-		-- buftypes = { "terminal", "nofile" }
-	},
-	custom_configs = {
-		{
-			filetypes = { "query" },
-			buftypes = { "terminal" },
-			config = {
-				statuscolumn = {
-					enable = false
-				}
-			}
-		}
-	},
+  global_disable = {
+    filetypes = { "help", "lazy" },
+    buftypes = { "terminal", "nofile" },
+  },
+  custom_configs = {},
+  default = {
+    statuscolumn = {
+      enable = true,
+      options = {
+        set_defaults = true,
 
-	default = {
-		tabline = {
-			enable = true,
-			options = {
-				components = {
-					{ type = "buffers" },
-					{ type = "gap" },
-					-- { type = "separator" },
-					{ type = "tabs" }
-				}
-			}
-		},
-		statusline = {
-			enable = true,
-			options = {
-				set_defaults = true,
+        default_hl = "statuscol_bg",
+        components = {
+          {
+            type = "sign",
+            text = "",
+          },
+          {
+            type = "fold",
+            mode = "line",
 
-				components = {
-					{ type = "mode" },
-					{ type = "buf_name" },
+            text = {
+              default = " ",
+              closed = {
+                "",
+                "",
+                "",
+              },
+              opened = {
+                "",
+                "",
+                "",
+              },
 
-					{ type = "gap" },
+              edge = "╰",
+              branch = "┝",
+              scope = "│",
+            },
 
-					{ type = "cursor_position" }
-				}
-			}
-		},
-		statuscolumn = {
-			enable = true,
-			options = {
-				set_defaults = true,
+            hl = {
+              --default = "FloatShadow",
+              closed = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
+              opened = { "Bars_fold_1_open", "Bars_fold_2_open", "Bars_fold_3_open" },
 
-				default_hl = "statuscol_bg",
-				components = {
-					{
-						type = "sign",
-						text = ""
-					},
-					{
-						type = "fold",
-						mode = "line",
+              scope = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
+              edge = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
+              branch = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
+            },
+          },
+          {
+            type = "gap",
 
-						text = {
-							default = " ",
-							closed = {
-								"", "", ""
-							},
-							opened = {
-								"", "", ""
-							},
+            text = " ",
+          },
+          {
+            type = "number",
+            mode = "hybrid",
 
-							edge = "╰",
-							branch = "┝",
-							scope = "│"
-						},
+            hl = {
+              prefix = "Bars_glow_num_",
+              from = 0,
+              to = 9,
+            },
+            right_align = true,
+          },
+          {
+            type = "gap",
 
-						hl = {
-							--default = "FloatShadow",
-							closed = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
-							opened = { "Bars_fold_1_open", "Bars_fold_2_open", "Bars_fold_3_open" },
+            text = " ",
+          },
+          {
+            type = "border",
 
-							scope = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
-							edge = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" },
-							branch = { "Bars_fold_1", "Bars_fold_2", "Bars_fold_3" }
-						}
-					},
-					{
-						type = "gap",
+            hl = {
+              prefix = "Bars_glow_",
+              from = 0,
+              to = 7,
+            },
+            text = "│",
+          },
+          {
+            type = "gap",
 
-						text = " "
-					},
-					{
-						type = "number",
-						mode = "hybrid",
-
-						hl = {
-							prefix = "Bars_glow_num_",
-							from = 0, to = 9
-						},
-						right_align = true
-					},
-					{
-						type = "gap",
-
-						text = " "
-					},
-					{
-						type = "border",
-
-						hl = {
-							prefix = "Bars_glow_",
-							from = 0, to = 7
-						},
-						text = "│"
-					},
-					{
-						type = "gap",
-
-						text = " "
-					},
-				}
-			}
-		}
-	}
-};
+            text = " ",
+          },
+        },
+      },
+    },
+  },
+}
 
 ---_2
 ---_
@@ -146,104 +110,80 @@ bars.default_config = {
 ---@param table table Original table
 ---@param inherit_from table Table to inherit from
 ---@return table
-local inherit = function (table, inherit_from)
-	if table == nil or inherit_from == nil then
-		return {};
-	end
+local inherit = function(table, inherit_from)
+  if table == nil or inherit_from == nil then
+    return {}
+  end
 
-	for key, value in pairs(table) do
-		if value == "inherit" then
-			table[key] = inherit_from[key];
-		end
-	end
+  for key, value in pairs(table) do
+    if value == "inherit" then
+      table[key] = inherit_from[key]
+    end
+  end
 
-	return table;
+  return table
 end
 
 --- Validates the provided buffer
 ---@param buffer number Buffer handle(Buffer number)
 ---@param config table User configuration table
-bars.bufValidate = function (buffer, config)
-	local use_config = {};
+bars.bufValidate = function(buffer, config)
+  local use_config = {}
 
-	if vim.tbl_contains(config.global_disable.filetypes or {}, vim.bo[buffer].filetype) then
-		goto config_set
-	end
+  if vim.tbl_contains(config.global_disable.filetypes or {}, vim.bo[buffer].filetype) then
+    goto config_set
+  end
 
-	if vim.tbl_contains(config.global_disable.buftypes or {}, vim.bo[buffer].buftype) then
-		goto config_set
-	end
+  if vim.tbl_contains(config.global_disable.buftypes or {}, vim.bo[buffer].buftype) then
+    goto config_set
+  end
 
-	if vim.islist(config.custom_configs) == true then
-		for _, conf in ipairs(config.custom_configs) do
-			if vim.tbl_contains(conf.filetypes or {}, vim.bo[buffer].filetype) and vim.tbl_contains(conf.buftypes or {}, vim.bo[buffer].buftype) then
-				use_config = inherit(conf.config, config.default or {});
+  if vim.islist(config.custom_configs) == true then
+    for _, conf in ipairs(config.custom_configs) do
+      if
+        vim.tbl_contains(conf.filetypes or {}, vim.bo[buffer].filetype) and vim.tbl_contains(conf.buftypes or {}, vim.bo[buffer].buftype)
+      then
+        use_config = inherit(conf.config, config.default or {})
 
-				goto config_set
-			elseif vim.tbl_contains(conf.filetypes or {}, vim.bo[buffer].filetype) or vim.tbl_contains(conf.buftypes or {}, vim.bo[buffer].buftype) then
-				use_config = inherit(conf.config, config.default or {});
+        goto config_set
+      elseif
+        vim.tbl_contains(conf.filetypes or {}, vim.bo[buffer].filetype) or vim.tbl_contains(conf.buftypes or {}, vim.bo[buffer].buftype)
+      then
+        use_config = inherit(conf.config, config.default or {})
 
-				goto config_set
-			end
-		end
-	end
+        goto config_set
+      end
+    end
+  end
 
-	use_config = config.default;
-	::config_set::
+  use_config = config.default
+  ::config_set::
 
-	statuscolumn.init(buffer, use_config.statuscolumn);
-	statusline.init(buffer, use_config.statusline);
-	tabline.init(use_config.tabline);
+  statuscolumn.init(buffer, use_config.statuscolumn)
 end
 
 --- Sets up the plugin
 ---@param user_config setup_table?
-bars.setup = function (user_config)
-	local merged_config = vim.tbl_deep_extend("force", bars.default_config, user_config or {});
+bars.setup = function(user_config)
+  local merged_config = vim.tbl_deep_extend("force", bars.default_config, user_config or {})
 
-	vim.api.nvim_create_autocmd({ "FileType" }, {
-		pattern = "*",
-		callback = function (data)
-			local buffer = data.buf;
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = "*",
+    callback = function(data)
+      local buffer = data.buf
 
-			bars.bufValidate(buffer, merged_config);
-		end
-	})
+      bars.bufValidate(buffer, merged_config)
+    end,
+  })
 
-	vim.api.nvim_create_autocmd({ "BufWinEnter", "TermOpen" }, {
-		pattern = "*",
-		callback = function (data)
-			local buffer = data.buf;
+  vim.api.nvim_create_autocmd({ "BufWinEnter", "TermOpen" }, {
+    pattern = "*",
+    callback = function(data)
+      local buffer = data.buf
 
-			bars.bufValidate(buffer, merged_config);
-
-			_G.__bufOpen["buffer_" .. buffer] = function ()
-				local tabs = vim.api.nvim_list_tabpages();
-
-				for _, tab in ipairs(tabs) do
-					local windows = vim.api.nvim_tabpage_list_wins(tab);
-
-					for _, window in ipairs(windows) do
-						local buf = vim.api.nvim_win_get_buf(window);
-
-						if buf == buffer then
-							vim.api.nvim_set_current_tabpage(tab);
-							return;
-						end
-					end
-				end
-
-				vim.api.nvim_set_current_buf(buffer);
-			end
-		end
-	});
-
-	-- vim.api.nvim_create_autocmd({ "LspTokenUpdate" }, {
-	-- 	pattern = "*",
-	-- 	callback = function ()
-	-- 		vim.print("Token update")
-	-- 	end
-	-- })
+      bars.bufValidate(buffer, merged_config)
+    end,
+  })
 end
 
-return bars;
+return bars
