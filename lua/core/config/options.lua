@@ -21,7 +21,6 @@ opt.cmdheight = 0
 opt.breakindentopt = "list:-1"
 opt.colorcolumn = "100,120"
 opt.completeopt = "menu,menuone,noselect,popup"
-opt.conceallevel = 2 -- Hide markup but not markers with subsitutes
 opt.confirm = true -- Show confirmation prompt on exiting a modified Buffer
 opt.cursorline = true -- Highlights current Line
 opt.expandtab = true -- Use spaces instead of tabs
