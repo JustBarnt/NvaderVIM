@@ -116,11 +116,4 @@ return {
       require("core.plugins.configs.nvim-toggler")
     end,
   },
-  {
-    dir = vim.fn.stdpath("config") .. "/lua/custom/bars-N-lines.nvim",
-    name = "bars",
-    config = function()
-      require("core.plugins.configs.bars")
-    end,
-  },
 }
