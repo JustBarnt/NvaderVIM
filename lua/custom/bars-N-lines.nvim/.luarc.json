@@ -1,7 +1,0 @@
-{
-	"settings": {
-		"Lua.workspace.library": ["./lua/definitions.lua"]
-	},
-
-	"diagnostics.globals": ["vim"]
-}
