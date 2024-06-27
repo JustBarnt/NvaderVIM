@@ -7,13 +7,6 @@ return {
     end,
   },
   {
-    "tris203/precognition.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("core.plugins.configs.precognition")
-    end,
-  },
-  {
     "axkirillov/hbac.nvim",
     event = "VeryLazy",
     opts = {
@@ -35,6 +28,9 @@ return {
   {
     "backdround/global-note.nvim",
     event = "VeryLazy",
+    keys = {
+      { "<leader>gn", "<CMD>GlobalNote<CR>", desc = "Open Global Note Pad" },
+    },
     config = function()
       require("core.plugins.configs.global-note")
     end,
