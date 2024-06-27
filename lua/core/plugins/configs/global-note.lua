@@ -5,19 +5,11 @@ if not has_note then
   return
 end
 
-note.setup {
+note.setup({
   filename = "global.md",
   directory = vim.fn.stdpath("data") .. "/global-note/",
-  -- Floating window title.
-  -- string or fun(): string
-  title = "Todo: " .. os.date("%Y/%m/%d"),
-
-  -- Ex command name.
-  -- string
+  title = "Todo: ",
   command_name = "GlobalNote",
-
-  -- A nvim_open_win config to show float window.
-  -- table or fun(): table
   window_config = function()
     local window_height = vim.api.nvim_list_uis()[1].height
     local window_width = vim.api.nvim_list_uis()[1].width
@@ -36,4 +28,4 @@ note.setup {
   -- and other notes.
   -- { [name]: table } - tables there have the same fields as the current table.
   additional_presets = {},
-}
+})
