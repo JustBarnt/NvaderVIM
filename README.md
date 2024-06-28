@@ -3,11 +3,10 @@
 This is my creation of a Neovim Distribution.
 
 ### Why?
-Other Distros included multiple plugins I didn't use and I wanted to use this as a good experience to learn more about neovim itself. As well as this sounded fun to build.
+Other Distributions included multiple plugins I didn't use and I wanted to use this as a good experience to learn more about neovim itself. As well as this sounded fun to build.
 
-## Pre-requisites
-1. Neovim >= 0.9.5
-  lthrough I recommend you build from nightly
+## Prerequisites
+1. Neovim >= 0.10.0
 2. a `C` compliler for `nvim-treesitter`
     make` optional, but there are plugins that use `make` such as `telescope-fzf` for fuzzy finding
 3. [Ripgrep](https://github.com/BurntSushi/ripgrep) is required for Telescope grep searching which this Distribution uses as a core feature
