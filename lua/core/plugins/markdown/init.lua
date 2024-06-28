@@ -1,6 +1,7 @@
 return {
-  "OXY2DEV/markview.nvim",
+  "MeanderingProgrammer/markdown.nvim",
+  name = "render-markdown",
   config = function()
-    require("core.plugins.configs.markview")
+    require("core.plugins.configs.markdown")
   end,
 }

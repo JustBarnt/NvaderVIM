@@ -34,7 +34,7 @@ opt.number = true -- Show Line Numbers
 opt.relativenumber = true -- Relative Line Numbers
 opt.pumblend = 10 -- Popup Opacity
 opt.pumheight = 10 -- Number of entries in a popup
-opt.scrolloff = 4 -- Lines of context
+opt.scrolloff = 999 -- Lines of context
 opt.shiftround = true -- Round indented lines
 opt.shiftwidth = 2 -- Size of an indent
 opt.shortmess:append({ I = true, c = true })
