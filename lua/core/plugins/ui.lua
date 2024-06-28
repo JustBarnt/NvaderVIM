@@ -1,5 +1,16 @@
 return {
   {
+    "freddiehaddad/feline.nvim",
+    config = function()
+      require("feline").setup({
+        statusline = {
+          enabled = false,
+        },
+      })
+      require("feline").statuscolumn.setup()
+    end,
+  },
+  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {
