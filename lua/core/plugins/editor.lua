@@ -112,4 +112,206 @@ return {
       require("core.plugins.configs.nvim-toggler")
     end,
   },
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function()
+      require("dressing").setup({
+        input = {
+          enabled = true,
+          override = function(conf)
+            conf.col = -1
+            conf.row = 0
+            return conf
+          end,
+        },
+        select = {
+          get_config = function(opts)
+            local themes = require("telescope.themes")
+            local sorters = require("telescope.sorters")
+            if opts.kind == "legendary.nvim" then
+              return {
+                telescope = themes.get_dropdown({
+                  sorter = sorters.fuzzy_with_index_bias({}),
+                }),
+              }
+            elseif opts.kind == "codeaction" then
+              return {
+                telescope = themes.get_cursor({ initial_mode = "normal" }),
+              }
+            else
+              return {
+                telescope = themes.get_dropdown({}),
+              }
+            end
+          end,
+        },
+      })
+    end,
+  },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    name = "render-markdown",
+    config = function()
+      require("core.plugins.configs.markdown")
+    end,
+  },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require("notify").setup({
+        background_colour = "NotifyBackground",
+        fps = 60,
+        render = "wrapped-compact",
+        stages = "static",
+        timeout = 3000,
+      })
+    end,
+  },
+  {
+    "stevearc/oil.nvim",
+    config = function(_, opts)
+      require("oil").setup({
+        default_file_explorer = true,
+        columns = {
+          "icons",
+          "size",
+          "permissions",
+          "mtime",
+        },
+        skip_confirm_for_simple_edits = true,
+        prompt_save_on_select_new_entry = false,
+        experimental_watch_for_changes = true,
+        view_options = {
+          is_always_hidden = function(name, bufnr)
+            local ignore = { ".sveltekit", "build", "node_modules" }
+            for _, i_name in pairs(ignore) do
+              if i_name == name then
+                return true
+              end
+            end
+            return false
+          end,
+        },
+      })
+      require("core.utils").map("n", "-", "<CMD>Oil<CR>", { desc = "Open Directory" })
+      require("core.utils").map("n", "<leader>de", "<CMD>Oil --float<CR>", { desc = "Open Directory in Float" })
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    keys = {
+      { "<leader>xx", "<CMD>Trouble<CR>", desc = "Trouble Toggle" },
+      { "<leader>xd", "<CMD>Trouble diagnostics<CR>", desc = "Trouble Document Diagnostics" },
+      { "<leader>xq", "<CMD>Trouble quickfix<CR>", desc = "Trouble Quick Fix" },
+      { "<leader>xl", "<CMD>Trouble loclist<CR>", desc = "Trouble Local List" },
+      {
+        "<leader>o",
+        "<CMD>Trouble symbols toggle pinned=false results.win.relative=true results.win.position=right<CR>",
+        desc = "Document Sybmols (Trouble)",
+      },
+    },
+    config = function()
+      require("trouble").setup({})
+    end,
+  },
+  {
+    "mbbill/undotree",
+    event = "BufReadPre",
+    config = function()
+      if vim.g.loaded_undotree == 1 then
+        vim.g.undotree_WindowLayout = 2
+        if vim.fn.has("win32") == 1 then
+          vim.g.undotree_DiffCommand = "FC"
+        end
+      end
+    end,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      triggers_blacklist = {
+        n = { "d", "y" },
+      },
+      plugins = {
+        marks = false,
+        registers = false,
+        spelling = {
+          enabled = true,
+          suggestions = 5,
+        },
+      },
+      window = {
+        border = { "", "▔", "", "", "", " ", "", "" },
+        margin = { 0, 0, 1, 0 },
+        padding = { 0, 0, 0, 0 },
+      },
+    }, -- Empty opts means default options
+    config = function(_, opts)
+      local wk = require("which-key")
+
+      wk.setup(opts)
+      wk.register({
+        ["<leader>"] = {
+          name = "Map Leader",
+          c = {
+            name = "Code",
+          },
+          d = {
+            name = "Directory",
+          },
+          f = {
+            name = "Find",
+          },
+          h = {
+            name = "Harpoon",
+          },
+          l = {
+            name = "Lsp",
+          },
+          m = {
+            name = "Miscellaneous",
+          },
+          t = {
+            name = "Template",
+          },
+          x = {
+            name = "Trouble",
+          },
+        },
+        ["<leader>_"] = { "which_key_ignore" },
+        ["["] = { "Previous Text-Object" },
+        ["]"] = { "Next Text-Object" },
+        ["<C-w>"] = { "Window" },
+        ["g"] = { "Go-To" },
+        ["z"] = { "Folds / Center Cursor" },
+        ["z="] = { "Spelling Suggestions" },
+      })
+    end,
+  },
+  {
+    "natecraddock/workspaces.nvim",
+    opts = {
+      path = vim.fn.stdpath("data") .. "/workspaces",
+      cd_type = "global",
+      hooks = {
+        add = {},
+        remove = {},
+        rename = {},
+        open_pre = {},
+        open = { "Telescope find_files" },
+      },
+    },
+    keys = {
+      { "<leader>sd", "<CMD>Telescope workspaces<CR>", { desc = "Search Workspaces" } },
+    },
+    config = function(_, opts)
+      require("workspaces").setup(opts)
+    end,
+  },
 }

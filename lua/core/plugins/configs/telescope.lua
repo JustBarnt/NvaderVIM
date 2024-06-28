@@ -4,7 +4,7 @@ if not has_telescope then
   return
 end
 
-local layouts = require("core.plugins.ui.telescope")
+local layouts = require("core.utils.telescope.ui.telescope")
 local extensions = telescope.extensions
 local builtin = require("telescope.builtin")
 local telescope_utils = require("core.utils.telescope")

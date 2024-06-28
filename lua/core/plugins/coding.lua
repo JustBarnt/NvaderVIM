@@ -86,4 +86,41 @@ return {
       require("core.plugins.configs.flash")
     end,
   },
+  {
+    {
+      "mfussenegger/nvim-dap",
+      dependencies = {
+        "rcarriga/nvim-dap-ui",
+        "theHamsta/nvim-dap-virtual-text",
+        "nvim-neotest/nvim-nio",
+        "williamboman/mason.nvim",
+      },
+      config = function()
+        require("core.plugins.configs.dap")
+      end,
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+      require("nvim-treesitter.install").update({ with_sync = true })()
+    end,
+    dependencies = {
+      {
+        "windwp/nvim-ts-autotag",
+        config = function()
+          require("nvim-ts-autotag").setup({
+            opts = {
+              enable_rename = true,
+              enable_close = true,
+              enable_close_on_slash = true,
+            },
+          })
+        end,
+      },
+    },
+    config = function()
+      require("core.plugins.configs.treesitter")
+    end,
+  },
 }
