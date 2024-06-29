@@ -25,6 +25,7 @@ M.servers = {
   html = {},
   svelte = {},
   gopls = {},
+  cssls = require("core.plugins.lsp.servers.cssls"),
   lua_ls = require("core.plugins.lsp.servers.lua_ls"),
   intelephense = require("core.plugins.lsp.servers.intelephense"),
   jsonls = require("core.plugins.lsp.servers.jsonls"),
