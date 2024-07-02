@@ -58,10 +58,10 @@ lazy.setup(plugins_spec, opts)
 vim.notify = require("notify")
 
 vim.schedule(function()
-  require("core.config.options")
-  require("core.config.keymaps")
-  require("core.config.autocmds")
-  require("core.config.user-commands")
+  require("core.user.options")
+  require("core.user.keymaps")
+  require("core.user.autocmds")
+  require("core.user.user-commands")
 end)
 
 vim.diagnostic.config({

@@ -46,6 +46,16 @@ api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+api.nvim_create_autocmd({ "FileType" }, {
+  group = api.nvim_create_augroup("nvader_conceall", { clear = true }),
+  pattern = { "norg" },
+  desc = "Enable conceallevel and concealcursor",
+  callback = function()
+    set.conceallevel = 3
+    set.concealcursor = "nc"
+  end,
+})
+
 -- Highlight text on yank
 api.nvim_create_autocmd("TextYankPost", {
   group = api.nvim_create_augroup("highlight_yank", { clear = true }),
