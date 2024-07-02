@@ -64,8 +64,6 @@ vim.schedule(function()
   require("core.config.user-commands")
 end)
 
-vim.cmd([[colorscheme tokyonight-storm]])
-
 vim.diagnostic.config({
   virtual_text = false,
   signs = {

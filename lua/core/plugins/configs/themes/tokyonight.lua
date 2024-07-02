@@ -6,6 +6,9 @@ if not has_tokyonight then
 end
 
 tokyonight.setup({
+  plugins = {
+    auto = true,
+  },
   transparent = true,
   styles = {
     functions = { bold = true },
@@ -50,3 +53,5 @@ tokyonight.setup({
   end,
   on_colors = function(_) end,
 })
+
+vim.cmd([[colorscheme tokyonight-storm]])
