@@ -17,6 +17,7 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
+opt.numberwidth = 3
 opt.cmdheight = 0
 opt.breakindentopt = "list:-1"
 opt.colorcolumn = "100,120"
@@ -61,8 +62,8 @@ opt.wildmode = "list:longest,list:full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum Window width
 opt.wrap = false -- Disable line wrapping
 opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
+  foldopen = "",
+  foldclose = "",
   fold = " ",
   foldsep = " ",
   diff = "╱",
@@ -74,7 +75,7 @@ opt.smoothscroll = true
 -- FOLDS
 opt.foldlevel = 99
 opt.foldmethod = "expr"
-opt.foldcolumn = "2"
+-- opt.foldcolumn = "0"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.g.markdown_recommended_style = 0

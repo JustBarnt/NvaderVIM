@@ -1,13 +1,9 @@
 return {
   {
-    "freddiehaddad/feline.nvim",
+    dir = vim.fn.stdpath("config") .. "\\lua\\custom_plugins\\bars-N-lines.nvim",
+    name = "bars",
     config = function()
-      require("feline").setup({
-        statusline = {
-          enabled = false,
-        },
-      })
-      require("feline").statuscolumn.setup()
+      require("core.plugins.configs.bars")
     end,
   },
   {
