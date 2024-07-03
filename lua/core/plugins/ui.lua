@@ -7,6 +7,24 @@ return {
   --   end,
   -- },
   {
+    "echasnovski/mini.icons",
+    lazy = true,
+    specs = {
+      { "nvim-tree/nvim-web-devicons", enabled = false, optional = true },
+    },
+    init = function()
+      package.preload["nvim-web-devicons"] = function()
+        -- needed since it will be false when loading and mini will fail
+        package.loaded["nvim-web-devicons"] = {}
+        require("mini.icons").mock_nvim_web_devicons()
+        return package.loaded["nvim-web-devicons"]
+      end
+    end,
+    config = function()
+      require("mini.icons").setup()
+    end,
+  },
+  {
     "willothy/nvim-cokeline",
     event = "VeryLazy",
     config = function()
@@ -48,7 +66,6 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
       "linrongbin16/lsp-progress.nvim",
       "abeldekat/harpoonline",
     },
@@ -83,9 +100,5 @@ return {
       "nvim-telescope/telescope.nvim",
     },
     cmd = "Nerdy",
-  },
-  {
-    "nvim-tree/nvim-web-devicons",
-    event = "VeryLazy",
   },
 }

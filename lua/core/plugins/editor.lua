@@ -57,7 +57,6 @@ return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0" },
     },
@@ -93,7 +92,6 @@ return {
           { "<leader>Hp", "<CMD>Portal grapple backward<CR>", desc = "Portal Grapple Next" },
         },
       },
-      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       require("core.plugins.configs.grapple")
@@ -203,7 +201,6 @@ return {
   {
     "folke/trouble.nvim",
     event = "VeryLazy",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
       { "<leader>xx", "<CMD>Trouble<CR>", desc = "Trouble Toggle" },
       { "<leader>xd", "<CMD>Trouble diagnostics<CR>", desc = "Trouble Document Diagnostics" },
