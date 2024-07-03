@@ -22,7 +22,7 @@ bars.default_config = {
   custom_configs = {
     {
       filetypes = { "query" },
-      buftypes = { "terminal" },
+      buftypes = { "terminal", "nofile" },
       config = {
         statuscolumn = {
           enable = false,

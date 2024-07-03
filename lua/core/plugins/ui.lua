@@ -1,11 +1,11 @@
 return {
-  -- {
-  --   dir = vim.fn.stdpath("config") .. "\\lua\\custom_plugins\\bars-N-lines.nvim",
-  --   name = "bars",
-  --   config = function()
-  --     require("core.plugins.configs.bars")
-  --   end,
-  -- },
+  {
+    dir = vim.fn.stdpath("config") .. "\\lua\\custom_plugins\\bars-N-lines.nvim",
+    name = "bars",
+    config = function()
+      require("core.plugins.configs.bars")
+    end,
+  },
   {
     "echasnovski/mini.icons",
     lazy = true,
@@ -29,13 +29,6 @@ return {
     event = "VeryLazy",
     config = function()
       require("core.plugins.configs.cokeline")
-    end,
-  },
-  {
-    "luukvbaal/statuscol.nvim",
-    event = "UIEnter",
-    config = function()
-      require("core.plugins.configs.statuscol")
     end,
   },
   {
