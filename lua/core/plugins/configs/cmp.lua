@@ -8,6 +8,7 @@ end
 
 local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+local comparators = require("cmp.config.compare")
 
 ---@class cmp.ConfigSchema
 cmp.setup({
@@ -19,9 +20,9 @@ cmp.setup({
   completion = {
     autocomplete = {
       cmp.TriggerEvent.TextChanged,
-      cmp.TriggerEvent.InsertEnter,
+      -- cmp.TriggerEvent.InsertEnter,
     },
-    completeopt = "menu,menuone,noselect",
+    completeopt = "menu,menuone,noselect,popup",
   },
   experimental = {
     ghost_text = true,
@@ -59,7 +60,21 @@ cmp.setup({
     },
     { name = "luasnip" },
     { name = "path" },
-    { name = "buffer", keyword_length = 5 },
+    { name = "snippets" },
+    { name = "buffer", keyword_length = 5, max_item_count = 4 },
+  },
+  sorting = {
+    priority_weight = 10,
+    comparators = {
+      comparators.offset,
+      comparators.scopes,
+      comparators.exact,
+      comparators.score,
+      comparators.recently_used,
+      comparators.kind,
+      comparators.length,
+      comparators.order,
+    },
   },
   window = {
     completion = {

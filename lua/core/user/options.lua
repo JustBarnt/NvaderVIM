@@ -1,4 +1,5 @@
 local opt = vim.opt
+local icons = require("core.user.icons")
 
 if vim.fn.has("win32") == 1 then
   vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
@@ -17,65 +18,94 @@ if not vim.env.SSH_TTY then
   opt.clipboard = "unnamedplus" -- Use System Clipboard
 end
 
-opt.numberwidth = 3
 opt.cmdheight = 0
-opt.breakindentopt = "list:-1"
-opt.colorcolumn = "100,120"
-opt.completeopt = "menu,menuone,noselect,popup"
-opt.confirm = true -- Show confirmation prompt on exiting a modified Buffer
-opt.cursorline = true -- Highlights current Line
-opt.expandtab = true -- Use spaces instead of tabs
-opt.grepformat = "%f:%l:%c:%m"
-opt.ignorecase = true -- Ignore Search Casing
-opt.inccommand = "split" -- preview incremental substitutes
-opt.laststatus = 3 -- Global Statusline
-opt.list = true -- Show Invisible Chars like tabs|spaces
-opt.mouse = "a" -- Enable Mouse
-opt.number = true -- Show Line Numbers
-opt.relativenumber = true -- Relative Line Numbers
-opt.pumblend = 10 -- Popup Opacity
-opt.pumheight = 10 -- Number of entries in a popup
-opt.scrolloff = 999 -- Lines of context
-opt.shiftround = true -- Round indented lines
-opt.shiftwidth = 2 -- Size of an indent
-opt.shortmess:append({ I = true, c = true })
-opt.showmode = false -- Don't show current mode since we display it the statusline
-opt.sidescrolloff = 8 -- Columns on Context
-opt.signcolumn = "yes" -- Always show the signcolumn so the window doesn't shift
-opt.smartcase = true -- Don't ignore case when searching once a capital letter is sent
-opt.smartindent = true -- Inserts indents automatically
-opt.spelllang = { "en" }
-opt.splitbelow = true -- Put new windows below current
-opt.splitright = true -- Put new windows to the right of current
-opt.splitkeep = "screen" -- Keeps text on the same line as the screen
-opt.tabstop = 2 -- Number of spaces tabs count for
+opt.scrolloff = 16
 
-if not vim.g.vscode then
-  opt.timeoutlen = 300 -- Lower timout length for keymaps when not in VSCODE
-end
+opt.shortmess = "filnxoOCFIsw"
+opt.virtualedit = "block"
+opt.signcolumn = "yes"
+opt.wrap = false
+opt.number = true
+opt.relativenumber = true
+opt.showtabline = 2
+opt.laststatus = 3
 
+opt.swapfile = true
+opt.backup = false
 opt.undofile = true
 opt.undolevels = 10000
-opt.updatetime = 200 -- Save swap file and trigger CursorHold:
-opt.virtualedit = "block" -- Allow cursor to move where there is no text in Visual Block mode
-opt.wildmode = "list:longest,list:full" -- Command-line completion mode
-opt.winminwidth = 5 -- Minimum Window width
-opt.wrap = false -- Disable line wrapping
-opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
-}
+
+opt.hlsearch = false
+opt.incsearch = true
+opt.cursorline = true
+opt.cursorlineopt = "number"
+
+opt.modeline = false
+
+opt.timeout = true
+opt.timeoutlen = not vim.g.vscode and 250 or 500
+
+opt.updatetime = 500
+
+opt.confirm = true
+
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldtext = ""
+
+opt.splitkeep = "cursor"
 
 opt.smoothscroll = true
 
--- FOLDS
-opt.foldlevel = 99
-opt.foldmethod = "expr"
--- opt.foldcolumn = "0"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.softtabstop = 2
+opt.shiftround = true
+opt.expandtab = true
+opt.smartindent = true
 
-vim.g.markdown_recommended_style = 0
+opt.fillchars = {
+  horiz = "─",
+  horizup = "┴",
+  horizdown = "┬",
+  vert = "│",
+  vertleft = "┤",
+  vertright = "├",
+  verthoriz = "┼",
+  fold = "⠀",
+  eob = " ",
+  diff = "┃",
+  msgsep = " ",
+  foldsep = " ",
+  foldclose = icons.fold.closed,
+  foldopen = icons.fold.open,
+}
+
+opt.numberwidth = 3
+
+opt.colorcolumn = "100,120"
+opt.breakindentopt = "list:-1"
+opt.grepformat = "%f:%l:%c:%m"
+opt.ignorecase = true
+opt.inccommand = "split"
+opt.mouse = "a"
+opt.pumblend = 10
+opt.pumheight = 10
+opt.showmode = false
+opt.sidescrolloff = 8
+opt.smartcase = true
+
+opt.spelllang = { "en" }
+
+opt.splitbelow = true
+opt.splitright = true
+
+opt.wildmode = "list:longest,list:full"
+
+opt.winminwidth = 5
+
+opt.wrap = false

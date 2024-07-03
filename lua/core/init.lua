@@ -33,8 +33,12 @@ local opts = {
     enabled = true,
     notify = false,
   },
-  change_detection = {
-    notify = false,
+  pkg = {
+    enabled = true,
+    sources = {
+      "lazy",
+      "rockspec",
+    },
   },
   performance = {
     rtp = {
@@ -57,12 +61,28 @@ lazy.setup(plugins_spec, opts)
 
 vim.notify = require("notify")
 
-vim.schedule(function()
-  require("core.user.options")
-  require("core.user.keymaps")
-  require("core.user.autocmds")
-  require("core.user.user-commands")
-end)
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    require("core.user.options")
+    require("core.user.keymaps")
+    require("core.user.autocmds")
+    require("core.user.user-commands")
+  end,
+})
+
+-- From https://github.com/willothy/nvim-config/blob/b0a59463c6e6cb29ecb0d68dd102807bef3db0fb/init.lua#L11
+-- Loading shada is SLOW, so we're going to load it manually,
+-- after UI-enter so it doesn't block startup.
+local shada = vim.o.shada
+vim.o.shada = ""
+vim.api.nvim_create_autocmd("User", {
+  pattern = "VeryLazy",
+  callback = function()
+    vim.o.shada = shada
+    pcall(vim.cmd.rshada, { bang = true })
+  end,
+})
 
 vim.diagnostic.config({
   virtual_text = false,

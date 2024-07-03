@@ -11,6 +11,13 @@ return {
     lazy = true,
   },
   {
+    "garymjr/nvim-snippets",
+    config = true,
+    dependencies = {
+      "rafamadriz/friendly-snippets",
+    },
+  },
+  {
     "justbarnt/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
@@ -20,7 +27,6 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-buffer",
       "saadparwaiz1/cmp_luasnip",
-      "L3MON4D3/LuaSnip",
       "roobert/tailwindcss-colorizer-cmp.nvim",
     },
     config = function()
