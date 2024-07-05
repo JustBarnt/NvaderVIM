@@ -113,6 +113,9 @@ return {
     end,
     dependencies = {
       {
+        "nushell/tree-sitter-nu",
+      },
+      {
         "windwp/nvim-ts-autotag",
         config = function()
           require("nvim-ts-autotag").setup({
