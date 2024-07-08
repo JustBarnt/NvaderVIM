@@ -19,7 +19,7 @@ if not vim.env.SSH_TTY then
 end
 
 opt.cmdheight = 0
-opt.scrolloff = 16
+opt.scrolloff = 999
 
 opt.shortmess:append({ I = true, c = true })
 opt.virtualedit = "block"
