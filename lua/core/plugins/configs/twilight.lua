@@ -9,7 +9,16 @@ twilight.setup({
   dimming = {
     alpha = 0.5,
   },
-  context = 20,
+  treesitter = true,
+  expand = {
+    "function",
+    "function_call",
+    "method_call",
+    "method",
+    "table",
+    "field",
+    "if_statement",
+  },
   exclude = { "norg", "markdown", "txt", "help", "sql" },
 })
 
