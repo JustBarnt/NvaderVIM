@@ -30,7 +30,7 @@ local opts = {
     colorscheme = { "tokyonight" },
   },
   checker = {
-    enabled = true,
+    enabled = false,
     notify = false,
   },
   pkg = {
