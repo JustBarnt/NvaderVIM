@@ -78,13 +78,12 @@ api.nvim_create_autocmd("BufWinEnter", {
   group = api.nvim_create_augroup("help-float", { clear = true }),
   pattern = "*",
   callback = function(event)
-    local filetype = vim.bo[event.buf].filetype
+    local buftype = vim.bo[event.buf].buftype
     local file_path = event.match
-    local filetypes = { "help", "markdown", "norg", "txt" }
 
     if file_path:match("/doc/") ~= nil then
       -- Only run if the filetype is a help file
-      if vim.tbl_contains(filetypes, filetype) then
+      if buftype == "help" then
         -- Get the newly opened help window
         -- and attempt to open a Detour() float
         local help_win = vim.api.nvim_get_current_win()
