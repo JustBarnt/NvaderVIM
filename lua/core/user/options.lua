@@ -1,17 +1,17 @@
 local opt = vim.opt
 local icons = require("core.user.icons")
 
-if vim.fn.has("win32") == 1 then
-  vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
-  vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();"
-    .. "$PSStyle.vim.opt.tputRendering = [System.Management.Automation.OutputRendering]::PlainText;"
-    .. [[$PSDefaultParameterValues['vim.opt.t-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;]]
-  vim.opt.shellredir = [[2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode]]
-  vim.opt.shellpipe = [[2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode]]
-  vim.opt.shellquote = ""
-  vim.opt.shellxquote = ""
-  vim.opt.completeslash = "slash"
-end
+-- if vim.fn.has("win32") == 1 then
+--   vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
+--   vim.opt.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();"
+--     .. "$PSStyle.vim.opt.tputRendering = [System.Management.Automation.OutputRendering]::PlainText;"
+--     .. [[$PSDefaultParameterValues['vim.opt.t-File:Encoding']='utf8';Remove-Alias -Force -ErrorAction SilentlyContinue tee;]]
+--   vim.opt.shellredir = [[2>&1 | %%{ "$_" } | Out-File %s; exit $LastExitCode]]
+--   vim.opt.shellpipe = [[2>&1 | %%{ "$_" } | tee %s; exit $LastExitCode]]
+--   vim.opt.shellquote = ""
+--   vim.opt.shellxquote = ""
+--   vim.opt.completeslash = "slash"
+-- end
 
 if not vim.env.SSH_TTY then
   -- Set clipboard to use system if not in an SSH Session
@@ -21,7 +21,7 @@ end
 opt.cmdheight = 0
 opt.scrolloff = 16
 
-opt.shortmess = "filnxoOCFIsw"
+opt.shortmess:append({ I = true, c = true })
 opt.virtualedit = "block"
 opt.signcolumn = "yes"
 opt.wrap = false
