@@ -7,7 +7,6 @@ if not has_cmp and not has_lspkind then
 end
 
 local tailwindcss_colorizer_cmp = require("tailwindcss-colorizer-cmp")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local comparators = require("cmp.config.compare")
 
 ---@class cmp.ConfigSchema
@@ -145,5 +144,3 @@ cmp.setup.cmdline({ ":" }, {
     },
   },
 })
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
