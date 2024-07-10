@@ -1,3 +1,4 @@
+require("core.utils.gx")
 local api = vim.api
 local M = {}
 
