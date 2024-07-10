@@ -1,3 +1,6 @@
+-- Define if user has nushell installed
+vim.g.has_nushell = vim.fn.executable("nu") and true or false
+
 -- Mapleader should be set as quick as possible. There is no reason to not set it at the very top of your initial init.lua
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"

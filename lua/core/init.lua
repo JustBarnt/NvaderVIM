@@ -68,6 +68,9 @@ vim.api.nvim_create_autocmd("User", {
     require("core.user.keymaps")
     require("core.user.autocmds")
     require("core.user.user-commands")
+    if vim.g.has_nushell then
+      require("core.user.nushell")
+    end
   end,
 })
 

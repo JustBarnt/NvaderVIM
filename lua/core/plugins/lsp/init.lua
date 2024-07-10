@@ -28,28 +28,28 @@ return {
       setup_utils.configure_neodev()
 
       mason.setup()
-      mason_tools.setup { ensure_installed = vim.tbl_deep_extend("force", ensure_installed, vim.tbl_keys(formatters)) }
-      mason_config.setup {
+      mason_tools.setup({ ensure_installed = vim.tbl_deep_extend("force", ensure_installed, vim.tbl_keys(formatters)) })
+      mason_config.setup({
         handlers = {
           function(server_name)
             local server = defaults.servers[server_name] or {}
-            lspconfig[server_name].setup {
+            lspconfig[server_name].setup({
               cmd = server.cmd,
               settings = server.settings,
               filetypes = server.filetypes,
               root_dir = server.root_dir,
               capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
-            }
+            })
           end,
         },
-      }
+      })
 
-      require("typescript-tools").setup {}
-      require("conform").setup {
+      require("typescript-tools").setup({})
+      require("conform").setup({
         notify_on_error = true,
         formatters = defaults.conform.formatters,
         formatters_by_ft = formatters_by_ft,
-      }
+      })
 
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true }),
