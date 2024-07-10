@@ -4,9 +4,5 @@ config.yaml
 .env
 lua/colorscheme.lua
 lua/user/*
-after/**/*.lua
-!after/ftplugin/qf.lua
-!after/ftplugin/norg.lua
-!after/ftplugin/markdown.lua
-!after/ftplugin/neo-tree.lua
+after/ftplugin/**
 spell/**
