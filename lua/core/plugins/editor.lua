@@ -58,6 +58,8 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "keyvchan/telescope-find-pickers.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
       { "nvim-telescope/telescope-live-grep-args.nvim", version = "^1.0.0" },
     },
     config = function()

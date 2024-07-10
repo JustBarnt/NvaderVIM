@@ -9,12 +9,13 @@ local extensions = telescope.extensions
 local builtin = require("telescope.builtin")
 local telescope_utils = require("core.utils.telescope")
 local utils = require("core.utils")
-local telescope_extensions = { "luasnip", "workspaces", "live_grep_args", "hbac" }
+local telescope_extensions = { "workspaces", "live_grep_args", "hbac", "find_pickers", "file_browser" }
 
 telescope.setup({
   defaults = layouts.telescope_defaults,
   extensions = {
     live_grep_args = layouts.vertical_layouts.live_grep_args,
+    file_browser = layouts.vertical_layouts.file_browser,
   },
   pickers = {
     find_files = layouts.vertical_layouts.find_files,
@@ -30,6 +31,8 @@ for i = 1, #telescope_extensions do
   pcall(telescope.load_extension, telescope_extensions[i])
 end
 
+utils.map("n", "<leader>sb", extensions.file_browser.file_browser, { desc = "Telescope File Browser" })
+utils.map("n", "<leader>.", extensions.find_pickers.find_pickers, { desc = "Search Telescope Pickers" })
 utils.map("n", "<leader><leader>", builtin.buffers, { desc = "Search Buffers" })
 utils.map("n", "<leader>/", extensions.live_grep_args.live_grep_args, { desc = "GRep Project" })
 utils.map("n", "<leader>sf", builtin.find_files, { desc = "Search Files" })
