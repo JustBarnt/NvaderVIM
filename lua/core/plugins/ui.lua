@@ -7,13 +7,6 @@ return {
     end,
   },
   {
-    "nvim-zh/colorful-winsep.nvim",
-    event = "UIEnter",
-    config = function()
-      require("core.plugins.configs.winsep")
-    end,
-  },
-  {
     "echasnovski/mini.icons",
     lazy = true,
     specs = {
