@@ -1,7 +1,0 @@
-{
-    "diagnostics.disable": [
-        "incomplete-signature-doc",
-        "missing-fields",
-        "param-type-mismatch"
-    ]
-}

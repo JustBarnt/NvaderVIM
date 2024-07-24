@@ -1,10 +1,3 @@
-local has = require("core.utils").has
-
-if not has("nvim-treesitter") then
-  error("Failed to load treesitter")
-  return
-end
-
 local treesitter = require("nvim-treesitter.configs")
 
 treesitter.setup({

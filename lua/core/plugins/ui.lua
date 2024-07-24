@@ -25,13 +25,6 @@ return {
     end,
   },
   {
-    "willothy/nvim-cokeline",
-    event = "VeryLazy",
-    config = function()
-      require("core.plugins.configs.cokeline")
-    end,
-  },
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {

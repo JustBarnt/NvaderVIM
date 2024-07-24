@@ -8,6 +8,7 @@ return {
   },
   {
     "folke/lazydev.nvim",
+    event = "BufEnter",
     ft = "lua",
     config = function()
       require("core.plugins.configs.lazydev")

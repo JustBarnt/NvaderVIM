@@ -12,5 +12,10 @@ lazydev.setup({
       -- Only loads typings for the module when it detects the follow pattern
       words = { "vim%.uv" },
     },
+    "lazy.nvim",
+  },
+  integrations = {
+    lspconfig = false,
+    cmp = true,
   },
 })

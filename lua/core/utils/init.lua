@@ -2,23 +2,10 @@ require("core.utils.gx")
 local api = vim.api
 local M = {}
 
---- Returns the status of the plugin
---- @param plugin string
---- @return boolean | nil
---- @return LazyPlugin | nil
-function M.has(plugin)
-  local ok, name = pcall(require, tostring(plugin))
-  if not ok then
-    error("Attempt to load " .. plugin .. " failed:\nPlease confirm plugin is installed")
-    return nil, nil
-  end
-  return ok, name
-end
-
 --- Returns true if the buffer is large than X size
----@param bufnr integer The buffer to check
----@param size integer The max size allowed in bytes
----@return boolean
+--- @param bufnr integer The buffer to check
+--- @param size integer The max size allowed in bytes
+--- @return boolean is_large_buf
 function M.is_large_buffer(bufnr, size)
   local is_large_buf = false
   local max_filesize = size * 1024
@@ -31,10 +18,11 @@ function M.is_large_buffer(bufnr, size)
 end
 
 --- Wrapper for `vim.keymap.set`
----@param mode string Mode the keymap can work in
----@param lhs string The left hand side AKA: Key combination to activate
----@param rhs string|function The right hand side AKA: The action to invoke
----@param opts? table A table of options the `vim.keymap.set` supports
+--- @see vim.keymap.set
+--- @param mode string
+--- @param lhs string
+--- @param rhs string|function
+--- @param opts? table
 function M.map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
