@@ -27,7 +27,6 @@ opt.signcolumn = "yes"
 opt.wrap = false
 opt.number = true
 opt.relativenumber = true
-opt.showtabline = 2
 opt.laststatus = 3
 
 opt.swapfile = true
