@@ -11,16 +11,6 @@ local comparators = require("cmp.config.compare")
 
 ---@class cmp.ConfigSchema
 cmp.setup({
-  enabled = function()
-    local max_size = 1000 * 1024
-    local bufnr = vim.api.nvim_get_current_buf()
-    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
-    if ok and stats and stats.size > max_size then
-      return true
-    else
-      return false
-    end
-  end,
   snippet = {
     expand = function(args)
       vim.snippet.expand(args.body)

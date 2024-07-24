@@ -1,5 +1,12 @@
 return {
   {
+    "Chaitanyabsprip/fastaction.nvim",
+    event = "BufEnter",
+    config = function()
+      require("core.plugins.configs.fastaction")
+    end,
+  },
+  {
     "folke/lazydev.nvim",
     ft = "lua",
     config = function()

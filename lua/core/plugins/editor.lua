@@ -136,10 +136,6 @@ return {
                   sorter = sorters.fuzzy_with_index_bias({}),
                 }),
               }
-            elseif opts.kind == "codeaction" then
-              return {
-                telescope = themes.get_cursor({ initial_mode = "normal" }),
-              }
             else
               return {
                 telescope = themes.get_dropdown({}),

@@ -94,11 +94,4 @@ return {
     },
     cmd = "Nerdy",
   },
-  {
-    "folke/twilight.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("core.plugins.configs.twilight")
-    end,
-  },
 }
