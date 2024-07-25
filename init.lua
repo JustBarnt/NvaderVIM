@@ -5,8 +5,6 @@ vim.g.has_nushell = vim.fn.executable("nu") and true or false
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-_G.has_plugin = require("core.utils").has_plugin
-
 if vim.g.vscode then
   require("core.user.keymaps")
   require("core.user.options")

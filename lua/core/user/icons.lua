@@ -32,7 +32,7 @@ Icons.kinds = {
   Null = " ",
 
   Text = " ",
-  Snippet = " ",
+  Snippet = " ",
   Color = "󰏘 ",
   File = "󰈮 ",
   Folder = "󰉋 ",
