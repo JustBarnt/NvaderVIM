@@ -3,10 +3,6 @@ return {
   build = function()
     require("nvim-treesitter.install").update({ with_sync = true })()
   end,
-  init = function(plugin)
-    require("lazy.core.loader").add_to_rtp(plugin)
-    require("nvim-treesitter.query_predicates")
-  end,
   dependencies = {
     "nushell/tree-sitter-nu",
     {
@@ -64,4 +60,7 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }

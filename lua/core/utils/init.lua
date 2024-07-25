@@ -51,6 +51,6 @@ end
 
 M.mini = require("core.utils.mini")
 M.telescope = require("core.utils.telescope")
-M.cmp = require("core.utils.cmp")
+-- M.cmp = require("core.utils.cmp")
 M.icons = require("core.utils.icons")
 return M
