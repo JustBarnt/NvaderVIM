@@ -33,6 +33,9 @@ local opts = {
     enabled = false,
     notify = false,
   },
+  change_detection = {
+    enabled = false,
+  },
   pkg = {
     enabled = true,
     sources = {
