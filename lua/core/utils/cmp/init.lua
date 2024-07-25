@@ -1,14 +1,12 @@
 local M = {}
 
-local cmp = require("cmp")
-
 M.cmdline_search = {
   type = { "/", "?" },
   opts = {
     formatting = {
       fields = { "abbr" },
     },
-    sources = cmp.config.sources({
+    sources = require("cmp").config.sources({
       {
         { name = "buffer" },
       },
@@ -34,11 +32,17 @@ M.cmdline = {
   type = { ":" },
   opts = {
     formatting = { fields = { "abbr" } },
-    mapping = cmp.mapping.preset.cmdline({
-      ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
-      ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Replace }), { "c" }),
+    mapping = require("cmp").mapping.preset.cmdline({
+      ["<C-j>"] = require("cmp").mapping(
+        require("cmp").mapping.select_next_item({ behavior = require("cmp").SelectBehavior.Replace }),
+        { "c" }
+      ),
+      ["<C-k>"] = require("cmp").mapping(
+        require("cmp").mapping.select_prev_item({ behavior = require("cmp").SelectBehavior.Replace }),
+        { "c" }
+      ),
     }),
-    sources = cmp.config.sources({
+    sources = require("cmp").config.sources({
       { name = "cmdline" },
       { name = "path" },
     }),
@@ -62,5 +66,7 @@ M.cmdline = {
     },
   },
 }
+
+M.lspkind = require("core.utils.cmp.formatting")
 
 return M

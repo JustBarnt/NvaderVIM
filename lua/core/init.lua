@@ -64,6 +64,7 @@ vim.notify = require("notify")
 vim.api.nvim_create_autocmd("User", {
   pattern = "VeryLazy",
   callback = function()
+    _G.Utils = require("core.utils")
     require("core.user.options")
     require("core.user.keymaps")
     require("core.user.autocmds")

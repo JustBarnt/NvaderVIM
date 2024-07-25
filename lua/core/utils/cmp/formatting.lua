@@ -1,5 +1,4 @@
 local lspkind = {}
-local icons = require("core.user.icons")
 local fmt = string.format
 
 local kind_presets = {

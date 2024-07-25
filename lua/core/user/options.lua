@@ -1,5 +1,4 @@
 local opt = vim.opt
-local icons = require("core.user.icons")
 
 -- if vim.fn.has("win32") == 1 then
 --   vim.opt.shell = vim.fn.executable("pwsh") and "pwsh" or "powershell"
@@ -80,8 +79,8 @@ opt.fillchars = {
   diff = "┃",
   msgsep = " ",
   foldsep = " ",
-  foldclose = icons.fold.closed,
-  foldopen = icons.fold.open,
+  foldclose = Utils.icons.fold.closed,
+  foldopen = Utils.icons.fold.open,
 }
 
 opt.numberwidth = 3

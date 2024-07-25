@@ -11,6 +11,7 @@ return {
       "stevearc/conform.nvim",
     },
     config = function()
+      --TODO: Look into how LazyVim handles its LSP
       local lspconfig = require("lspconfig")
       local mason = require("mason")
       local mason_config = require("mason-lspconfig")

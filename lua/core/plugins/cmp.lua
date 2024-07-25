@@ -29,9 +29,9 @@ return {
       cmp.event:on("config_done", cmp_autopairs.on_confirm_done())
     end
 
-    local types = require("core.utils.cmp.cmdline")
-    cmp.setup.cmdline(types.cmdline_search.type, types.cmdline_search.opts)
-    cmp.setup.cmdline(types.cmdline.type, types.cmdline.opts)
+    local cmp_utils = require("core.utils.cmp")
+    cmp.setup.cmdline(cmp_utils.cmdline_search.type, cmp_utils.cmdline_search.opts)
+    cmp.setup.cmdline(cmp_utils.cmdline.type, cmp_utils.cmdline.opts)
 
     return {
       snippet = {

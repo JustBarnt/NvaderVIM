@@ -32,7 +32,7 @@ return {
     return keys
   end,
   opts = function()
-    local layouts = require("core.utils.telescope.ui.telescope")
+    local layouts = require("core.utils.telescope")
     local telescope = require("telescope")
     local telescope_extensions = { "workspaces", "live_grep_args", "hbac", "find_pickers", "file_browser", "grapple" }
 
